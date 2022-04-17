@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Header from './Components/Common/Header/Header';
@@ -25,6 +25,7 @@ function App() {
   const [loading, setLoading] = React.useState(true)
   const dispatch = useDispatch();
   const navigate = useNavigate()
+  const location = useLocation();
 
   React.useEffect(() => {
     checkApi().then(data => {
@@ -34,8 +35,8 @@ function App() {
     if (isAuth === false && !window.localStorage.token) {
       navigate('/login')
     }
-    if (isAuth === false && window.localStorage.token) {
-      navigate('/receptions')
+    if (window.localStorage.token) {
+      location.pathname === '/login' && navigate('/receptions')
     }
 
     dispatch(getoldUsersData());
