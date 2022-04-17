@@ -35,8 +35,8 @@ const Login = () => {
     // -----
 
     const validationLogin = yup.object().shape({
-        login: yup.string().typeError('string expected!').required('Введите корректные данные'),
-        password: yup.string().typeError('string expected!').required('Введите корректные данные')
+        login: yup.string().typeError('string expected!').required('Введите корректные данные!'),
+        password: yup.string().typeError('string expected!').required('Введите корректные данные!')
     })
 
     return (
