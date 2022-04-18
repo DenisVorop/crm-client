@@ -1,6 +1,8 @@
-
+import React from "react"
+import { Navigate } from "react-router-dom"
 
 const CardLeft = ({ label, index, cardInfo }) => {
+    if (cardInfo === null) { return <Navigate to='/cards' /> }
 
     switch (cardInfo[3]) { case 'Ж': { return cardInfo[3] = 'Женский' } case 'М': { return cardInfo[3] = 'Мужской' } }
 

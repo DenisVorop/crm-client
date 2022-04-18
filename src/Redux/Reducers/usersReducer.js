@@ -1,9 +1,13 @@
-import { usersAPI } from "../../API/api";
+import { usersAPI } from "../../API/loginApi";
 
 const GET_USERS = 'GET_USERS';
 const GET_TIMES = 'GET_TIMES';
-// const ADD_PAT = 'ADD_PAT';
 const ADD_REC = 'ADD_REC';
+const GET_CARDS = 'GET_CARDS';
+
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
+const SET_LIMIT = 'SET_LIMIT';
 
 
 
@@ -11,8 +15,11 @@ const initialState = {
     oldUsersData: [],
     usersData: [],
     timesData: [],
+    serverCardsData: [],
+    currentPage: 1,
+    totalCount: 0,
+    limit: 10,
 }
-
 
 
 const usersReducer = (state = initialState, action) => {
@@ -30,42 +37,6 @@ const usersReducer = (state = initialState, action) => {
                 timesData: action.payload,
             }
         }
-        // case GET_TIMES: {
-        //     return {
-        //         ...state,
-        //         timesData: action.payload,
-        //     }
-        // }
-        // case ADD_PAT: {
-        //     const NewPatientient = {
-        //         id: 3,
-        //         name: action.payload.surname + ' ' + action.payload.name + ' ' + action.payload.patronymic,
-        //         sex: 'M',
-        //         age: '20',
-        //         status: 'Ожидает прием',
-        //         time: '14:00',
-        //         last_name: action.payload.surname,
-        //         first_name: action.payload.name,
-        //         patronymic: action.payload.patronymic,
-        //         birth: '12.12.1212',
-        //         marital_status: 'Не женат',
-        //         reg_addres: 'huevo kukuevo',
-        //         fact_addres: 'kukuevo huevo',
-        //         phone: '88005553535',
-        //         first_record: '23.23.2323',
-        //         last_record: '25.25.2525',
-        //         card_info: {
-
-        //         },
-        //         last_records: {
-
-        //         }
-        //     };
-        //     return {
-        //         ...state,
-        //         oldUsersData: [...state.oldUsersData, NewPatientient],
-        //     };
-        // }
         case ADD_REC: {
             const NewRecordord = {
                 id: 16,
@@ -156,6 +127,30 @@ const usersReducer = (state = initialState, action) => {
                 usersData: [...state.usersData, NewRecordord],
             };
         }
+        case GET_CARDS: {
+            return {
+                ...state,
+                serverCardsData: action.payload,
+            }
+        }
+        case SET_CURRENT_PAGE: {
+            return {
+                ...state,
+                currentPage: action.payload,
+            }
+        }
+        case SET_TOTAL_COUNT: {
+            return {
+                ...state,
+                totalCount: action.payload,
+            }
+        }
+        case SET_LIMIT: {
+            return {
+                ...state,
+                limit: action.payload,
+            }
+        }
         default: {
             return state;
         }
@@ -178,16 +173,30 @@ export const getTimes = (payload) => {
     }
 }
 
-// export const addNewPatientient = (payload) => {
-//     return ({
-//         type: ADD_PAT,
-//         payload,
-//     })
-// }
-
 export const addNewRecord = (payload) => {
     return ({
         type: ADD_REC,
+        payload,
+    })
+}
+
+export const getAllCards = (payload) => {
+    return ({
+        type: GET_CARDS,
+        payload,
+    })
+}
+
+export const getPage = (payload) => {
+    return ({
+        type: SET_CURRENT_PAGE,
+        payload,
+    })
+}
+
+export const getTotalCount = (payload) => {
+    return ({
+        type: SET_TOTAL_COUNT,
         payload,
     })
 }

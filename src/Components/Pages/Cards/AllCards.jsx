@@ -1,26 +1,27 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import PatientCard from './PatientCard/PatientCard';
 
 import Search from '../../Common/Search/Search';
-
 import Input from '../../Common/Inputs/Input';
 import InputAge from '../../Common/Inputs/InputAge';
 import InputSex from '../../Common/Inputs/InputSex';
-import PatientCard from './PatientCard/PatientCard';
 import EmptySearch from '../../Common/EmptySearch/EmptySearch';
 import Plan from '../../Common/Plan/Plan';
 import Patients from '../../Common/Patients/Patients';
+import Pagination from '../../Common/Pagination/Pagination';
 
 
 const AllCards = ({ getCardNum }) => {
 
-    const { oldUsersData } = useSelector(({ usersReducer }) => usersReducer);
+    const { oldUsersData, serverCardsData } = useSelector(({ usersReducer }) => usersReducer);
 
-    const arrCards = JSON.parse(JSON.stringify(oldUsersData));
+    const arrCards = JSON.parse(JSON.stringify(serverCardsData));
     arrCards.sort((a, b) => a.last_name > b.last_name ? 1 : -1);
 
     const [activeCards, setActiveCards] = React.useState(arrCards);
-    const [label, setLabel] = React.useState('')
+    const [label, setLabel] = React.useState('');
     const nameRef = React.useRef();
     const cardRef = React.useRef();
     const policyRef = React.useRef();
@@ -39,7 +40,7 @@ const AllCards = ({ getCardNum }) => {
 
     React.useEffect(() => {
         searchChange()
-    }, [oldUsersData])
+    }, [serverCardsData])
 
     const onChangeInput = (label) => {
         setLabel(label)
@@ -93,6 +94,7 @@ const AllCards = ({ getCardNum }) => {
                             )
                         })}
                 </div>
+                <Pagination />
             </div>
         </>
     )

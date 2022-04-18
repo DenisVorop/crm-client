@@ -13,15 +13,18 @@ import Notfound from './Components/Pages/NotFound/NotFound';
 import Card from './Components/Pages/Card/Card';
 import Reception from './Components/Pages/Reception/Reception';
 
-import { getoldUsersData, getTimesData } from './Redux/Reducers/usersReducer';
+import { getoldUsersData, getTimesData, getAllCards, getTotalCount } from './Redux/Reducers/usersReducer';
 import { setLoginValues } from './Redux/Reducers/authReducer';
 
-import { checkApi } from './API/api';
+import { checkApi } from './API/loginApi';
+import { fetchCards } from './API/cardsApi';
 
 
 function App() {
 
   const { user, isAuth } = useSelector(({ authReducer }) => authReducer);
+  const { currentPage, limit } = useSelector(({ usersReducer }) => usersReducer);
+
   const [loading, setLoading] = React.useState(true)
   const dispatch = useDispatch();
   const navigate = useNavigate()
@@ -30,18 +33,30 @@ function App() {
   React.useEffect(() => {
     checkApi().then(data => {
       dispatch(setLoginValues(data));
+    })
+
+    fetchCards().then(data => {
+      dispatch(getAllCards(data.rows))
+      dispatch(getTotalCount(data.count))
     }).finally(() => setLoading(false))
 
     if (isAuth === false && !window.localStorage.token) {
-      navigate('/login')
+      navigate(-1)
     }
     if (window.localStorage.token) {
-      location.pathname === '/login' && navigate('/receptions')
+      location.pathname === '/login' && navigate(-1)
     }
 
     dispatch(getoldUsersData());
     dispatch(getTimesData());
   }, []);
+
+  React.useEffect(()=> {
+    fetchCards(currentPage, limit).then(data => {
+      dispatch(getAllCards(data.rows))
+      dispatch(getTotalCount(data.count))
+    }).finally(() => setLoading(false))
+  }, [currentPage, limit])
 
   const [cardInfo, setCardInfo] = React.useState(null)
   const [receptionInfo, setReceptionInfo] = React.useState(null)
@@ -75,7 +90,7 @@ function App() {
             element={<NewRecord />} />
           <Route path={'cards'}
             element={<AllCards getCardNum={getCardNum} />} />
-          <Route path={'patients/:cardNum'}
+          <Route path={'card/:cardNum'}
             element={<Card cardInfo={cardInfo} />} />
           <Route path={'404'}
             element={<Notfound />} />

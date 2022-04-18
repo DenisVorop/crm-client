@@ -9,7 +9,7 @@ import { setLoginValues } from '../../../Redux/Reducers/authReducer';
 import './login.scss'
 
 // -----
-import { registrationApi, loginApi } from '../../../API/api';
+import { registrationApi, loginApi } from '../../../API/loginApi';
 // -----
 
 

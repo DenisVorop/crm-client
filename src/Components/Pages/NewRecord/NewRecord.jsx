@@ -15,8 +15,8 @@ import Button from '../../Common/Button/Button';
 
 const NewRecord = () => {
 
-    const { timesData, oldUsersData } = useSelector(({ usersReducer }) => usersReducer);
-    const arrUsers = JSON.parse(JSON.stringify(oldUsersData));
+    const { timesData, oldUsersData, serverCardsData } = useSelector(({ usersReducer }) => usersReducer);
+    const arrUsers = JSON.parse(JSON.stringify(serverCardsData));
     arrUsers.sort((a, b) => a.name > b.name ? 1 : -1);
 
     const dispatch = useDispatch();

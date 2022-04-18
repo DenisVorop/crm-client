@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 
 import './card.scss'
 
@@ -10,18 +10,29 @@ import Plan from '../../Common/Plan/Plan';
 import Popup from '../../Common/Popup/Popup';
 import Last from '../Receptions/Filter/Records/Record/informations/Information/LastsRecords/Last';
 
+import { fetchOneCard } from '../../../API/cardsApi';
+
 
 const Card = ({ cardInfo }) => {
+    React.useEffect(() => {
+        if (cardInfo === null) { return <Navigate to='/cards' /> }
+        console.log(cardInfo);
+        // if (cardInfo[12].last_records.length === 0) {
+        //     cardInfo[12].last_records = [{ position: 'Нет данных' }]
+        // }
+    }, [cardInfo])
 
     const labels = ['Фамилия', 'Имя', 'Отчество', 'Пол', 'День рождения', 'Семейное положение', 'Адрес прописки', 'Адрес проживания', 'Телефон', 'Дата первого посещения', 'Дата последнего посещения']
     const [popupActive, setPopupActive] = React.useState(false);
+    const [card, setCard] = React.useState({ last_records: [] })
+    const { card_num } = useParams()
 
     React.useEffect(() => {
-        if (cardInfo === null) { return <Navigate to='/cards' /> }
-        if (cardInfo[12].last_records.length === 0) {
-            cardInfo[12].last_records = [{ position: 'Нет данных' }]
-        }
-    }, [cardInfo])
+        fetchOneCard(card_num).then(data => {
+            setCard(data)
+            console.log(data)
+        })
+    }, [])
 
     return (
         <>
@@ -46,14 +57,14 @@ const Card = ({ cardInfo }) => {
                             </div>
                             <div className="card__right right-card">
                                 <div className="right-card__body">
-                                    {cardInfo[11].card_info.map((card, index) => {
+                                    {/* {cardInfo[11].card_info.map((card, index) => {
                                         return (
                                             <CardRow
                                                 key={`${card}_${index}`}
                                                 card={card}
                                             />
                                         )
-                                    })}
+                                    })} */}
                                 </div>
                             </div>
                         </div>
@@ -61,7 +72,7 @@ const Card = ({ cardInfo }) => {
                             <div className="last-records-card__body">
                                 <div className="last-records-card__title">Последние приемы</div>
                                 <div className="last-records-card__records">
-                                    {cardInfo[12].last_records.map((obj, index) => {
+                                    {/* {cardInfo[12].last_records.map((obj, index) => {
                                         return (
                                             <div className="last-records-card__record" key={`${obj}_${index}`}>
                                                 <Information
@@ -70,7 +81,7 @@ const Card = ({ cardInfo }) => {
                                                 />
                                             </div>
                                         )
-                                    })}
+                                    })} */}
                                 </div>
                             </div>
                         </div>

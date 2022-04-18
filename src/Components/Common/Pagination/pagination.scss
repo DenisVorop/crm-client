@@ -1,0 +1,30 @@
+.active {
+    color: red;
+}
+
+.pagination {
+
+    // .pagination__container
+
+    &__container {}
+
+    // .pagination__body
+
+    &__body {
+        margin: 20px 0px 0px 0px;
+    }
+
+    // .pagination__items
+
+    &__items {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &__item {
+        padding: 10px;
+        border: 1px solid black;
+        cursor: pointer;
+    }
+}

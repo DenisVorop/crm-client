@@ -8,9 +8,29 @@ import { useNavigate } from 'react-router-dom';
 
 import Plan from '../../Common/Plan/Plan';
 import Button from '../../Common/Button/Button';
+import React from 'react';
+import { createCard } from '../../../API/cardsApi';
 // import { useDispatch } from 'react-redux';
 
 const NewPatient = () => {
+
+    // const [value, setValue] = React.useState('')
+
+    const addPatient = (values) => {
+        let card_num;
+        (function getRandomCardNum(min, max) {
+            card_num = String(Math.floor(Math.random() * (max - min + 1)) + min);
+            return card_num
+        })(111111, 999999)
+        values.age = Number(values.age)
+        values.card_num = card_num
+        values.name = values.last_name + ' ' + values.first_name + ' ' + values.patronymic
+        values.email = String(values.last_name + '@' + values.first_name + '.ru')
+        console.log(values)
+        createCard(values).then(data => {
+
+        })
+    }
 
     // const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -36,24 +56,34 @@ const NewPatient = () => {
         <>
             <Formik
                 initialValues={{
-                    name: '',
-                    surname: '',
+                    first_name: '',
+                    last_name: '',
                     patronymic: '', // отчество
+                    name: '',
                     sex: '',
-                    fam_status: '',
+                    age: '',
+                    marital_status: '',
                     birth: '',
                     reg_addres: '',
                     fact_addres: '',
                     phone: '',
+                    card_num: '',
+                    last_records: [],
+                    cardInfo: [],
+                    policy: '',
+                    email: '',
+                    first_record: '',
+                    last_record: '',
                 }}
                 validateOnBlur={false}
                 validateOnChange={false}
                 onSubmit={(values) => {
-                    console.log(values)
+                    // getRandomCardNum(111111, 999999)
+                    addPatient(values)
                     // onAddPatient(values)
-                    navigate('/receptions')
+                    // navigate('/receptions')
                 }}
-                validationSchema={validationNewPatient}
+            // validationSchema={validationNewPatient}
             >
                 {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
                     <>
@@ -68,14 +98,14 @@ const NewPatient = () => {
                                                 <div className="new-rec__vvod">
                                                     <div className="new-rec__input">
                                                         <input
-                                                            className={touched.name && errors.name ? "valid-input-error" : ""}
+                                                            className={touched.first_name && errors.first_name ? "valid-input-error" : ""}
                                                             type="text"
                                                             placeholder='Имя пациента'
-                                                            name='name'
+                                                            name='first_name'
                                                             onChange={handleChange}
                                                             onBlur={handleBlur}
                                                         />
-                                                        {touched.name && errors.name && <p className='valid-text-error'>{errors.name}</p>}
+                                                        {touched.first_name && errors.first_name && <p className='valid-text-error'>{errors.first_name}</p>}
                                                     </div>
                                                 </div>
                                             </div>
@@ -84,14 +114,14 @@ const NewPatient = () => {
                                                 <div className="new-rec__vvod">
                                                     <div className="new-rec__input">
                                                         <input
-                                                            className={touched.surname && errors.surname ? "valid-input-error" : ""}
+                                                            className={touched.last_name && errors.last_name ? "valid-input-error" : ""}
                                                             type="text"
                                                             placeholder='Фамилия пациента'
-                                                            name='surname'
+                                                            name='last_name'
                                                             onChange={handleChange}
                                                             onBlur={handleBlur}
                                                         />
-                                                        {touched.surname && errors.surname && <p className='valid-text-error'>{errors.surname}</p>}
+                                                        {touched.last_name && errors.last_name && <p className='valid-text-error'>{errors.last_name}</p>}
                                                     </div>
                                                 </div>
                                             </div>
@@ -115,8 +145,8 @@ const NewPatient = () => {
                                                 <div className="new-rec__label">Пол:</div>
                                                 <div className="new-rec__vvod">
                                                     <div className="new-rec__input" style={{ display: 'flex', width: '366px' }}>
-                                                        <div className="new-rec__s" style={{ marginRight: '17px' }}>
-                                                            <input
+                                                        {/* <div className="new-rec__s" style={{ marginRight: '17px' }}>
+                                                        <input
                                                                 className={touched.patronymic && errors.patronymic ? "valid-input-error" : ""}
                                                                 type="radio"
                                                                 style={{ width: '17px' }}
@@ -124,22 +154,46 @@ const NewPatient = () => {
                                                                 name='sex'
                                                                 onChange={handleChange}
                                                                 onBlur={handleBlur}
-                                                            />
-                                                            {touched.login && errors.login && <p className='valid-text-error'>{errors.login}</p>}
-                                                            <label className="new-rec__sex" htmlFor="choice-m">М</label>
-                                                        </div>
-                                                        <div className="new-rec__s">
-                                                            <input
-                                                                className={touched.patronymic && errors.patronymic ? "valid-input-error" : ""}
-                                                                type='radio'
-                                                                style={{ width: '17px' }}
-                                                                id='choice-f'
-                                                                name='sex'
-                                                                onChange={handleChange}
-                                                                onBlur={handleBlur}
-                                                            />
-                                                            <label className="new-rec__sex" htmlFor="choice-f">Ж</label>
-                                                        </div>
+                                                            /> */}
+                                                        <input
+                                                            className={touched.sex && errors.sex ? "valid-input-error" : ""}
+                                                            type="text"
+                                                            placeholder='Пол'
+                                                            name='sex'
+                                                            onChange={handleChange}
+                                                            onBlur={handleBlur}
+                                                        />
+                                                        {touched.sex && errors.sex && <p className='valid-text-error'>{errors.sex}</p>}
+                                                        {/* <label className="new-rec__sex" htmlFor="choice-m">М</label>
+                                                    </div>
+                                                    <div className="new-rec__s">
+                                                        <input
+                                                            className={touched.patronymic && errors.patronymic ? "valid-input-error" : ""}
+                                                            type='radio'
+                                                            style={{ width: '17px' }}
+                                                            id='choice-f'
+                                                            name='sex'
+                                                            onChange={handleChange}
+                                                            onBlur={handleBlur}
+                                                        />
+                                                        <label className="new-rec__sex" htmlFor="choice-f">Ж</label>
+                                                    </div> */}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="new-rec__item">
+                                                <div className="new-rec__label">Возраст:</div>
+                                                <div className="new-rec__vvod">
+                                                    <div className="new-rec__input">
+                                                        <input
+                                                            className={touched.age && errors.age ? "valid-input-error" : ""}
+                                                            type="text"
+                                                            placeholder='Возраст'
+                                                            name='age'
+                                                            onChange={handleChange}
+                                                            onBlur={handleBlur}
+                                                        />
+                                                        {touched.age && errors.age && <p className='valid-text-error'>{errors.age}</p>}
                                                     </div>
                                                 </div>
                                             </div>
@@ -148,14 +202,14 @@ const NewPatient = () => {
                                                 <div className="new-rec__vvod">
                                                     <div className="new-rec__input">
                                                         <input
-                                                            className={touched.fam_status && errors.fam_status ? "valid-input-error" : ""}
+                                                            className={touched.marital_status && errors.marital_status ? "valid-input-error" : ""}
                                                             type="text"
                                                             placeholder='Семейное положение'
-                                                            name='fam_status'
+                                                            name='marital_status'
                                                             onChange={handleChange}
                                                             onBlur={handleBlur}
                                                         />
-                                                        {touched.fam_status && errors.fam_status && <p className='valid-text-error'>{errors.fam_status}</p>}
+                                                        {touched.marital_status && errors.marital_status && <p className='valid-text-error'>{errors.marital_status}</p>}
                                                     </div>
                                                 </div>
                                             </div>
@@ -165,7 +219,7 @@ const NewPatient = () => {
                                                     <div className="new-rec__input">
                                                         <input
                                                             className={touched.birth && errors.birth ? "valid-input-error" : ""}
-                                                            type="date"
+                                                            type="text"
                                                             placeholder='Дата рождения'
                                                             name='birth'
                                                             onChange={handleChange}
@@ -228,14 +282,14 @@ const NewPatient = () => {
                                                 <div className="new-rec__vvod">
                                                     <div className="new-rec__input">
                                                         <input
-                                                            className={touched.login && errors.login ? "valid-input-error" : ""}
+                                                            className={touched.first_record && errors.first_record ? "valid-input-error" : ""}
                                                             type="text"
                                                             placeholder='12.04.2021'
-                                                            name='login'
+                                                            name='first_record'
                                                             onChange={handleChange}
                                                             onBlur={handleBlur}
                                                         />
-                                                        {touched.login && errors.login && <p className='valid-text-error'>{errors.login}</p>}
+                                                        {touched.first_record && errors.first_record && <p className='valid-text-error'>{errors.first_record}</p>}
                                                     </div>
                                                 </div>
                                             </div>
@@ -244,14 +298,30 @@ const NewPatient = () => {
                                                 <div className="new-rec__vvod">
                                                     <div className="new-rec__input">
                                                         <input
-                                                            className={touched.login && errors.login ? "valid-input-error" : ""}
+                                                            className={touched.last_record && errors.last_record ? "valid-input-error" : ""}
                                                             type="text"
                                                             placeholder='23.05.2021'
-                                                            name='login'
+                                                            name='last_record'
                                                             onChange={handleChange}
                                                             onBlur={handleBlur}
                                                         />
-                                                        {touched.login && errors.login && <p className='valid-text-error'>{errors.login}</p>}
+                                                        {touched.last_record && errors.last_record && <p className='valid-text-error'>{errors.last_record}</p>}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="new-rec__item">
+                                                <div className="new-rec__label">Полис:</div>
+                                                <div className="new-rec__vvod">
+                                                    <div className="new-rec__input">
+                                                        <input
+                                                            className={touched.policy && errors.policy ? "valid-input-error" : ""}
+                                                            type="text"
+                                                            placeholder='1234 12345678'
+                                                            name='policy'
+                                                            onChange={handleChange}
+                                                            onBlur={handleBlur}
+                                                        />
+                                                        {touched.policy && errors.policy && <p className='valid-text-error'>{errors.policy}</p>}
                                                     </div>
                                                 </div>
                                             </div>
