@@ -17,9 +17,9 @@
     &__body {
         width: 467px;
         margin: 0 auto;
-        background-color: #fff;
+        background-color: var(--back-of-elements);
         padding: 20px 25px;
-        border: 1px solid #B7C6CB;
+        border: 1px solid var(--secondary-basic);
         border-radius: 4px;
     }
 
@@ -49,10 +49,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #FFFFFF;
+        color: var(--back-of-elements);
         width: 417px;
         height: 44px;
-        background: #33B1CA;
+        background: var(--accent-no-contrast);
         border-radius: 4px;
     }
 }
@@ -91,6 +91,6 @@
     padding: 6px 11px;
     width: 417px;
     height: 36px;
-    border: 1px solid #CCD6DA;
+    border: 1px solid var(--secondary-no-contrast);
     border-radius: 4px;
 }

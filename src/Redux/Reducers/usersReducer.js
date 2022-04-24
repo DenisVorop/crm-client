@@ -42,6 +42,7 @@ const usersReducer = (state = initialState, action) => {
                 id: 16,
                 time_id: Number(action.payload.time),
                 name: action.payload.pat_name,
+                policy: action.payload.policy,
                 sex: 'M',
                 age: '20',
                 card_num: action.payload.card_num,

@@ -1,0 +1,65 @@
+.field-more {
+    margin: 20px 0px 0px 0px;
+
+    // .field-more__body
+
+    &__body {
+        margin: 10px 0px 10px 0px;
+
+        &:last-child {
+            margin: 10px 0px 0px 0px;
+        }
+    }
+
+    // .field-more__label
+
+    &__label {
+        margin: 0px 0px 10px 0px;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    // .field-more__items
+
+    &__items {
+        display: flex;
+        align-items: center;
+    }
+
+    // .field-more__item
+
+    &__item {
+        // background: var(--primary-no-contrast);
+        border-radius: 4px;
+        padding: 2px 12px;
+        cursor: pointer;
+        font-size: 14px;
+        color: #0076A3;
+
+        &:hover {
+            background-color: rgba(203, 229, 240, .5);
+            color: var(--dark-basic);
+        }
+
+        &:not(:last-child) {
+            margin: 0px 10px 0px 0px;
+        }
+    }
+
+    // .field-more__input
+
+    &__input {
+        display: flex;
+        align-items: center;
+        margin: 7px 0px 0px 0px;
+    }
+
+    // .field-more__rows
+
+    &__rows {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0px 40px;
+    }
+}

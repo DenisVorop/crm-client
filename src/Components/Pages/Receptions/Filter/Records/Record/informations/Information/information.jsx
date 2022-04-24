@@ -5,7 +5,7 @@ import eye from '../../../../../../../../assets/img/eye.svg';
 
 const Information = ({ setPopupActive, position, name_doctor, date_last_record, name_clinic }) => {
 
-    const noDataStyle = { backgroundColor: '#fff', color: '#B7C6CB', fontSize: '18px', padding: '14px 14px 0px 14px', }
+    const noDataStyle = { backgroundColor: 'var(--back-of-elements)', color: 'var(--secondary-basic)', fontSize: '18px', padding: '14px 14px 0px 14px', }
     const noDataLabelStyle = { fontWeight: '400' }
 
     const [noData, setNoData] = React.useState(true)

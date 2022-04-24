@@ -30,10 +30,10 @@ const Record = ({ age, birth, card_num, card_info,
     };
 
     switch (status) {
-        case 'Прием завершен': { statusStyle = { background: 'rgba(148, 227, 188, .4)', color: '#31BF79' }; break; }
-        case 'Первичный прием': { statusStyle = { background: 'rgba(255, 220, 173, .4)', color: '#FFB149' }; break; }
-        case 'Послеоперац-ный прием': { statusStyle = { background: 'rgba(254, 64, 33, .4)', color: '#FE4021' }; break; }
-        case 'Повторный прием': { statusStyle = { background: 'rgba(203, 229, 240, 0.3)', color: '#B0DAEC' }; break; }
+        case 'Прием завершен': { statusStyle = { background: 'rgba(148, 227, 188, .4)', color: 'var(--positive-basic)' }; break; }
+        case 'Первичный прием': { statusStyle = { background: 'rgba(255, 220, 173, .4)', color: 'var(--warning-basic)' }; break; }
+        case 'Послеоперац-ный прием': { statusStyle = { background: 'rgba(254, 64, 33, .4)', color: 'var(--danger-basic)' }; break; }
+        case 'Повторный прием': { statusStyle = { background: 'rgba(203, 229, 240, 0.3)', color: 'var(--primary-basic)' }; break; }
         default: { break; }
     }
 

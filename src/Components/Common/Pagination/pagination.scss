@@ -1,8 +1,8 @@
-.active {
-    color: red;
-}
-
 .pagination {
+
+    &__item-active {
+        color: red;
+    }
 
     // .pagination__container
 

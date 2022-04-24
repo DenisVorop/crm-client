@@ -6,19 +6,57 @@ import Plan from "../../Common/Plan/Plan"
 
 import './reception.scss'
 
+import EnterField from './EnterField/EnterField'
+
 const Reception = ({ receptionInfo }) => {
+
+    const [complaintsVisible, setComplaintsVisible] = React.useState(true) // 1
+    const [historyVisible, setHistoryVisible] = React.useState(true) // 2
+    const [statusVisible, setStatusVisible] = React.useState(false) // 3
+    const [diagnosisVisible, setDiagnosisVisible] = React.useState(false) // 4
+
     if (receptionInfo === null) { return <Navigate to='/receptions' /> }
-    console.log(receptionInfo)
 
     const { last_name, first_name, patronymic, sex,
         birth, marital_status, reg_addres, fact_addres, card_num,
         phone, first_record, last_record, policy, name, card_info: { card_info },
         last_records: { last_records } } = receptionInfo
 
+    // TODO: переделать компонент инпут
+
+    const fields = [
+        {
+            label: 'Жалобы пациента', text: 'опишите, на что жалуется больной'
+        },
+        {
+            label: 'Анамнез пациента', text: 'краткая история заболевания',
+            addMore: [
+                { label: 'Аллергологический анамнез' }, { label: 'Фармакологический анамнез' }, { label: 'Операции на глаза' }
+            ]
+        },
+        {
+            label: 'Status ophtalmicus', text: 'состояние глаз пациента',
+            addMore: [
+                { label: 'Придаточный аппарат глаза' }, { label: 'Роговица' }, { label: 'Передняя камера' },
+                { label: 'Радужка' }, { label: 'Хрусталик' }, { label: 'Стекловидное тело' },
+                { label: 'ДЗН' }, { label: 'Задний отрезок глаза ' }
+            ]
+        },
+        {
+            label: 'Диагноз', text: 'все диагнозы, которые нужно отразить в истории болезни, коды МКБ-10 добавятся автоматически'
+        },
+        // {
+        //     label: 'Назначение до операции', text: 'препараты появятся в листе назначений до дня проведения операции'
+        // },
+        // {
+        //     label: 'Назначение после выписки', text: 'препараты появятся в назначения выписсного эпикриза'
+        // }
+    ]
+
     return (
         <>
             <Plan label='Редактирование приема' />
-            <div className="reception">
+            <div className="reception" style={{ height: '10000px' }}>
                 <div className="reception__container">
                     <div className="reception__body">
                         <div className="reception__title">Осмотр специалиста</div>
@@ -49,30 +87,46 @@ const Reception = ({ receptionInfo }) => {
                             </div>
                         </div>
                         <div className="reception__rows">
-                            <div className="reception__row">
-                                <div className="reception__label">Жалобы</div>
-                                <div className="reception__input">
-                                    <textarea></textarea>
-                                </div>
-                            </div>
-                            <div className="reception__row">
-                                <div className="reception__label">Общий осмотр</div>
-                                <div className="reception__input">
-                                    <textarea></textarea>
-                                </div>
-                            </div>
-                            <div className="reception__row">
-                                <div className="reception__label">Основной диагноз</div>
-                                <div className="reception__input">
-                                    <textarea></textarea>
-                                </div>
-                            </div>
-                            <div className="reception__row">
-                                <div className="reception__label">Рекомендации</div>
-                                <div className="reception__input">
-                                    <textarea></textarea>
-                                </div>
-                            </div>
+                            {fields.map((field, index) => {
+                                let visible
+                                let setVisible = function () { }
+                                let nextVisible = function () { }
+                                switch (field.label) {
+                                    case 'Жалобы пациента': {
+                                        visible = complaintsVisible
+                                        // setVisible = setComplaintsVisible
+                                        nextVisible = setHistoryVisible
+                                        break
+                                    }
+                                    case 'Анамнез пациента': {
+                                        visible = historyVisible
+                                        setVisible = setHistoryVisible
+                                        nextVisible = setStatusVisible
+                                        break
+                                    }
+                                    case 'Status ophtalmicus': {
+                                        visible = statusVisible
+                                        setVisible = setStatusVisible
+                                        nextVisible = setDiagnosisVisible
+                                        break
+                                    }
+                                    case 'Диагноз': {
+                                        visible = diagnosisVisible
+                                        setVisible = setDiagnosisVisible
+                                        // nextVisible = setOperationsVisible
+                                        break
+                                    }
+                                }
+                                return (
+                                    <EnterField
+                                        key={`${field}_${index}`}
+                                        field={field}
+                                        visible={visible}
+                                        setVisible={setVisible}
+                                        nextVisible={nextVisible}
+                                    />
+                                )
+                            })}
                         </div>
                     </div>
                     <div className="reception__save">

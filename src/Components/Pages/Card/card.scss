@@ -16,7 +16,7 @@
     &__info {
         display: grid;
         grid-template-columns: 550px 1fr;
-        border-bottom: 1px solid #CCD6DA;
+        border-bottom: 1px solid var(--secondary-no-contrast);
         padding: 0px 0px 40px 0px;
     }
 
@@ -123,9 +123,9 @@
 .left-card {
     &__body {
         padding: 30px;
-        background-color: #fff;
+        background-color: var(--back-of-elements);
         max-width: 550px;
-        border: 1px solid #B7C6CB;
+        border: 1px solid var(--secondary-basic);
         border-radius: 4px;
         margin: 0px 45px 0px 0px;
     }
@@ -170,8 +170,8 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 10px 30px;
-        background-color: #FFFFFF;
-        border: 1px solid #B7C6CB;
+        background-color: var(--back-of-elements);
+        border: 1px solid var(--secondary-basic);
         border-radius: 4px;
         padding: 30px;
     }

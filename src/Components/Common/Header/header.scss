@@ -1,6 +1,6 @@
 .header {
-	background: #061519;
-	color: #F3F7F9;
+	background: var(--dark-basic);
+	color: var(--back-of-app);
 
 	// .header__container
 
@@ -63,7 +63,7 @@
 		width: 33px;
 		height: 33px;
 		border-radius: 50%;
-		background-color: #F3F7F9;
+		background-color: var(--back-of-app);
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -71,5 +71,5 @@
 }
 
 .active-link {
-	border-bottom: 2px solid #33B1CA;
+	border-bottom: 2px solid var(--accent-no-contrast);
 }

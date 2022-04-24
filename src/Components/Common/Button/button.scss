@@ -5,8 +5,8 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: #FFFFFF;
-    background: #33B1CA;
+    color: var(--back-of-elements);
+    background: var(--accent-no-contrast);
     border-radius: 4px;
     padding: 10px 40px;
     cursor: pointer;

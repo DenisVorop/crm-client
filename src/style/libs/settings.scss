@@ -9,7 +9,7 @@ $line-height: 1; // Указать свой
 $weight: 400; // жирнотааа
 
 // Основные цвета
-$mainColor: #061519;
+$mainColor: var(--dark-basic);
 ; // Цвет шрифта по умолчанию
 
 // НАСТРОЙКИ ===============================================================================================================================================================================================================================================================================================
@@ -38,7 +38,7 @@ $mobileSmall: em(479.98); // Телефоны S
     font-weight: 400;
     font-size: 18px;
     line-height: 25px;
-    color: #B7C6CB;
+    color: var(--secondary-basic);
 }
 
 input,
@@ -49,8 +49,8 @@ textarea {
     font-weight: 400 !important;
     font-size: 18px !important;
     line-height: 130% !important;
-    color: #012B39 !important;
-    border: 1px solid #B7C6CB !important;
+    color: var(--dark-no-contrast) !important;
+    border: 1px solid var(--secondary-basic);
     border-radius: 4px !important;
 }
 
@@ -64,7 +64,7 @@ textarea:focus {
 
 .time-select {
     background: rgba(203, 229, 240, 0.3);
-    border: 1px solid #B7C6CB;
+    border: 1px solid var(--secondary-basic);
     border-radius: 4px;
     width: 366px;
     height: 30px;

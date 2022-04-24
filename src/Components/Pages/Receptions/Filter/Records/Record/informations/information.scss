@@ -8,7 +8,7 @@
     // .information__body
 
     &__body {
-        background-color: #fff;
+        background-color: var(--back-of-elements);
     }
 
     // .information__title
@@ -17,7 +17,7 @@
         font-weight: 700;
         font-size: 22px;
         text-align: center;
-        background: #B0DAEC;
+        background: var(--primary-basic);
         border-radius: 6px 6px 0px 0px;
         padding: 5px 22px 8px 12px;
     }
@@ -49,7 +49,7 @@
 }
 
 .card-information {
-    border-bottom: 1px solid #B7C6CB;
+    border-bottom: 1px solid var(--secondary-basic);
     padding: 9px 0px;
     margin: 0px 14px 6px 14px;
 
@@ -157,7 +157,7 @@
 }
 
 .chetnoe {
-    background-color: #FFFFFF;
+    background-color: var(--back-of-elements);
 }
 
 .lasts-information__records {

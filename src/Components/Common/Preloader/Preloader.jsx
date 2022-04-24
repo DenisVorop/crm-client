@@ -7,7 +7,7 @@ const preloaderStyle = {
         justifyContent: 'center',
         width: '100vw',
         height: '100vh',
-        backgroundColor: '#061519'
+        backgroundColor: 'var(--dark-basic)'
 }
 
 const Preloader = () => {

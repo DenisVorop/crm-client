@@ -10,6 +10,7 @@ import arrowB from '../../../assets/img/arrow-b.svg'
 import arrowT from '../../../assets/img/arrow-t.svg'
 
 import { addNewRecord } from '../../../Redux/Reducers/usersReducer';
+
 import Plan from '../../Common/Plan/Plan';
 import Button from '../../Common/Button/Button';
 
@@ -80,6 +81,7 @@ const NewRecord = () => {
                         name_clinic: '',
                         name_doctor: '',
                         separation: '',
+                        policy: infoPatient.policy
                     }
                     dispatch(addNewRecord(obj))
                     console.log(obj)

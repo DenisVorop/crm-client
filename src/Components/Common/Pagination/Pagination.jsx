@@ -26,7 +26,7 @@ const Pagination = () => {
                                 <div
                                     key={`${page}_${index}`}
                                     onClick={() => dispatch(getPage(page))}
-                                    className={page === currentPage ? 'pagination__item active' : 'pagination__item'}
+                                    className={page === currentPage ? 'pagination__item pagination__item-active' : 'pagination__item'}
                                 >
                                     {page}
                                 </div>

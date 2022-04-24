@@ -20,7 +20,7 @@
 
     &__column {
         font-size: 14px;
-        color: #B7C6CB;
+        color: var(--secondary-basic);
 
         &:last-child {
             display: flex;

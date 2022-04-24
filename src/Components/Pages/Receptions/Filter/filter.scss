@@ -16,7 +16,7 @@
         gap: 10px;
 
         input {
-            border: 1px solid #B7C6CB;
+            border: 1px solid var(--secondary-basic);
             border-radius: 4px;
             height: 30px;
             padding: 0px 0px 0px 30px;
@@ -75,7 +75,7 @@
 
     &__choice {
         margin: 0px 2px 0px 0px;
-        background-color: #FFFFFF;
+        background-color: var(--back-of-elements);
         height: 30px;
     }
 
@@ -83,9 +83,9 @@
 
     &__calendar {
         padding: 4.5px;
-        border: 1px solid #B7C6CB;
+        border: 1px solid var(--secondary-basic);
         border-radius: 4px;
-        background-color: #FFFFFF;
+        background-color: var(--back-of-elements);
 
         img {
             width: 21px;
@@ -108,7 +108,7 @@
         display: flex;
         align-items: center;
         padding: 6px 8px;
-        background: #CBE5F0;
+        background: var(--primary-no-contrast);
         border-radius: 4px;
         margin: 0px 18px 0px 0px;
 
@@ -125,7 +125,7 @@
     // .patient-filter__label
 
     &__label {
-        color: #012B39;
+        color: var(--dark-no-contrast);
         font-size: 18px;
         margin: 0px 27px 0px 0px;
         font-weight: 700;
@@ -151,10 +151,10 @@
     // .patient-filter__search
 
     &__search {
-        background: #33B1CA;
+        background: var(--accent-no-contrast);
         border-radius: 4px;
         padding: 15px 18px;
-        color: #F3F7F9;
+        color: var(--back-of-app);
         font-weight: 700;
         font-size: 18px;
         height: 26px;
@@ -164,7 +164,7 @@
     }
 
     &__input {
-        border: 1px solid #B7C6CB;
+        border: 1px solid var(--secondary-basic);
         border-radius: 4px;
         width: 380px;
         height: 30px;

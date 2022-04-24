@@ -49,7 +49,7 @@
 .white__orbit {
     width: 60px;
     height: 60px;
-    border: 2px solid #ffffff;
+    border: 2px solid var(--back-of-elements);
     -webkit-animation: spin3D 10s linear 0s infinite;
 }
 

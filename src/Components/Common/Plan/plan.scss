@@ -44,7 +44,7 @@
     &__label {
         font-weight: 700;
         font-size: 22px;
-        color: #F3F7F9;
+        color: var(--back-of-app);
     }
 }
 
@@ -60,7 +60,7 @@
 
     &__pat {
         margin: 0px 10px 0px 0px;
-        color: #F3F7F9;
+        color: var(--back-of-app);
         padding: 0 18px;
         background: rgba(204, 214, 218, 0.3);
         border-radius: 4px;
@@ -69,9 +69,9 @@
     // .new-plan__rec
 
     &__rec {
-        color: #012B39;
+        color: var(--dark-no-contrast);
         padding: 0 18px;
-        background: #CCD6DA;
+        background: var(--secondary-no-contrast);
         border-radius: 4px;
     }
 }
