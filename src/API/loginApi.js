@@ -6,7 +6,7 @@ import { REACT_APP_API_URL } from "./url";
 
 const instance = axios.create({
     withCredentials: true,
-    baseURL: 'https://crm-client-blush.vercel.app' | '',
+    baseURL: REACT_APP_API_URL | '',
 });
 
 export const usersAPI = {
