@@ -9,16 +9,31 @@ import plus from '../../../../../../assets/img/plus.svg'
 import './fieldmore.scss'
 
 
-const FieldMore = ({ label, deleteField, nextVisible, title }) => {
+const FieldMore = ({ label, nextVisible, title, setValue, index, value }) => {
 
     const [deleteVisible, setDeleteVisible] = React.useState(true)
     const [count, setCount] = React.useState(1)
+    React.useEffect(() => { count >= 4 && setCount(3) }, [count])
 
     const eyes = ['OU', 'OD', 'OS']
 
     const styleInput = {
         width: '489px',
-        height: '34px',
+        height: '36px',
+        padding: '0px 0px 0px 10px',
+    }
+
+    const styleInput2 = {
+        width: '86px',
+        height: '36px',
+        padding: '0px 0px 0px 10px',
+        margin: '0px 0px 10px 10px',
+    }
+
+    const styleInput3 = {
+        width: '183px',
+        height: '36px',
+        margin: '0px 0px 10px 10px',
         padding: '0px 0px 0px 10px',
     }
 
@@ -54,24 +69,82 @@ const FieldMore = ({ label, deleteField, nextVisible, title }) => {
                             type="text"
                             placeholder='Без особенностей'
                             style={styleInput}
-                            onChange={() => nextVisible(true)}
+                            id={index}
+                            onChange={
+                                (e) => (
+                                    nextVisible(true),
+                                    e.target.id === '0'
+                                        ? setValue({ first: e.target.value, second: value.second, third: value.third })
+                                        : e.target.id === '1' ? setValue({ first: value.first, second: e.target.value, third: value.third })
+                                            : setValue({ first: value.first, second: value.second, third: e.target.value })
+                                )
+                            }
                         />
                         : <>
                             {[...Array(count)].map((input, index) => {
                                 return (
-                                    <div className="row-reception__one-field">
+                                    <div
+                                        className="row-reception__one-field"
+                                        key={`${input}_${index}`}
+                                    >
                                         <EyeInput
-                                            key={`${input}_${index}`}
+                                            // key={`${input}_${index}`}
                                             setCount={setCount}
                                             eyes={eyes}
                                             count={count}
                                             index={index}
                                             nextVisible={nextVisible}
+                                            setValue={setValue}
+                                            value={value}
                                         />
-                                        <div className="row-reception__delete" onClick={() => setCount(count - 1)}>
-                                            {count === 1
-                                                ? null
-                                                : <img src={del} alt="Delete" />
+                                        {label === 'Основной диагноз'
+                                            ? <><div className="row-reception__mkb">
+                                                <div className="row-reception__mkb-input">
+                                                    <input
+                                                        type="text"
+                                                        style={styleInput3}
+                                                        placeholder='Средней степени'
+                                                    />
+                                                </div>
+                                            </div>
+                                                <div className="row-reception__mkb">
+                                                    <div className="row-reception__mkb-input">
+                                                        <input
+                                                            type="text"
+                                                            style={styleInput3}
+                                                            placeholder='Стационарная'
+                                                        />
+                                                    </div>
+                                                </div></>
+                                            : null
+                                        }
+                                        {title === 'Status ophtalmicus'
+                                            ? null
+                                            : <div className="row-reception__mkb">
+                                                <div className="row-reception__mkb-input">
+                                                    <input
+                                                        type="text"
+                                                        style={styleInput2}
+                                                        readOnly="readonly"
+                                                        placeholder='Т.85.2'
+                                                    />
+                                                </div>
+                                                <div className="row-reception__mkb-label">
+                                                    МКБ-10
+                                                </div>
+                                            </div>
+                                        }
+                                        <div
+                                            className="row-reception__delete"
+                                            onClick={
+                                                () => (
+                                                    setCount(count - 1)
+                                                )
+                                            }
+                                        >
+                                            {[...Array(count)].length === index + 1 && count !== 1
+                                                ? <img src={del} alt="Delete" />
+                                                : null
                                             }
                                         </div>
                                     </div>
@@ -80,10 +153,6 @@ const FieldMore = ({ label, deleteField, nextVisible, title }) => {
                         </>
                     }
                 </div>
-                {deleteVisible
-                    ? null
-                    : null
-                }
             </div>
             {title === 'Анамнез пациента'
                 ? null

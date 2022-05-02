@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './selecteye.scss'
 
 const SelectEye = ({ setVisible, getSelectedEye, eyeOfIndex }) => {
 
@@ -7,7 +7,6 @@ const SelectEye = ({ setVisible, getSelectedEye, eyeOfIndex }) => {
 
     return (
         <div
-            style={{ cursor: 'pointer'}}
             onClick={() => (setVisible(false), setEye(eye), getSelectedEye(eye))}
             className='visible-field'
         >

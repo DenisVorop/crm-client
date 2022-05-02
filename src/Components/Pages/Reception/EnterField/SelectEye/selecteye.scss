@@ -1,0 +1,7 @@
+.visible-field {
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(203, 229, 240, 0.3);
+    }
+}

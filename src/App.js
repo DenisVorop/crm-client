@@ -41,7 +41,7 @@ function App() {
     }).finally(() => setLoading(false))
 
     if (isAuth === false && !window.localStorage.token) {
-      navigate(-1)
+      navigate('/login')
     }
     if (window.localStorage.token) {
       location.pathname === '/login' && navigate(-1)

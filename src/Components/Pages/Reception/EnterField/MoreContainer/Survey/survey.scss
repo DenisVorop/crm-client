@@ -1,0 +1,111 @@
+.survey {
+    &:not(:last-child) {
+        margin: 0px 0px 10px 0px;
+    }
+
+    // .survey__set-survey
+
+    &__set-survey {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        width: fit-content;
+
+        img {
+            margin: 0px 5px 10px 0px;
+        }
+    }
+
+    // .survey__body
+
+    &__body {}
+
+    // .survey__items
+
+    &__items {
+        display: flex;
+        align-items: center;
+    }
+
+    // .survey__item
+
+    &__item {
+        background: rgba(204, 214, 218, 0.3);
+        border-radius: 4px 4px 0px 0px;
+        padding: 5px 10px;
+        font-size: 12px;
+        line-height: 16px;
+        cursor: pointer;
+
+        &:hover {
+            background: #FFFFFA;
+        }
+
+        &:not(:last-child) {
+            margin: 0px 5px 0px 0px;
+        }
+    }
+
+    // .survey__item-active
+
+    &__item-active {
+        background: #FFFFFF;
+    }
+
+    // .survey__field
+
+    &__field {
+        padding: 30px 25px;
+        background: #FFFFFF;
+        border-radius: 0px 4px 4px 4px;
+    }
+
+    // .survey__diseases
+
+    &__diseases {
+        display: flex;
+        align-items: center;
+    }
+
+    // .survey__row
+
+    &__row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &:not(:last-child) {
+            margin: 0px 35px 0px 0px;
+        }
+    }
+
+    // .survey__diseas
+
+    &__diseas {
+        margin: 0px 0px 20px 0px;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 22px;
+
+        &:first-child {
+            height: 14px;
+        }
+    }
+
+    // .survey__input
+
+    &__input {
+        width: fit-content;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 22px;
+
+        input {
+            width: 66px;
+        }
+
+        &:not(:last-child) {
+            margin: 0px 0px 10px 0px;
+        }
+    }
+}

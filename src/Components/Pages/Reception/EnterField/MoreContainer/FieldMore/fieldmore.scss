@@ -58,8 +58,13 @@
     // .field-more__rows
 
     &__rows {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0px 40px;
+        // display: flex;
+        // flex-direction: column;
+        // width: fit-content;
+        // padding: 0px 20px 20px 20px;
+        // margin: 0px -20px -20px -20px;
+        // border-radius: 4px;
+        // border: 1px solid var(--secondary-basic);
+        // background-color: var(--back-of-elements);
     }
 }

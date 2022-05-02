@@ -1,0 +1,103 @@
+.output {
+    margin: 0px 0px 15px 0px;
+
+    // .output__body
+
+    &__body {}
+
+    // .output__items
+
+    &__items {}
+
+    // .output__item
+
+    &__item {
+        &:not(:last-child) {
+            margin: 0px 0px 15px 0px;
+        }
+    }
+
+    // .output__title
+
+    &__title {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 22px;
+        margin: 0px 0px 5px 0px;
+    }
+
+    // .output__columns
+
+    &__columns {
+        // display: grid;
+        // grid-template-columns: 1.5fr 1fr 1fr;
+        align-items: center;
+        display: flex;
+    }
+
+    // .output__column
+
+    &__column {
+        &:not(:last-child) {
+            margin: 0px 35px 0px 0px;
+        }
+    }
+
+    // .output__rows
+
+    &__rows {}
+
+    // .output__row
+
+    &__row {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    // .output__row-label
+
+    &__row-label {
+        color: #012B39;
+        font-size: 12px;
+        line-height: 22px;
+    }
+}
+
+.output-field {
+
+    // .output-field__output
+
+    &__output {}
+
+    // .output-field__body
+
+    &__body {}
+
+    // .output-field__items
+
+    &__items {}
+
+    // .output-field__item
+
+    &__item {
+        display: flex;
+        // align-items: center;
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    // .output-field__eye
+
+    &__eye {
+        margin: 0px 20px 0px 0px;
+    }
+
+    // .output-field__entry
+
+    &__entry {}
+}
+
+.outputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

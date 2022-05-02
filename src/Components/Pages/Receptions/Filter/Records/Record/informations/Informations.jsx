@@ -10,7 +10,7 @@ const Informations = ({ last_records }) => {
 
     const [popupActive, setPopupActive] = React.useState(false);
 
-    let cloneLastRecords = Array.from(last_records)
+    const cloneLastRecords = Array.from(last_records)
 
     if (last_records.length === 0) {
         cloneLastRecords = [{ position: 'Нет данных' }]
