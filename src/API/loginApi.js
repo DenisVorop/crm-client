@@ -6,12 +6,11 @@ import { REACT_APP_API_URL } from "./url";
 
 const instance = axios.create({
     withCredentials: true,
-    baseURL: REACT_APP_API_URL,
+    baseURL: REACT_APP_API_URL | '',
 });
 
 export const usersAPI = {
     getAllUsers() {
-        console.log(instance.get('/users'))
         return instance.get('/users')
     },
     getAllTimeUsers() {
