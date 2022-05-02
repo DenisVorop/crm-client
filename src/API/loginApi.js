@@ -1,15 +1,17 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode"
 import { $authHost, $host } from "./index";
+import { REACT_APP_API_URL } from "./url";
 
 
 const instance = axios.create({
     withCredentials: true,
-    baseURL: '/',
+    baseURL: '',
 });
 
 export const usersAPI = {
     getAllUsers() {
+        console.log(instance.get('/users'))
         return instance.get('/users')
     },
     getAllTimeUsers() {
