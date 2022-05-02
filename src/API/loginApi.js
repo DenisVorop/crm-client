@@ -1,12 +1,11 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode"
 import { $authHost, $host } from "./index";
-import { REACT_APP_API_URL } from "./url";
 
 
 const instance = axios.create({
     withCredentials: true,
-    baseURL: REACT_APP_API_URL | '',
+    baseURL: 'https://crm-client-blush.vercel.app',
 });
 
 export const usersAPI = {
