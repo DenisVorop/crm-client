@@ -1,22 +1,16 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import InputMask from 'react-input-mask';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
-import { useNavigate } from 'react-router-dom';
-
-import InputMask from 'react-input-mask';
-
-// import { addNewPatientient } from '../../../Redux/Reducers/usersReducer';
-
-// import './newpatient.scss'
 
 import Plan from '../../Common/Plan/Plan';
 import Button from '../../Common/Button/Button';
-import React from 'react';
+
 import { createCard } from '../../../API/cardsApi';
-// import { useDispatch } from 'react-redux';
+
 
 const NewPatient = () => {
-
-    // const [value, setValue] = React.useState('')
 
     const addPatient = (values) => {
         let card_num;
@@ -34,15 +28,9 @@ const NewPatient = () => {
         })
     }
 
-    // const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    // const onAddPatient = (values) => {
-    // dispatch(addNewPatientient(values))
-    // }
-
     const phoneRegExp = /^\+?[78][-\(]?\d{3}\)?-?\d{3}-?\d{2}-?\d{2}$/ //eslint-disable-line
-    // const birthRegExp = /^\+?[78][-\(]?\d{3}\)?-?\d{3}-?\d{2}-?\d{2}$/ //eslint-disable-line
 
     const validationNewPatient = yup.object().shape({
         name: yup.string().typeError('string expected!').required('Введите корректные данные'),
@@ -81,10 +69,8 @@ const NewPatient = () => {
                 validateOnBlur={false}
                 validateOnChange={false}
                 onSubmit={(values) => {
-                    // getRandomCardNum(111111, 999999)
                     // addPatient(values)
                     console.log(values)
-                    // onAddPatient(values)
                     navigate('/receptions')
                 }}
             // validationSchema={validationNewPatient}
@@ -160,15 +146,6 @@ const NewPatient = () => {
                                                                 onChange={handleChange}
                                                                 onBlur={handleBlur}
                                                             />
-                                                            {/* <input
-                                                            className={touched.sex && errors.sex ? "valid-input-error" : ""}
-                                                            type="text"
-                                                            placeholder='Пол'
-                                                            name='sex'
-                                                            onChange={handleChange}
-                                                            onBlur={handleBlur}
-                                                        /> */}
-                                                            {/* {touched.sex && errors.sex && <p className='valid-text-error'>{errors.sex}</p>} */}
                                                             <label className="new-rec__sex" htmlFor="choice-m">М</label>
                                                         </div>
                                                         <div className="new-rec__s">
@@ -185,6 +162,7 @@ const NewPatient = () => {
                                                             <label className="new-rec__sex" htmlFor="choice-f">Ж</label>
                                                         </div>
                                                     </div>
+                                                    {touched.sex && errors.sex && <p className='valid-text-error'>{errors.sex}</p>}
                                                 </div>
                                             </div>
                                             <div className="new-rec__item">

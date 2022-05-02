@@ -8,9 +8,7 @@ import { setLoginValues } from '../../../Redux/Reducers/authReducer';
 
 import './login.scss'
 
-// -----
 import { registrationApi, loginApi } from '../../../API/loginApi';
-// -----
 
 
 const Login = () => {
@@ -19,7 +17,6 @@ const Login = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
 
-    // -----
     const signIn = async (values) => {
         try {
             let data
@@ -32,7 +29,6 @@ const Login = () => {
             alert(e.response.data.message)
         }
     }
-    // -----
 
     const validationLogin = yup.object().shape({
         login: yup.string().typeError('string expected!').required('Введите корректные данные!'),

@@ -29,8 +29,6 @@
     // .output__columns
 
     &__columns {
-        // display: grid;
-        // grid-template-columns: 1.5fr 1fr 1fr;
         align-items: center;
         display: flex;
     }
@@ -73,6 +71,24 @@
 
     &__body {}
 
+    // .output-field__labels
+
+    &__labels {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        line-height: 16px;
+        color: #0076A3;
+    }
+
+    // .output-field__label
+
+    &__label {
+        &:first-child {
+            margin: 0px 20px 0px 0px;
+        }
+    }
+
     // .output-field__items
 
     &__items {}
@@ -81,7 +97,6 @@
 
     &__item {
         display: flex;
-        // align-items: center;
         font-size: 16px;
         line-height: 22px;
     }

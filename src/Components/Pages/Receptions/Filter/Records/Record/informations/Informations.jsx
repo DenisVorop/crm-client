@@ -10,7 +10,7 @@ const Informations = ({ last_records }) => {
 
     const [popupActive, setPopupActive] = React.useState(false);
 
-    const cloneLastRecords = Array.from(last_records)
+    let cloneLastRecords = Array.from(last_records)
 
     if (last_records.length === 0) {
         cloneLastRecords = [{ position: 'Нет данных' }]
@@ -27,13 +27,11 @@ const Informations = ({ last_records }) => {
                         <div className="lasts-information__records">
                             {cloneLastRecords.map((obj, index) => {
                                 for (; index < 3;) {
-                                    return (
-                                        <Information
-                                            key={`${obj}_${index}`}
-                                            setPopupActive={setPopupActive}
-                                            {...obj}
-                                        />
-                                    )
+                                    return <Information
+                                        key={`${obj}_${index}`}
+                                        setPopupActive={setPopupActive}
+                                        {...obj}
+                                    />
                                 }
                             })}
                         </div>

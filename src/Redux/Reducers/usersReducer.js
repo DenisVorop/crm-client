@@ -1,4 +1,4 @@
-import { usersAPI } from "../../API/loginApi";
+import { usersAPI } from "../../API/usersApi";
 
 const GET_USERS = 'GET_USERS';
 const GET_TIMES = 'GET_TIMES';
@@ -12,7 +12,6 @@ const SET_LIMIT = 'SET_LIMIT';
 
 
 const initialState = {
-    oldUsersData: [],
     usersData: [],
     timesData: [],
     serverCardsData: [],
@@ -22,12 +21,12 @@ const initialState = {
 }
 
 
+
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_USERS: {
             return {
                 ...state,
-                oldUsersData: action.payload,
                 usersData: action.payload
             }
         }
@@ -38,94 +37,32 @@ const usersReducer = (state = initialState, action) => {
             }
         }
         case ADD_REC: {
-            const NewRecordord = {
-                id: 16,
+            const NewRecord = {
+                id: action.payload.id,
                 time_id: Number(action.payload.time),
                 name: action.payload.pat_name,
                 policy: action.payload.policy,
-                sex: 'M',
-                age: '20',
+                sex: action.payload.sex,
+                age: action.payload.age,
                 card_num: action.payload.card_num,
                 time: action.payload.time,
                 status: 'Повторный прием',
-                last_name: 'Денис',
-                first_name: 'Воропаев',
-                patronymic: 'Юрьевич',
-                birth: '12.12.1212',
-                marital_status: 'Не женат',
-                reg_addres: 'Адрес регистрации',
-                fact_addres: 'Адрес проживания',
-                phone: '88005553535',
-                first_record: '23.23.2323',
-                last_record: '25.25.2525',
-                card_info: [
-                    {
-                        system: "Общий осмотр",
-                        label_sub: "Субъективно",
-                        label_ob: "Объективно",
-                        symptoms_sub: { 1: "" },
-                        symptoms_ob: { 1: "", 2: "", 3: "", 4: "", 5: "", 6: "", 7: "" }
-                    },
-                    {
-                        system: "Система органов дыхания",
-                        label_sub: "Субъективно",
-                        label_ob: "Объективно",
-                        symptoms_sub: { 1: "", 2: "", 3: "", 4: "", 5: "", 6: "", 7: "", 8: "", 9: "", 10: "", 11: "", 12: "", 13: "", 14: "" },
-                        symptoms_ob: { 1: "", 2: "", 3: "", 4: "", 5: "", 6: "" }
-                    },
-                    {
-                        system: "Сердечно-сосудистая система",
-                        label_sub: "Субъективно",
-                        label_ob: "Объективно",
-                        symptoms_sub: { 1: "", 2: "", 3: "", 4: "", 5: "", 6: "", 7: "" },
-                        symptoms_ob: { 1: "", 2: "", 3: "", 4: "", 5: "", 6: "" }
-                    },
-                    {
-                        system: "Система органов пищеварения",
-                        label_sub: "Субъективно",
-                        label_ob: "Объективно",
-                        symptoms_sub: { 1: "", 2: "", 3: "", 4: "", 5: "" },
-                        symptoms_ob: { 1: "", 2: "", 3: "", 4: "" }
-                    },
-                    {
-                        system: "Мочеполовая система",
-                        label_sub: "Субъективно",
-                        label_ob: "Объективно",
-                        symptoms_sub: { 1: "", 2: "", 3: "", 4: "" },
-                        symptoms_ob: { 1: "" }
-                    },
-                    {
-                        system: "Нервная система и органы чувств",
-                        label_sub: "Субъективно",
-                        label_ob: "Объективно",
-                        symptoms_sub: { 1: "", 2: "", 3: "" },
-                        symptoms_ob: {}
-                    }
-                ],
-                last_records: [
-                    {
-                        position: "Медицинская сестра (медбрат) участковая",
-                        name_doctor: "Иванова Г.Ю.",
-                        name_clinic: "Филиал №1",
-                        date_last_record: "14.02.2021"
-                    },
-                    {
-                        position: "Офтальмолог",
-                        name_doctor: "Рыжкова Г.Ю.",
-                        name_clinic: "Филиал №2",
-                        date_last_record: "22.12.2020"
-                    },
-                    {
-                        position: "Хирург",
-                        name_doctor: "Петров Г.Ю.",
-                        name_clinic: "Филиал №1",
-                        date_last_record: "07.02.2022"
-                    }
-                ]
+                last_name: action.payload.last_name,
+                first_name: action.payload.first_name,
+                patronymic: action.payload.patronymic,
+                birth: action.payload.birth,
+                marital_status: action.payload.marital_status,
+                reg_addres: action.payload.reg_addres,
+                fact_addres: action.payload.fact_addres,
+                phone: action.payload.phone,
+                first_record: action.payload.first_record,
+                last_record: action.payload.last_record,
+                card_info: [],
+                last_records: []
             };
             return {
                 ...state,
-                usersData: [...state.usersData, NewRecordord],
+                usersData: [...state.usersData, NewRecord],
             };
         }
         case GET_CARDS: {

@@ -1,5 +1,8 @@
 import React from 'react'
 
+import './output.scss'
+
+
 const OutputField = ({ field, firstInputText, secondInputText,
     thirdInputText, historyData, statusData, diagnosisData, index }) => {
 
@@ -14,6 +17,10 @@ const OutputField = ({ field, firstInputText, secondInputText,
                         <div className="output__output-field output-field__output">
                             <div className="output-field__body">
                                 <div className="output-field__items">
+                                    <div className="output-field__labels">
+                                        <div className="output-field__label">Глаз</div>
+                                        <div className="output-field__label">Запись</div>
+                                    </div>
                                     <div className="output-field__item">
                                         <div className="output-field__eye">OS</div>
                                         <div className="output-field__entry">{firstInputText}</div>

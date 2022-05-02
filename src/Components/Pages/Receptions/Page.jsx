@@ -6,7 +6,9 @@ import Plan from '../../Common/Plan/Plan';
 const Page = ({ getReception }) => {
     return (
         <>
-            <Plan label='План амбулаторного приема'/>
+            <Plan
+                label='План амбулаторного приема'
+            />
             <Filter
                 getReception={getReception}
             />

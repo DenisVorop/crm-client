@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
 
 import info from '../../../../../../assets/img/Info.svg';
@@ -6,22 +7,23 @@ import infoBlue from '../../../../../../assets/img/Info-blue.svg';
 
 import Informations from './informations/Informations';
 
+
 const Record = ({ age, birth, card_num, card_info,
     fact_addres, first_name, first_record,
     last_name, last_record, marital_status, name,
     patronymic, phone, reg_addres, sex, policy, last_records, timeObj, time_id, status, getReception }) => {
+
+    const { user } = useSelector(({ authReducer }) => authReducer);
 
     const onRedirectToReception = () => {
         const objPatientRecord = {
             last_name, first_name, patronymic, sex,
             birth, marital_status, reg_addres, fact_addres, card_num,
             phone, first_record, last_record, policy, name, card_info: { card_info },
-            last_records: { last_records }
+            last_records: { last_records }, doctor: user
         }
         getReception(objPatientRecord)
     }
-
-    let statusStyle = {};
 
     const [infoVisible, setInfoVisible] = React.useState(false);
 
@@ -29,11 +31,13 @@ const Record = ({ age, birth, card_num, card_info,
         setInfoVisible(!infoVisible);
     };
 
+    let statusStyle = {};
+
     switch (status) {
-        case 'Прием завершен': { statusStyle = { background: 'rgba(148, 227, 188, .4)', color: 'var(--positive-basic)' }; break; }
-        case 'Первичный прием': { statusStyle = { background: 'rgba(255, 220, 173, .4)', color: 'var(--warning-basic)' }; break; }
-        case 'Послеоперац-ный прием': { statusStyle = { background: 'rgba(254, 64, 33, .4)', color: 'var(--danger-basic)' }; break; }
-        case 'Повторный прием': { statusStyle = { background: 'rgba(203, 229, 240, 0.3)', color: 'var(--primary-basic)' }; break; }
+        case 'Прием завершен': { statusStyle = { background: 'rgba(15, 15, 15, .2)', color: 'var(--dark-basic)' }; break; }
+        case 'Первичный прием': { statusStyle = { background: 'rgba(148, 227, 188, .4)', color: 'var(--positive-basic)' }; break; }
+        case 'Послеоперац-ный прием': { statusStyle = { background: 'rgba(255, 220, 173, .4)', color: 'var(--warning-basic)' }; break; }
+        case 'Повторный прием': { statusStyle = { background: 'rgba(51, 177, 202, .2)', color: 'var(--accent-no-contrast)' }; break; }
         default: { break; }
     }
 

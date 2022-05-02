@@ -6,10 +6,11 @@ import del from '../../../../assets/img/del.svg'
 import EyeInput from './EyeInput/EyeInput'
 import MoreContainer from './MoreContainer/MoreContainer'
 
+import { eyes } from '../../../../Arrays/eyes'
+
 
 const EnterField = ({ field, visible, setVisible, nextVisible, setValue, value, getHistoryData, getStatusData, getDiagnosisData }) => {
 
-    const eyes = ['OU', 'OD', 'OS']
     const [count, setCount] = React.useState(1)
     React.useEffect(() => { count >= 4 && setCount(3) }, [count])
 

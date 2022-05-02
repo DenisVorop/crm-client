@@ -41,7 +41,9 @@ const Filter = ({ getReception }) => {
                     onToggleCheck={onToggleCheck}
                     num={num}
                 />
-                <Patients stylePatients={{gridTemplateColumns: '0.5fr 2fr 1fr 1fr 0.5fr'}}/>
+                <Patients
+                    stylePatients={{ gridTemplateColumns: '0.5fr 2fr 1fr 1fr 0.5fr' }}
+                />
                 <Records
                     activeUsers={activeUsers}
                     onSearchClick={onSearchClick}

@@ -1,16 +1,14 @@
 import React from 'react'
 
-import arrowB from '../../../../../../assets/img/arrow-b.svg'
-import arrowT from '../../../../../../assets/img/arrow-t.svg'
+import { diseases } from '../../../../../../Arrays/diseases'
+import { surveys } from '../../../../../../Arrays/surveys'
+
+import arrowB from '../../../../../../assets/img/arrows/arrow-b.svg'
+import arrowT from '../../../../../../assets/img/arrows/arrow-t.svg'
 
 import './survey.scss'
 
 const Survey = ({ label, visible, setVisible }) => {
-    const surveys = [
-        'МКОЗ в даль', 'МКОЗ в близи с коррекцией', 'МКОЗ в своих очках (в даль)', 'МКОЗ в своих очках (в близь)',
-        'Visus в близи без коррекции', 'Характер зрения', 'Бинокулярный'
-    ]
-    const diseases = ['', 'VISUS', 'Sph', 'Cyl', 'Ax', 'МКОЗ']
 
     const [activeItem, setActiveItem] = React.useState('МКОЗ в даль')
 

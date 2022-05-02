@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Input from '../../../../../Common/Inputs/Input'
 import EyeInput from '../../EyeInput/EyeInput'
 
 import del from '../../../../../../assets/img/del.svg'
@@ -8,14 +7,14 @@ import plus from '../../../../../../assets/img/plus.svg'
 
 import './fieldmore.scss'
 
+import { eyes } from '../../../../../../Arrays/eyes'
+
 
 const FieldMore = ({ label, nextVisible, title, setValue, index, value }) => {
 
     const [deleteVisible, setDeleteVisible] = React.useState(true)
     const [count, setCount] = React.useState(1)
     React.useEffect(() => { count >= 4 && setCount(3) }, [count])
-
-    const eyes = ['OU', 'OD', 'OS']
 
     const styleInput = {
         width: '489px',

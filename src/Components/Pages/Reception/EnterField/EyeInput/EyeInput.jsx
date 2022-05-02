@@ -4,7 +4,7 @@ import React from 'react'
 import SelectEye from '../SelectEye/SelectEye'
 
 
-const EyeInput = ({ setCount, eyes, count, nextVisible, setValue, index, value }) => {
+const EyeInput = ({ eyes, nextVisible, setValue, index, value }) => {
 
     const [visible, setVisible] = React.useState(false)
     const [selectedEye, setSelectedEye] = React.useState('OS')
@@ -16,20 +16,18 @@ const EyeInput = ({ setCount, eyes, count, nextVisible, setValue, index, value }
     return (
         <div className="row-reception__input">
             <div className="row-reception__body">
-                <div className="row-reception__eye" onClick={() => setVisible(true)} style={{cursor: 'pointer'}}>
+                <div className="row-reception__eye" onClick={() => setVisible(true)} style={{ cursor: 'pointer' }}>
                     {selectedEye}
                     {visible
                         ? <div className={visible ? 'find active' : 'find'} >
                             <div className="find__field" onClick={(e) => (e.stopPropagation())} style={{ textAlign: 'center', margin: '10px 0px 0px -10px' }}>
                                 {eyes.map((eye, index) => {
-                                    return (
-                                        <SelectEye
-                                            key={`${eye}_${index}`}
-                                            eyeOfIndex={eye}
-                                            setVisible={setVisible}
-                                            getSelectedEye={getSelectedEye}
-                                        />
-                                    )
+                                    return <SelectEye
+                                        key={`${eye}_${index}`}
+                                        eyeOfIndex={eye}
+                                        setVisible={setVisible}
+                                        getSelectedEye={getSelectedEye}
+                                    />
                                 })}
                             </div>
                         </div>

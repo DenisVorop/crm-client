@@ -1,23 +1,6 @@
-import axios from "axios";
 import jwt_decode from "jwt-decode"
-import { $authHost, $host } from "./index";
-import { REACT_APP_API_URL } from "./url";
+import { $authHost, $host } from "./_index";
 
-
-const instance = axios.create({
-    withCredentials: true,
-    baseURL: 'https://crm-microsurgery.herokuapp.com',
-});
-
-export const usersAPI = {
-    getAllUsers() {
-        console.log(instance.get('/users'))
-        return instance.get('/users')
-    },
-    getAllTimeUsers() {
-        return instance.get('/today-records')
-    }
-}
 
 export const registrationApi = async (login, password, name) => {
     const { data } = await $host.post('api/user/registration', { login, password, role: 'admin', name })

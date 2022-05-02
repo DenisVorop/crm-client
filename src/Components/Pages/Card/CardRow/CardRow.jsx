@@ -1,7 +1,7 @@
 import React from 'react';
 
-import arrowB from '../../../../assets/img/arrow-b.svg'
-import arrowT from '../../../../assets/img/arrow-t.svg'
+import arrowB from '../../../../assets/img/arrows/arrow-b.svg'
+import arrowT from '../../../../assets/img/arrows/arrow-t.svg'
 
 const CardRow = ({ card }) => {
 

@@ -1,15 +1,19 @@
 import React from 'react'
 import { Navigate } from "react-router-dom"
-import Button from "../../Common/Button/Button"
 
+import Button from "../../Common/Button/Button"
 import Plan from "../../Common/Plan/Plan"
+import Output from './Output/Output'
 
 import './reception.scss'
 
-import EnterField from './EnterField/EnterField'
-import OutputField from './OutputField/OutputField'
+import EnterFieldSwitch from '../../../hocs/EnterFieldSwitch'
+import OutputFieldSwitch from '../../../hocs/OutputFieldSwitch'
+import ReceptionSwitch from '../../../hocs/ReceptionSwitch'
 
-import './Output/output.scss'
+import { enterFields } from '../../../Arrays/fields'
+import { receptionLabels, outputPatientLabels, outputRecordLabels } from '../../../Arrays/labels'
+
 
 const Reception = ({ receptionInfo }) => {
 
@@ -17,6 +21,7 @@ const Reception = ({ receptionInfo }) => {
     const [statusData, setStatusData] = React.useState([])
     const [diagnosisData, setDiagnosisData] = React.useState([])
 
+    // Темы полей ввода
     const [complaintsVisible, setComplaintsVisible] = React.useState(true) // 1 жалобы
     const [complaints, setComplaints] = React.useState({ first: '', second: '', third: '' }) // 1 жалобы  complaints
     const [historyVisible, setHistoryVisible] = React.useState(false) // 2 анамнез
@@ -37,48 +42,6 @@ const Reception = ({ receptionInfo }) => {
 
     // TODO: переделать компонент инпут
 
-    const fields = [
-        {
-            label: 'Жалобы пациента', text: 'опишите, на что жалуется больной',
-            addMore: [
-                { label: '' }, { label: '' }, { label: '' }
-            ]
-        },
-        {
-            label: 'Анамнез пациента', text: 'краткая история заболевания',
-            addMore: [
-                { label: 'Аллергологический анамнез' }, { label: 'Фармакологический анамнез' }, { label: 'Операции на глаза' }
-            ]
-        },
-        {
-            label: 'Status ophtalmicus', text: 'состояние глаз пациента',
-            addMore: [
-                { label: 'Придаточный аппарат глаза' }, { label: 'Роговица' }, { label: 'Передняя камера' },
-                { label: 'Радужка' }, { label: 'Хрусталик' }, { label: 'Стекловидное тело' },
-                { label: 'ДЗН' }, { label: 'Задний отрезок глаза ' }
-            ]
-        },
-        {
-            label: 'Диагноз', text: 'все диагнозы, которые нужно отразить в истории болезни, коды МКБ-10 добавятся автоматически',
-            addMore: [
-                { label: 'Основной диагноз' }, { label: 'Сопутствующий профильный диагноз' }, { label: 'Сопутствующий соматический диагноз' }
-            ]
-        },
-        {
-            label: 'Данные обследований', text: '',
-            addMore: [
-                { label: 'Визометрия + ВГД' }, { label: 'Визометрия при циклоплегии' },
-                { label: 'Пахиметрическая карта' }, { label: 'Авторефрактометрия' },
-            ]
-        },
-        // {
-        //     label: 'Назначение до операции', text: 'препараты появятся в листе назначений до дня проведения операции'
-        // },
-        // {
-        //     label: 'Назначение после выписки', text: 'препараты появятся в назначения выписсного эпикриза'
-        // }
-    ]
-
     const getHistoryData = (histData) => {
         setHistoryData(histData)
     }
@@ -89,197 +52,71 @@ const Reception = ({ receptionInfo }) => {
         setDiagnosisData(diagData)
     }
 
+    const objToInputSwitch = {
+        complaintsVisible, complaints, setComplaints,
+        historyVisible, history, setHistoryVisible, setHistory,
+        statusVisible, status, setStatusVisible, setStatus,
+        diagnosisVisible, diagnosis, setDiagnosisVisible, setDiagnosis,
+        surveyVisible, survey, setSurveyVisible, setSurvey,
+
+        getHistoryData, getStatusData, getDiagnosisData,
+    }
+    const objToOutputColumnSwitch = {
+        name, birth, card_num, doctor: receptionInfo.doctor.name,
+    }
+    const objToOutputSwitch = {
+        historyData, statusData, diagnosisData,
+        complaints, history, status, diagnosis, survey,
+    }
+    const objToReceptionSwitch = {
+        date: '15.04.2022',
+        doctor: receptionInfo.doctor.name,
+        patient: name,
+        policy: policy,
+        card_num: card_num,
+        location: 'Филиал в Новых Черемушках №2'
+    }
 
     return (
         <>
             <Plan label='Редактирование приема' />
-            <div className="reception" style={{ minHeight: '1070px' }}>
+            <div className="reception" style={{ minHeight: '1150px' }}>
                 <div className="reception__container">
                     <div className="reception__body">
                         <div className="reception__title">Данные пациента</div>
                         <div className="reception__admission-info admission-info-reception">
-                            <div className="admission-info-reception__column">
-                                <div className="admission-info-reception__label">Дата</div>
-                                <div className="admission-info-reception__text">15.04.2022</div>
-                            </div>
-                            <div className="admission-info-reception__column">
-                                <div className="admission-info-reception__label">Врач</div>
-                                <div className="admission-info-reception__text">Иванова И. Ю.</div>
-                            </div>
-                            <div className="admission-info-reception__column">
-                                <div className="admission-info-reception__label">Пациент</div>
-                                <div className="admission-info-reception__text">{name}</div>
-                            </div>
-                            <div className="admission-info-reception__column">
-                                <div className="admission-info-reception__label">Полис ОМС</div>
-                                <div className="admission-info-reception__text">{policy}</div>
-                            </div>
-                            <div className="admission-info-reception__column">
-                                <div className="admission-info-reception__label">Номер карты</div>
-                                <div className="admission-info-reception__text">{card_num}</div>
-                            </div>
-                            <div className="admission-info-reception__column">
-                                <div className="admission-info-reception__label">Место приема</div>
-                                <div className="admission-info-reception__text">Филиал в Новых Черемушках №2</div>
-                            </div>
+                            {receptionLabels.map((label, index) => {
+                                return <ReceptionSwitch
+                                    key={`${label}_${index}`}
+                                    label={label}
+                                    objToReceptionSwitch={objToReceptionSwitch}
+                                />
+                            })}
                         </div>
                         <div className="reception__rows">
                             <div className="reception__part">
-                                {fields.map((field, index) => {
-                                    let visible
-                                    let value
-                                    let setVisible = function () { }
-                                    let nextVisible = function () { }
-                                    let setValue = function () { }
-                                    switch (field.label) {
-                                        case 'Жалобы пациента': {
-                                            visible = complaintsVisible
-                                            // setVisible = setComplaintsVisible
-                                            nextVisible = setHistoryVisible
-                                            value = complaints
-                                            setValue = setComplaints
-                                            break
-                                        }
-                                        case 'Анамнез пациента': {
-                                            visible = historyVisible
-                                            setVisible = setHistoryVisible
-                                            nextVisible = setStatusVisible
-                                            value = history
-                                            setValue = setHistory
-                                            break
-                                        }
-                                        case 'Status ophtalmicus': {
-                                            visible = statusVisible
-                                            setVisible = setStatusVisible
-                                            nextVisible = setDiagnosisVisible
-                                            value = status
-                                            setValue = setStatus
-                                            break
-                                        }
-                                        case 'Диагноз': {
-                                            visible = diagnosisVisible
-                                            setVisible = setDiagnosisVisible
-                                            nextVisible = setSurveyVisible
-                                            value = diagnosis
-                                            setValue = setDiagnosis
-                                            break
-                                        }
-                                        case 'Данные обследований': {
-                                            visible = surveyVisible
-                                            setVisible = setSurveyVisible
-                                            // nextVisible =
-                                            value = survey
-                                            setValue = setSurvey
-                                            break
-                                        }
-                                    }
-                                    return (
-                                        <EnterField
-                                            key={`${field}_${index}`}
-                                            field={field}
-                                            visible={visible}
-                                            setVisible={setVisible}
-                                            nextVisible={nextVisible}
-                                            setValue={setValue}
-                                            value={value}
-                                            getHistoryData={getHistoryData}
-                                            getStatusData={getStatusData}
-                                            getDiagnosisData={getDiagnosisData}
-                                        />
-                                    )
+                                {enterFields.map((field, index) => {
+                                    return <EnterFieldSwitch
+                                        key={`${field}_${index}`}
+                                        field={field}
+                                        objToInputSwitch={objToInputSwitch}
+                                    />
                                 })}
                             </div>
                             <div className="reception__part">
-                                <div className="output">
-                                    <div className="output__body">
-                                        <div className="output__items">
-                                            <div className="output__item">
-                                                <div className="output__title">Данные пациента</div>
-                                                <div className="output__columns">
-                                                    <div className="output__column">
-                                                        <div className="output__rows">
-                                                            <div className="output__row-label">ФИО</div>
-                                                            <div className="output__row">{name}</div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="output__column">
-                                                        <div className="output__rows">
-                                                            <div className="output__row-label">Дата рождения</div>
-                                                            <div className="output__row">{birth}</div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="output__column">
-                                                        <div className="output__rows">
-                                                            <div className="output__row-label">Карта пациента</div>
-                                                            <div className="output__row">{card_num}</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="output__item">
-                                                <div className="output__title">Данные приема</div>
-                                                <div className="output__columns">
-                                                    <div className="output__column">
-                                                        <div className="output__rows">
-                                                            <div className="output__row-label">Дата</div>
-                                                            <div className="output__row">14.03.2021</div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="output__column">
-                                                        <div className="output__rows">
-                                                            <div className="output__row-label">Врач</div>
-                                                            <div className="output__row">Иванова И. Ю.</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <Output
+                                    outputPatientLabels={outputPatientLabels}
+                                    outputRecordLabels={outputRecordLabels}
+                                    objToOutputColumnSwitch={objToOutputColumnSwitch}
+                                />
                                 <div className="outputs">
-                                    {fields.map((field, index) => {
-                                        let firstInputText
-                                        let secondInputText
-                                        let thirdInputText
-                                        switch (field.label) {
-                                            case 'Жалобы пациента': {
-                                                firstInputText = complaints.first
-                                                secondInputText = complaints.second
-                                                thirdInputText = complaints.third
-                                                break
-                                            }
-                                            case 'Анамнез пациента': {
-                                                firstInputText = history.first
-                                                secondInputText = history.second
-                                                thirdInputText = history.third
-                                                break
-                                            }
-                                            case 'Status ophtalmicus': {
-                                                firstInputText = status.first
-                                                secondInputText = status.second
-                                                thirdInputText = status.third
-                                                break
-                                            }
-                                            case 'Диагноз': {
-                                                firstInputText = diagnosis.first
-                                                secondInputText = diagnosis.second
-                                                thirdInputText = diagnosis.third
-                                                break
-                                            }
-                                        }
-                                        return (
-                                            <OutputField
-                                                key={`${field}_${index}`}
-                                                field={field}
-                                                firstInputText={firstInputText}
-                                                secondInputText={secondInputText}
-                                                thirdInputText={thirdInputText}
-                                                index={index}
-                                                historyData={historyData}
-                                                statusData={statusData}
-                                                diagnosisData={diagnosisData}
-                                            />
-                                        )
+                                    {enterFields.map((field, index) => {
+                                        return <OutputFieldSwitch
+                                            key={`${field}_${index}`}
+                                            field={field}
+                                            index={index}
+                                            objToOutputSwitch={objToOutputSwitch}
+                                        />
                                     })}
                                 </div>
                             </div>

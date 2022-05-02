@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './plan.scss';
 
 import print from '../../../assets/img/print.svg';
-import arrowExit from '../../../assets/img/arrow-exit.svg'
+import arrowExit from '../../../assets/img/arrows/arrow-exit.svg'
 
 
 const Plan = ({ label }) => {
@@ -44,8 +44,12 @@ const Plan = ({ label }) => {
                     </div>
                     {location.pathname === '/receptions' || location.pathname === '/cards'
                         ? <div className="plan__new new-plan">
-                            <div className="new-plan__pat" style={{ cursor: 'pointer' }}><Link to='/new-patient'>Добавить нового пациента</Link></div>
-                            <div className="new-plan__rec" style={{ cursor: 'pointer' }}><Link to='/new-record'>Создать запись</Link></div>
+                            <div className="new-plan__pat" style={{ cursor: 'pointer' }}>
+                                <Link to='/new-patient'>Добавить нового пациента</Link>
+                            </div>
+                            <div className="new-plan__rec" style={{ cursor: 'pointer' }}>
+                                <Link to='/new-record'>Создать запись</Link>
+                            </div>
                         </div>
                         : null
                     }

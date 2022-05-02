@@ -1,8 +1,8 @@
 import React from 'react'
 
 import calendar from '../../../../../assets/img/calendar.svg'
-import arrowLeft from '../../../../../assets/img/arrow-l.svg'
-import arrowRight from '../../../../../assets/img/arrow-r.svg'
+import arrowLeft from '../../../../../assets/img/arrows/arrow-l.svg'
+import arrowRight from '../../../../../assets/img/arrows/arrow-r.svg'
 
 import DatePick from './DatePicker/DatePicker'
 import Search from '../../../../Common/Search/Search'

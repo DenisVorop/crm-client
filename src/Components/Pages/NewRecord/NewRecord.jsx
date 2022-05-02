@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom';
 
 import './newrecord.scss'
 
-import arrowB from '../../../assets/img/arrow-b.svg'
-import arrowT from '../../../assets/img/arrow-t.svg'
+import arrowB from '../../../assets/img/arrows/arrow-b.svg'
+import arrowT from '../../../assets/img/arrows/arrow-t.svg'
 
 import { addNewRecord } from '../../../Redux/Reducers/usersReducer';
 
@@ -81,7 +81,21 @@ const NewRecord = () => {
                         name_clinic: '',
                         name_doctor: '',
                         separation: '',
-                        policy: infoPatient.policy
+                        policy: infoPatient.policy,
+                        age: infoPatient.age,
+                        birth: infoPatient.birth,
+                        email: infoPatient.email,
+                        fact_addres: infoPatient.fact_addres,
+                        first_name: infoPatient.first_name,
+                        first_record: infoPatient.first_record,
+                        last_name: infoPatient.last_name,
+                        last_record: infoPatient.last_record,
+                        marital_status: infoPatient.marital_status,
+                        patronymic: infoPatient.patronymic,
+                        phone: infoPatient.phone,
+                        reg_addres: infoPatient.reg_addres,
+                        sex: infoPatient.sex,
+                        id: infoPatient.id
                     }
                     dispatch(addNewRecord(obj))
                     console.log(obj)
@@ -167,24 +181,6 @@ const NewRecord = () => {
                                                             </div>
                                                             : null
                                                         }
-                                                        {/* <select
-                                                        className="time-select"
-                                                        name='pat_name'
-                                                        onChange={handleChange}
-                                                        onBlur={handleBlur}
-                                                    >
-                                                        {oldUsersData.map((pat, index) => {
-                                                            return (
-                                                                <option
-                                                                    name='pat_name'
-                                                                    value={pat.name}
-                                                                    key={`${pat}_${index}`}
-                                                                >
-                                                                    {pat.name}
-                                                                </option>
-                                                            )
-                                                        })}
-                                                    </select> */}
                                                     </div>
                                                     <div className="new-rec__img">
                                                         <img src={!changeArrow ? arrowB : arrowT} alt='arrow-b' />
@@ -262,23 +258,6 @@ const NewRecord = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                            {/* <div className="new-rec__item">
-                                            <div className="new-rec__label">Дата</div>
-                                            <div className="new-rec__vvod">
-                                                <div className="new-rec__input">
-                                                    <input
-                                                        type="date"
-                                                        placeholder='Выберите дату'
-                                                        name='date'
-                                                        onChange={handleChange}
-                                                        onBlur={handleBlur}
-                                                    />
-                                                </div>
-                                                <div className="new-rec__img">
-                                                    <img src={arrowB} alt='arrow-b' />
-                                                </div>
-                                            </div>
-                                        </div> */}
                                             <div className="new-rec__item">
                                                 <div className="new-rec__label">Тип записи</div>
                                                 <div className="new-rec__vvod">

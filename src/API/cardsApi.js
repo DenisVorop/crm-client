@@ -1,5 +1,4 @@
-import jwt_decode from "jwt-decode"
-import { $authHost, $host } from "./index";
+import { $authHost, $host } from "./_index";
 
 export const createCard = async (card) => {
     console.log(card)
