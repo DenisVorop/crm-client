@@ -330,4 +330,4 @@ const NewPatient = () => {
     )
 }
 
-export default NewPatient;
+export default NewPatient

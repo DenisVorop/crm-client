@@ -35,4 +35,4 @@ const GeneralInput = ({ label, onSearchClick, children, id, onToggleCheck, input
     )
 }
 
-export default GeneralInput
+export default (GeneralInput)

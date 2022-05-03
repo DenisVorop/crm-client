@@ -4,15 +4,17 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import './header.scss'
 
-import logo from '../../../assets/img/logo.svg'
+// import logo from '../../../assets/img/logo.svg'
 import logoutImg from '../../../assets/img/logout.svg'
+import medocLogo from '../../../assets/img/medocLogo.svg'
+import medocName from '../../../assets/img/medocName.svg'
 
 import { setLogoutValues } from '../../../Redux/Reducers/authReducer'
 
 
 const Header = () => {
 
-    const {user} = useSelector(({authReducer}) => authReducer)
+    const { user } = useSelector(({ authReducer }) => authReducer)
     const dispatch = useDispatch();
     const location = useLocation();
     const navigate = useNavigate()
@@ -29,7 +31,8 @@ const Header = () => {
                 <div className="header__container">
                     <div className="header__body">
                         <div className="header__logo">
-                            <img src={logo} alt="logo" />
+                            <img src={medocLogo} alt="logo" />
+                            <img src={medocName} alt="name" />
                         </div>
                         <div className="header__nav">
                             <div className="header__links">
@@ -50,7 +53,7 @@ const Header = () => {
                     </div>
                     <div className="header__log">
                         <div className="header__name">{user.name}</div>
-                        <div className="header__button" onClick={logOut} style={{cursor: 'pointer'}}>
+                        <div className="header__button" onClick={logOut} style={{ cursor: 'pointer' }}>
                             <img src={logoutImg} alt="logout" />
                         </div>
                     </div>
@@ -61,4 +64,4 @@ const Header = () => {
     )
 }
 
-export default Header;
+export default Header

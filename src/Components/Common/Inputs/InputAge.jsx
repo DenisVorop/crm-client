@@ -1,4 +1,6 @@
-const InputAge = ({ label, nameRef, onChangeInput }) => {
+import React from 'react'
+
+const InputAge = ({ label }) => {
     return (
         <div className="patient-filter__number" style={{ marginLeft: '-45px' }}>
             <label className="patient-filter__label">{label}</label>

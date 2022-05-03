@@ -37,7 +37,8 @@ body {
 	-webkit-text-size-adjust: 100%;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background-color: rgba(203, 229, 240, 0.3);
+	// background-color: rgba(203, 229, 240, 0.3);
+	background-color: var(--back-of-app);
 }
 input,
 button,

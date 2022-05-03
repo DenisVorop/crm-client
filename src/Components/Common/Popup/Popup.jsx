@@ -1,3 +1,5 @@
+import React from 'react'
+
 import './popup.scss';
 
 const Popup = ({ popupActive, setPopupActive, children }) => {
@@ -10,4 +12,4 @@ const Popup = ({ popupActive, setPopupActive, children }) => {
     )
 }
 
-export default Popup;
+export default Popup

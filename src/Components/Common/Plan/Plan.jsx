@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import './plan.scss';
@@ -34,10 +34,12 @@ const Plan = ({ label }) => {
                     >
                         {location.pathname === '/cards'
                             ? null
-                            : <div className="plan__print">
-                                <img src={location.pathname === '/receptions'
-                                    ? print : arrowExit}
-                                    alt="print" />
+                            : location.pathname !== '/receptions' &&
+                            <div className="plan__print">
+                                <img
+                                    src={arrowExit}
+                                    alt="arrowExit"
+                                />
                             </div>
                         }
                         <div className="plan__label">{label}</div>
@@ -45,10 +47,10 @@ const Plan = ({ label }) => {
                     {location.pathname === '/receptions' || location.pathname === '/cards'
                         ? <div className="plan__new new-plan">
                             <div className="new-plan__pat" style={{ cursor: 'pointer' }}>
-                                <Link to='/new-patient'>Добавить нового пациента</Link>
+                                <Link to='/new-patient'>Новый пациент</Link>
                             </div>
                             <div className="new-plan__rec" style={{ cursor: 'pointer' }}>
-                                <Link to='/new-record'>Создать запись</Link>
+                                <Link to='/new-record'>Новая запись</Link>
                             </div>
                         </div>
                         : null
@@ -59,4 +61,4 @@ const Plan = ({ label }) => {
     )
 }
 
-export default Plan;
+export default Plan

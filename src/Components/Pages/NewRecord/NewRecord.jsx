@@ -16,7 +16,7 @@ import Button from '../../Common/Button/Button';
 
 const NewRecord = () => {
 
-    const { timesData, oldUsersData, serverCardsData } = useSelector(({ usersReducer }) => usersReducer);
+    const { timesData, serverCardsData } = useSelector(({ usersReducer }) => usersReducer);
     const arrUsers = JSON.parse(JSON.stringify(serverCardsData));
     arrUsers.sort((a, b) => a.name > b.name ? 1 : -1);
 
@@ -34,23 +34,24 @@ const NewRecord = () => {
     const searchNamesRef = React.useRef();
     const searchCardsRef = React.useRef();
 
-    const onSearchChangeNames = () => {
+    const onSearchChangeNames = React.useCallback(() => {
         setVisibleNames(true)
         setChangeArrow(true)
         setEnteredName(searchNamesRef.current.value)
         let filteredUsers = arrUsers.filter(user => user.name.toLowerCase().includes(searchNamesRef.current.value.toLowerCase()))
         setActiveUsers(filteredUsers)
-    }
-    const onSearchChangeCards = () => {
+    }, [activeUsers])
+
+    const onSearchChangeCards = React.useCallback(() => {
         setVisibleCards(true)
         setEnteredCard(searchCardsRef.current.value)
         let filteredUsers = arrUsers.filter(user => user.card_num.toLowerCase().includes(searchCardsRef.current.value.toLowerCase()))
         setActiveUsers(filteredUsers)
-    }
+    }, [activeUsers])
 
-    const autoCompleteInfo = (pat) => {
+    const autoCompleteInfo = React.useCallback((pat) => {
         setInfoPatient(pat)
-    }
+    }, [infoPatient])
 
     const validationNewRecord = yup.object().shape({
         pat_name: yup.string().typeError('string expected!').required('Выберите пациента из списка'),
@@ -291,4 +292,4 @@ const NewRecord = () => {
     )
 }
 
-export default NewRecord;
+export default NewRecord

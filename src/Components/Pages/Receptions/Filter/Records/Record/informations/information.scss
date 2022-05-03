@@ -8,7 +8,7 @@
     // .information__body
 
     &__body {
-        background-color: var(--back-of-elements);
+        // background-color: var(--back-of-elements);
     }
 
     // .information__title
@@ -79,7 +79,9 @@
 }
 
 .last-information {
-    background: rgba(203, 229, 240, 0.3);
+    // background: rgba(203, 229, 240, 0.3);
+    background: var(--primary-light);
+    border-radius: 8px;
     padding: 14px;
     width: -webkit-fill-available;
 

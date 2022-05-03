@@ -14,7 +14,27 @@ const FieldMore = ({ label, nextVisible, title, setValue, index, value }) => {
 
     const [deleteVisible, setDeleteVisible] = React.useState(true)
     const [count, setCount] = React.useState(1)
-    React.useEffect(() => { count >= 4 && setCount(3) }, [count])
+
+    React.useEffect(() => {
+        count >= 4 && setCount(3)
+    }, [count])
+
+    React.useEffect(() => {
+        switch (label) {
+            case 'Аллергологический анамнез': {
+                setDeleteVisible(false)
+                break
+            }
+            case 'Придаточный аппарат глаза': {
+                setDeleteVisible(false)
+                break
+            }
+            case 'Роговица': {
+                setDeleteVisible(false)
+                break
+            }
+        }
+    }, [label])
 
     const styleInput = {
         width: '489px',
@@ -36,22 +56,6 @@ const FieldMore = ({ label, nextVisible, title, setValue, index, value }) => {
         padding: '0px 0px 0px 10px',
     }
 
-    React.useEffect(() => {
-        switch (label) {
-            case 'Аллергологический анамнез': {
-                setDeleteVisible(false)
-                break
-            }
-            case 'Придаточный аппарат глаза': {
-                setDeleteVisible(false)
-                break
-            }
-            case 'Роговица': {
-                setDeleteVisible(false)
-                break
-            }
-        }
-    }, [label])
 
     return (
         <div className="field-more__body">
@@ -73,9 +77,9 @@ const FieldMore = ({ label, nextVisible, title, setValue, index, value }) => {
                                 (e) => (
                                     nextVisible(true),
                                     e.target.id === '0'
-                                        ? setValue({ first: e.target.value, second: value.second, third: value.third })
-                                        : e.target.id === '1' ? setValue({ first: value.first, second: e.target.value, third: value.third })
-                                            : setValue({ first: value.first, second: value.second, third: e.target.value })
+                                        ? setValue({ first: e.target.value })
+                                        : e.target.id === '1' ? setValue({  second: e.target.value})
+                                            : setValue({  third: e.target.value })
                                 )
                             }
                         />

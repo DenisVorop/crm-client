@@ -1,7 +1,10 @@
+import React from 'react'
+
 import OutputColumnSwitch from "../../../../hocs/OutputColumnSwitch"
 
 
 const Output = ({outputPatientLabels, outputRecordLabels, objToOutputColumnSwitch, }) => {
+
     return (
         <div className="output">
             <div className="output__body">

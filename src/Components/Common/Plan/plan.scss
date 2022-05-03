@@ -1,5 +1,6 @@
 .plan {
-    background-color: #0076A3;
+    // background-color: #0076A3;
+    background-color: var(--back-of-elements);
 
     // .plan__container
 
@@ -44,7 +45,8 @@
     &__label {
         font-weight: 700;
         font-size: 22px;
-        color: var(--back-of-app);
+        // color: var(--back-of-app);
+        color: var(--dark-basic);
     }
 }
 
@@ -60,18 +62,26 @@
 
     &__pat {
         margin: 0px 10px 0px 0px;
+        // color: var(--back-of-app);
         color: var(--back-of-app);
-        padding: 0 18px;
-        background: rgba(204, 214, 218, 0.3);
-        border-radius: 4px;
+        padding: 4px 18px;
+        // background: rgba(204, 214, 218, 0.3);
+        background: var(--gradient-button);
+        // // border-radius: 4px;
+border-radius: 8px;
+        border-radius: 20px;
     }
 
     // .new-plan__rec
 
     &__rec {
-        color: var(--dark-no-contrast);
-        padding: 0 18px;
-        background: var(--secondary-no-contrast);
-        border-radius: 4px;
+        // color: var(--dark-no-contrast);
+        color: var(--back-of-app);
+        padding: 4px 18px;
+        // background: var(--secondary-no-contrast);
+        background: var(--gradient-button);
+        // // border-radius: 4px;
+border-radius: 8px;
+        border-radius: 20px;
     }
 }

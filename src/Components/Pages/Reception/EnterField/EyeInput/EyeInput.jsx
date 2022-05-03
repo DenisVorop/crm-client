@@ -9,9 +9,9 @@ const EyeInput = ({ eyes, nextVisible, setValue, index, value }) => {
     const [visible, setVisible] = React.useState(false)
     const [selectedEye, setSelectedEye] = React.useState('OS')
 
-    const getSelectedEye = (eye) => {
+    const getSelectedEye = React.useCallback((eye) => {
         setSelectedEye(eye)
-    }
+    }, [selectedEye])
 
     return (
         <div className="row-reception__input">

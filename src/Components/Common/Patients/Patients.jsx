@@ -1,4 +1,6 @@
+import React from 'react'
 import { useLocation } from 'react-router-dom';
+
 import './patients.scss';
 
 const Patients = ({ stylePatients }) => {
@@ -28,4 +30,4 @@ const Patients = ({ stylePatients }) => {
     )
 }
 
-export default Patients;
+export default Patients

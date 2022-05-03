@@ -7,9 +7,9 @@ const CardRow = ({ card }) => {
 
     const [visible, setVisible] = React.useState(false);
 
-    const onToggleVisible = () => {
+    const onToggleVisible = React.useCallback(() => {
         setVisible(!visible)
-    }
+    }, [visible])
 
     let inspection;
     switch (card.system) {
@@ -188,4 +188,4 @@ const CardRow = ({ card }) => {
     )
 }
 
-export default CardRow;
+export default CardRow

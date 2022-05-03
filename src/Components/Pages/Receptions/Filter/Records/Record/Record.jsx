@@ -15,7 +15,7 @@ const Record = ({ age, birth, card_num, card_info,
 
     const { user } = useSelector(({ authReducer }) => authReducer);
 
-    const onRedirectToReception = () => {
+    const onRedirectToReception = React.useCallback(() => {
         const objPatientRecord = {
             last_name, first_name, patronymic, sex,
             birth, marital_status, reg_addres, fact_addres, card_num,
@@ -23,18 +23,18 @@ const Record = ({ age, birth, card_num, card_info,
             last_records: { last_records }, doctor: user
         }
         getReception(objPatientRecord)
-    }
+    }, [getReception])
 
     const [infoVisible, setInfoVisible] = React.useState(false);
 
-    const toggleInfoVisible = () => {
+    const toggleInfoVisible = React.useCallback(() => {
         setInfoVisible(!infoVisible);
-    };
+    }, [infoVisible])
 
     let statusStyle = {};
 
     switch (status) {
-        case 'Прием завершен': { statusStyle = { background: 'rgba(15, 15, 15, .2)', color: 'var(--dark-basic)' }; break; }
+        case 'Прием завершен': { statusStyle = { background: 'rgba(161, 246, 251, .4)', color: 'var(--primary-basic)' }; break; }
         case 'Первичный прием': { statusStyle = { background: 'rgba(148, 227, 188, .4)', color: 'var(--positive-basic)' }; break; }
         case 'Послеоперац-ный прием': { statusStyle = { background: 'rgba(255, 220, 173, .4)', color: 'var(--warning-basic)' }; break; }
         case 'Повторный прием': { statusStyle = { background: 'rgba(51, 177, 202, .2)', color: 'var(--accent-no-contrast)' }; break; }
@@ -75,4 +75,4 @@ const Record = ({ age, birth, card_num, card_info,
     )
 }
 
-export default Record;
+export default Record

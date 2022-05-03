@@ -1,3 +1,5 @@
+import React from 'react'
+
 import FieldMore from "./FieldMore/FieldMore"
 import Survey from "./Survey/Survey"
 

@@ -16,4 +16,4 @@ const Page = ({ getReception }) => {
     )
 }
 
-export default Page;
+export default Page

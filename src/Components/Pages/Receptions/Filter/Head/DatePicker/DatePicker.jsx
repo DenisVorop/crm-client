@@ -9,7 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import './datepicker.scss';
 
 const DatePick = () => {
-    const [startDate, setStartDate] = React.useState(new Date());
+    const [startDate, setStartDate] = React.useState(new Date())
     registerLocale('ru', ru)
 
     return (

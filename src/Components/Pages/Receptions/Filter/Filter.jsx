@@ -9,6 +9,7 @@ import './filter.scss';
 
 
 const Filter = ({ getReception }) => {
+
     const { usersData } = useSelector(({ usersReducer }) => usersReducer);
 
     const arrUsers = JSON.parse(JSON.stringify(usersData));
@@ -18,7 +19,7 @@ const Filter = ({ getReception }) => {
     const [num, setNum] = React.useState(false)
     const receptionsRef = React.useRef();
 
-    const onSearchClick = () => {
+    const onSearchClick = React.useCallback(() => {
         let filteredUsers
         if (!num) {
             filteredUsers = arrUsers.filter(user => user.name.toLowerCase().includes(receptionsRef.current.value.toLowerCase()))
@@ -26,11 +27,11 @@ const Filter = ({ getReception }) => {
             filteredUsers = arrUsers.filter(user => user.card_num.toLowerCase().includes(receptionsRef.current.value.toLowerCase()))
         }
         setActiveUsers(filteredUsers)
-    }
+    }, [usersData])
 
-    const onToggleCheck = () => {
+    const onToggleCheck = React.useCallback(() => {
         setNum(!num)
-    }
+    }, [num])
 
     return (
         <div className="filter">
@@ -41,18 +42,20 @@ const Filter = ({ getReception }) => {
                     onToggleCheck={onToggleCheck}
                     num={num}
                 />
-                <Patients
-                    stylePatients={{ gridTemplateColumns: '0.5fr 2fr 1fr 1fr 0.5fr' }}
-                />
-                <Records
-                    activeUsers={activeUsers}
-                    onSearchClick={onSearchClick}
-                    usersData={usersData}
-                    getReception={getReception}
-                />
+                <div>
+                    <Patients
+                        stylePatients={{ gridTemplateColumns: '0.5fr 2fr 1fr 1fr 0.5fr' }}
+                    />
+                    <Records
+                        activeUsers={activeUsers}
+                        onSearchClick={onSearchClick}
+                        usersData={usersData}
+                        getReception={getReception}
+                    />
+                </div>
             </div>
         </div>
     )
 }
 
-export default Filter;
+export default Filter

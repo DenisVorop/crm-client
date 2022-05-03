@@ -88,35 +88,3 @@ const OutputField = ({ field, firstInputText, secondInputText,
 }
 
 export default OutputField
-
-{/* {index === 1
-                    ? historyData.map((historyField, index) => {
-                        return (
-                            <div
-                                key={`${historyField}_${index}`}>
-                                {historyField.first}-{historyField.second}-{historyField.third}
-                            </div>
-                        )
-                    })
-                    : index === 2
-                        ? statusData.map((statusField, index) => {
-                            return (
-                                <div
-                                    key={`${statusField}_${index}`}>
-                                    {statusField.first}-{statusField.second}-{statusField.third}
-                                </div>
-                            )
-                        })
-                        : index === 3
-                            ? diagnosisData.map((diagnosisField, index) => {
-                                return (
-                                    <div
-                                        key={`${diagnosisField}_${index}`}>
-                                        {diagnosisField.first}-{diagnosisField.second}-{diagnosisField.third}
-                                    </div>
-                                )
-                            })
-                            : index === 4
-                                ? 'survey'
-                                : 'hey'
-                } */}

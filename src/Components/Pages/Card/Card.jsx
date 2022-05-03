@@ -104,4 +104,4 @@ const Card = ({ cardInfo }) => {
     )
 }
 
-export default Card;
+export default Card

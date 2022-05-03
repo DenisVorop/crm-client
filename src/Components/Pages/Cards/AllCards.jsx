@@ -27,7 +27,7 @@ const AllCards = ({ getCardNum }) => {
     const policyRef = React.useRef();
     const phoneRef = React.useRef();
 
-    const searchChange = () => {
+    const searchChange = React.useCallback(() => {
         let filteredCards
         switch (label) {
             case 'Поиск по номеру карты': { filteredCards = arrCards.filter(user => user.card_num.toLowerCase().includes(cardRef.current.value.toLowerCase())); break; }
@@ -36,16 +36,16 @@ const AllCards = ({ getCardNum }) => {
             default: { filteredCards = arrCards.filter(user => user.name.toLowerCase().includes(nameRef.current.value.toLowerCase())); break; }
         }
         setActiveCards(filteredCards)
-    }
+    }, [activeCards])
 
     React.useEffect(() => {
         searchChange()
     }, [serverCardsData])
 
-    const onChangeInput = (label) => {
+    const onChangeInput = React.useCallback((label) => {
         setLabel(label)
         searchChange()
-    }
+    }, [label])
 
     const searchParams = [
         { label: 'Поиск по номеру карты', placeholder: 'Номер карты', styleInput: { width: '160px' }, ref: cardRef, type: 'number' },
@@ -80,19 +80,23 @@ const AllCards = ({ getCardNum }) => {
                         <InputSex />
                     </Search>
                 </div>
-                <Patients stylePatients={{ gridTemplateColumns: '3fr 1.3fr 2fr 2fr 2fr' }} />
-                <div className="records__body">
-                    {activeCards.length === 0
-                        ? <EmptySearch />
-                        : activeCards.map((obj, index) => {
-                            return (
-                                <PatientCard
-                                    key={`${obj}_${index}`}
-                                    {...obj}
-                                    getCardNum={getCardNum}
-                                />
-                            )
-                        })}
+                <div>
+                    <Patients
+                        stylePatients={{ gridTemplateColumns: '3fr 1.3fr 2fr 2fr 2fr' }}
+                    />
+                    <div className="records__body">
+                        {activeCards.length === 0
+                            ? <EmptySearch />
+                            : activeCards.map((obj, index) => {
+                                return (
+                                    <PatientCard
+                                        key={`${obj}_${index}`}
+                                        {...obj}
+                                        getCardNum={getCardNum}
+                                    />
+                                )
+                            })}
+                    </div>
                 </div>
                 <Pagination />
             </div>
@@ -100,4 +104,4 @@ const AllCards = ({ getCardNum }) => {
     )
 }
 
-export default AllCards;
+export default AllCards

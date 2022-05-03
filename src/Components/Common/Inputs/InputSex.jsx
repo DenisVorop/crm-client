@@ -1,4 +1,6 @@
-const InputSex = ({ label, nameRef, onChangeInput }) => {
+import React from 'react'
+
+const InputSex = ({ label }) => {
     return (
         <div className="patient-filter__number" style={{ marginLeft: '-45px' }}>
             <label className="patient-filter__label">{label}</label>

@@ -23,4 +23,4 @@ const CardLeft = ({ label, index, cardInfo }) => {
     )
 }
 
-export default CardLeft;
+export default CardLeft

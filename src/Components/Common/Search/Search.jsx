@@ -1,3 +1,4 @@
+import React from 'react'
 import GeneralInput from "../GeneralInput/GeneralInput";
 
 
@@ -17,4 +18,4 @@ const Search = ({ label, onToggleCheck, id, onSearchClick, onChangeInput, childr
     )
 }
 
-export default Search;
+export default Search

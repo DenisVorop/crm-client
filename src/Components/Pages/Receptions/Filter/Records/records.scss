@@ -3,9 +3,11 @@
     // .records__body
 
     &__body {
-        background: var(--back-of-elements);
+        // background: var(--back-of-elements);
+        background: var(--back-of-app);
         border: 1px solid var(--secondary-basic);
-        border-radius: 4px;
+        // border-radius: 4px;
+border-radius: 8px;
         padding: 15px 20px 0 20px;
         width: 1280px;
     }
@@ -50,7 +52,8 @@
         padding: 0 10px;
 
         &:nth-child(4) {
-            border-radius: 4px;
+            // border-radius: 4px;
+border-radius: 8px;
             padding: 4px 8px;
         }
 
@@ -89,7 +92,8 @@
     right: 0;
     top: 20px;
     margin-top: 15px;
-    background: var(--back-of-elements);
+    // background: var(--back-of-elements);
+    background-color: var(--back-of-app);
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
     border-radius: 10px;
     overflow: hidden;

@@ -12,7 +12,9 @@ const Records = ({ activeUsers, onSearchClick, usersData, getReception }) => {
     const { timesData } = useSelector(({ usersReducer }) => usersReducer);
 
     React.useEffect(() => {
-        setTimeout(onSearchClick, 0)
+        (function () {
+            onSearchClick()
+        })()
     }, [usersData]);
 
     return (
@@ -26,11 +28,11 @@ const Records = ({ activeUsers, onSearchClick, usersData, getReception }) => {
                 />
             })}
             {activeUsers.length === 0
-            ? <EmptySearch />
-            : null
+                ? <EmptySearch />
+                : null
             }
         </div>
     )
 }
 
-export default Records;
+export default Records

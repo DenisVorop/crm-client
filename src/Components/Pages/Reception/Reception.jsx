@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom"
 
 import Button from "../../Common/Button/Button"
 import Plan from "../../Common/Plan/Plan"
-import Output from './Output/Output'
+import Output from './OutputItem/Output'
 
 import './reception.scss'
 
@@ -33,6 +33,16 @@ const Reception = ({ receptionInfo }) => {
     const [surveyVisible, setSurveyVisible] = React.useState(false) // 5 данные обследований
     const [survey, setSurvey] = React.useState({ first: '', second: '', third: '' }) // 5 данные обследований  survey
 
+    const getHistoryData = React.useCallback((histData) => {
+        setHistoryData(histData)
+    }, [historyData])
+    const getStatusData = React.useCallback((statData) => {
+        setStatusData(statData)
+    }, [statusData])
+    const getDiagnosisData = React.useCallback((diagData) => {
+        setDiagnosisData(diagData)
+    }, [diagnosisData])
+
     if (receptionInfo === null) { return <Navigate to='/receptions' /> }
 
     const { last_name, first_name, patronymic, sex,
@@ -41,16 +51,6 @@ const Reception = ({ receptionInfo }) => {
         last_records: { last_records } } = receptionInfo
 
     // TODO: переделать компонент инпут
-
-    const getHistoryData = (histData) => {
-        setHistoryData(histData)
-    }
-    const getStatusData = (statData) => {
-        setStatusData(statData)
-    }
-    const getDiagnosisData = (diagData) => {
-        setDiagnosisData(diagData)
-    }
 
     const objToInputSwitch = {
         complaintsVisible, complaints, setComplaints,

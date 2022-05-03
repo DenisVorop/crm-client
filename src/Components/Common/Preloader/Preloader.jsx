@@ -1,3 +1,4 @@
+import React from 'react'
 
 import './preloader.scss'
 
@@ -29,4 +30,4 @@ const Preloader = () => {
     )
 }
 
-export default Preloader;
+export default Preloader

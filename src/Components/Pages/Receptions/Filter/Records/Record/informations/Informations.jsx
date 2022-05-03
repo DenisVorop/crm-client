@@ -38,11 +38,14 @@ const Informations = ({ last_records }) => {
                     </div>
                 </div>
             </div>
-            <Popup popupActive={popupActive} setPopupActive={setPopupActive} >
+            <Popup
+                popupActive={popupActive}
+                setPopupActive={setPopupActive}
+            >
                 <Last />
             </Popup>
         </div>
     )
 }
 
-export default Informations;
+export default Informations

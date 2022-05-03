@@ -1,6 +1,7 @@
 .header {
-	background: var(--dark-basic);
-	color: var(--back-of-app);
+	// background: var(--dark-basic);
+	// color: var(--back-of-app);
+	color: var(--dark-basic);
 
 	// .header__container
 
@@ -22,6 +23,11 @@
 
 	&__logo {
 		margin: 0px 70px 0px 0px;
+		display: flex;
+		align-items: center;
+		img:last-child {
+			margin: 0px 0px 0px 18px;
+		}
 	}
 
 	// .header__nav
@@ -63,7 +69,8 @@
 		width: 33px;
 		height: 33px;
 		border-radius: 50%;
-		background-color: var(--back-of-app);
+		// background-color: var(--back-of-app);
+		background-color: var(--accent-basic);
 		display: flex;
 		align-items: center;
 		justify-content: center;

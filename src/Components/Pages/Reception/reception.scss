@@ -12,7 +12,8 @@
         margin: 30px 0px 30px 0px;
         // background: var(--back-of-elements);
         // border: 1px solid var(--secondary-basic);
-        // border-radius: 4px;
+        // // border-radius: 4px;
+        border-radius: 8px;
         // padding: 30px 40px;
     }
 
@@ -65,7 +66,8 @@
         &:last-child {
             background: #FFFFFF;
             padding: 25px;
-            border-radius: 4px;
+            // border-radius: 4px;
+            border-radius: 8px;
             position: absolute;
             top: 30px;
             right: 0;
@@ -134,9 +136,11 @@
     &__body {
         display: flex;
         align-items: center;
-        background: var(--back-of-elements);
+        // background: var(--back-of-elements);
+        background: var(--secondary-light);
         border: 1px solid var(--secondary-basic);
-        border-radius: 4px;
+        // border-radius: 4px;
+        border-radius: 8px;
         width: fit-content;
         padding: 4.2px 10px;
         min-width: 489px;
