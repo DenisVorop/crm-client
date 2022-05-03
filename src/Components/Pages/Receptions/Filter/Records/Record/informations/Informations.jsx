@@ -36,6 +36,18 @@ const Informations = ({ last_records }) => {
                             })}
                         </div>
                     </div>
+                    <div className="information__lasts lasts-information">
+                        <div className="information__label bold">Комментарий администратора</div>
+                        <div className="lasts-information__records" style={{ paddingLeft: '20px' }}>
+                            <p
+                                style={{
+                                    fontSize: '14px',
+                                    color: '#3B584F',
+                                }}
+                            >
+                                Я не знаю, что здесь написать, наверное какой-то комментарий...</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <Popup
