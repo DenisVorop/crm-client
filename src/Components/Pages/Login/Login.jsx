@@ -16,6 +16,7 @@ const Login = () => {
     const { user } = useSelector(({ authReducer }) => authReducer);
     const dispatch = useDispatch();
     const navigate = useNavigate()
+    const [error, setError] = React.useState('Ошибок нет')
 
     const signIn = async (values) => {
         try {
@@ -27,6 +28,7 @@ const Login = () => {
             console.log(data)
         } catch (e) {
             alert(e.response.data.message)
+            setError('Какая-то ошибка :(')
         }
     }
 
@@ -84,7 +86,10 @@ const Login = () => {
                                     disabled={!isValid && !dirty}
                                     onClick={handleSubmit}
                                     type='submit'
-                                >Войти в систему</button>
+                                >
+                                    Войти в систему
+                                </button>
+                                {error}
                             </div>
                         </div>
                     </div>

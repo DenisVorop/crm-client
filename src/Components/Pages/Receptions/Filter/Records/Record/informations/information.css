@@ -1,0 +1,98 @@
+.information {
+  margin: 0px 0px 15px 0px;
+}
+.information__title {
+  font-weight: 700;
+  font-size: 22px;
+  text-align: center;
+  background: var(--primary-basic);
+  border-radius: 6px 6px 0px 0px;
+  padding: 5px 22px 8px 12px;
+}
+.information__card {
+  display: flex;
+}
+.information__label {
+  font-size: 16px;
+  margin: 0px 0px 9px 0px;
+  line-height: 22px;
+}
+.information__lasts {
+  padding: 14px 0px 14px 0px;
+}
+.card-information {
+  border-bottom: 1px solid var(--secondary-basic);
+  padding: 9px 0px;
+  margin: 0px 14px 6px 14px;
+}
+.card-information__number {
+  display: flex;
+}
+.card-information__num {
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0px 9px 0px 0px;
+}
+.bold {
+  font-weight: 700;
+  font-size: 18px;
+  padding: 0px 0px 0px 14px;
+}
+
+.last-information {
+  background: var(--primary-light);
+  border-radius: 8px;
+  padding: 14px;
+  width: -webkit-fill-available;
+  width: 400px;
+}
+.last-information__left {
+  display: flex;
+}
+.last-information__label {
+  margin: 0px 0px 1px 0px;
+  font-weight: 700;
+  line-height: 19.1px;
+}
+.last-information__name {
+  font-weight: 400;
+  margin: 0px 0px 14px 0px;
+  line-height: 19px;
+}
+.last-information__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+}
+.last-information__date {
+  margin: 0px 28px 0px 0px;
+}
+.last-information__see {
+  position: relative;
+}
+.last-information__see:hover .last-information__more-see {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.3s ease 0s;
+}
+.last-information__more-see {
+  position: absolute;
+  font-size: 12px;
+  color: rgb(183, 198, 203);
+  bottom: 20px;
+  right: 0px;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s ease 0s;
+}
+
+.chetnoe {
+  background-color: var(--back-of-elements);
+}
+
+.lasts-information__records {
+  display: flex;
+  gap: 20px;
+  padding: 10px 0px 0px 5px;
+}/*# sourceMappingURL=information.css.map */

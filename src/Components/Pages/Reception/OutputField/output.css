@@ -1,0 +1,54 @@
+.output {
+  margin: 0px 0px 15px 0px;
+}
+.output__item:not(:last-child) {
+  margin: 0px 0px 15px 0px;
+}
+.output__title {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  margin: 0px 0px 5px 0px;
+}
+.output__columns {
+  align-items: center;
+  display: flex;
+}
+.output__column:not(:last-child) {
+  margin: 0px 35px 0px 0px;
+}
+.output__row {
+  font-size: 12px;
+  line-height: 100%;
+}
+.output__labels {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px 35px;
+}
+.output__row-label {
+  color: #8B8B8B;
+  font-size: 12px;
+  line-height: 100%;
+  margin: 0px 0px 2px 0px;
+}
+
+.output-field__labels {
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  line-height: 100%;
+  color: #8B8B8B;
+  margin: 0px 0px 2px 0px;
+}
+.output-field__label:first-child {
+  margin: 0px 20px 0px 0px;
+}
+.output-field__item {
+  display: flex;
+  font-size: 12px;
+  line-height: 100%;
+}
+.output-field__eye {
+  margin: 0px 20px 0px 0px;
+}/*# sourceMappingURL=output.css.map */

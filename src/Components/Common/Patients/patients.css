@@ -1,0 +1,26 @@
+.patients__body {
+  padding: 0px 0px 5px 0px;
+}
+.patients__columns {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 34px;
+}
+.patients__column {
+  font-size: 14px;
+  color: var(--secondary-basic);
+}
+.patients__column:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: auto;
+}
+
+.status {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}/*# sourceMappingURL=patients.css.map */

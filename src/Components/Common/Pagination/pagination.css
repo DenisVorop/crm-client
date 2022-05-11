@@ -1,0 +1,16 @@
+.pagination__item-active {
+  color: red;
+}
+.pagination__body {
+  margin: 20px 0px 0px 0px;
+}
+.pagination__items {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pagination__item {
+  padding: 10px;
+  border: 1px solid black;
+  cursor: pointer;
+}/*# sourceMappingURL=pagination.css.map */

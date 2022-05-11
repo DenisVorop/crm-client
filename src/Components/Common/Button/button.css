@@ -1,0 +1,16 @@
+.button {
+  font-size: 18px;
+  line-height: 130%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--back-of-elements);
+  background: var(--gradient-button);
+  border-radius: 20px;
+  padding: 10px 40px;
+  cursor: pointer;
+}
+.button button {
+  font-weight: 700 !important;
+}/*# sourceMappingURL=button.css.map */

@@ -1,0 +1,219 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito+Sans:regular,700&display=swap);
+*::-moz-placeholder {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  color: var(--secondary-basic);
+}
+*:-ms-input-placeholder {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  color: var(--secondary-basic);
+}
+*::placeholder {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  color: var(--secondary-basic);
+}
+
+input,
+select,
+textarea {
+  font-family: "Nunito Sans" !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 18px !important;
+  line-height: 130% !important;
+  color: var(--dark-no-contrast) !important;
+  border: 1px solid var(--secondary-basic);
+  background: var(--secondary-light);
+  border-radius: 8px !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 1px solid var(--accent-basic);
+  border: none;
+}
+
+.time-select {
+  background: rgba(203, 229, 240, 0.3);
+  border: 1px solid var(--accent-basic);
+  border-radius: 8px;
+  width: 366px;
+  height: 30px;
+  padding: 0px 0px 0px 6px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input[type=number]:hover,
+input[type=number]:focus {
+  -moz-appearance: number-input;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  min-width: 320px;
+}
+
+body {
+  color: var(--dark-basic);
+  line-height: 1;
+  font-family: "Nunito Sans";
+  font-size: 14px;
+  font-weight: 400;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--back-of-app);
+}
+
+input,
+button,
+textarea {
+  font-family: "Nunito Sans";
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+  color: inherit;
+  background-color: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+:root {
+  --gradient: linear-gradient(257.53deg, #20D9E3 4.2%, #13F0A1 63.49%);
+  --back-of-app: #FFFFFF;
+  --back-of-elements: #E6FFF1;
+  --secondary-basic: #90C4B1;
+  --secondary-no-contrast: #BFE3D0;
+  --secondary-light: rgba(220, 244, 231, 0.2);
+  --primary-basic: #20D9E3;
+  --primary-no-contrast: #A1F6FB;
+  --primary-light: rgba(210, 253, 255, 0.4);
+  --accent-basic: #13F0A1;
+  --accent-no-contrast: #62FFC6;
+  --accent-ligth: rgba(185, 255, 230, 0.4);
+  --dark-basic: #031610;
+  --dark-nocontrast: #3B584F;
+  --danger-basic: #FF6014;
+  --danger-no-contrast: rgba(255, 96, 20, 0.1);
+  --positive-basic: #1BBF3F;
+  --positive-no-contrast: rgba(19, 202, 60, 0.1);
+  --warning-basic: #FCA626;
+  --warning-no-contrast: rgba(252, 166, 38, 0.1);
+  --gradient-button: linear-gradient(257.42deg, #20D9E3 -28.3%, #13F0A1 86.68%);
+}
+
+@font-face {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Nunito Sans Bold"), local("NunitoSans-Bold"), url("./fonts/NunitoSans-Bold.svg") format("svg"), url("./fonts/NunitoSans-Bold.woff") format("woff"), url("./fonts/NunitoSans-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Nunito Sans Regular"), local("NunitoSans-Regular"), url("./fonts/NunitoSans-Regular.svg") format("svg"), url("./fonts/NunitoSans-Regular.woff") format("woff"), url("./fonts/NunitoSans-Regular.woff2") format("woff2");
+}
+.lock body {
+  overflow: hidden;
+  touch-action: none;
+}
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.wrapper > main {
+  flex: 1 1 auto;
+}
+.wrapper > * {
+  min-width: 0;
+}
+
+[class*=__container] {
+  max-width: 1280px;
+  box-sizing: content-box;
+  margin: 0 auto;
+}
+
+.valid-text-error {
+  color: var(--danger-basic);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.valid-input-error {
+  border: 1px solid var(--danger-basic) !important;
+}/*# sourceMappingURL=app.css.map */

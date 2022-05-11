@@ -1,0 +1,50 @@
+.header {
+  color: var(--dark-basic);
+}
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+.header__body {
+  display: flex;
+  align-items: center;
+}
+.header__logo {
+  margin: 0px 70px 0px 0px;
+  display: flex;
+  align-items: center;
+}
+.header__logo img:last-child {
+  margin: 0px 0px 0px 18px;
+}
+.header__link {
+  font-size: 30px;
+  font-weight: 700;
+}
+.header__link:not(:last-child) {
+  margin: 0px 44px 0px 0px;
+}
+.header__log {
+  display: flex;
+  align-items: center;
+}
+.header__name {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0px 14px 0px 0px;
+}
+.header__button {
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  background-color: var(--accent-basic);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.active-link {
+  border-bottom: 2px solid var(--accent-no-contrast);
+}/*# sourceMappingURL=header.css.map */

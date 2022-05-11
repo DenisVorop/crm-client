@@ -1,0 +1,115 @@
+.new-rec__container {
+  padding: 30px 0px;
+}
+.new-rec__container:last-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+.new-rec__body {
+  width: 676px;
+  margin: 0 auto;
+}
+.new-rec__items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 65px 78px 60px 78px;
+  background-color: var(--back-of-app);
+  border: 1px solid var(--secondary-basic);
+  border-radius: 8px;
+}
+.new-rec__item {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0px 0px 32px 0px;
+}
+.new-rec__vvod {
+  display: flex;
+}
+.new-rec__img img {
+  position: absolute;
+  margin: 12px 0px 0px -22px;
+}
+.new-rec__btn {
+  margin: 18px 0px 0px 0px;
+}
+.new-rec__label {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 130%;
+  margin: 0px 35px 0px 0px;
+}
+.new-rec__input input {
+  background: rgba(203, 229, 240, 0.3);
+  border: 1px solid var(--secondary-basic);
+  border-radius: 8px;
+  width: 366px;
+  height: 30px;
+  padding: 0px 0px 0px 6px;
+}
+.new-rec__input input::-moz-placeholder {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  color: var(--secondary-basic);
+}
+.new-rec__input input:-ms-input-placeholder {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  color: var(--secondary-basic);
+}
+.new-rec__input input::placeholder {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  color: var(--secondary-basic);
+}
+.new-rec__s {
+  display: flex;
+  align-items: center;
+}
+.new-rec__sex {
+  margin: 0px 0px 0px 8px;
+}
+
+.find {
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease 0s;
+}
+.find__field {
+  position: absolute;
+  z-index: 2;
+  background-color: var(--back-of-elements);
+  border: 1px solid var(--secondary-basic);
+  min-width: 48px;
+  max-height: 100px;
+  border-radius: 5px;
+  margin: 5px 0px 0px 0px;
+  overflow-y: scroll;
+}
+
+.find.active {
+  opacity: 1;
+  pointer-events: all;
+  z-index: 2;
+  background-color: var(--back-of-elements);
+  transition: all 0.3s ease 0s;
+}
+
+.visible-field {
+  padding: 5px;
+}
+.visible-field:not(:last-child) {
+  margin: 0px 0px 5px 0px;
+  border-bottom: 1px solid var(--secondary-basic);
+}/*# sourceMappingURL=newrecord.css.map */

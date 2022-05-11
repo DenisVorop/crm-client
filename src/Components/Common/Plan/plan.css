@@ -1,0 +1,54 @@
+.plan {
+  background-color: var(--back-of-elements);
+}
+.plan__container {
+  padding: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.plan__header {
+  display: flex;
+  align-items: center;
+  height: 28px;
+}
+.plan__new img {
+  transform: scale(1);
+  transition: all 0.3s ease 0s;
+}
+.plan__new:hover img {
+  transform: scale(1.2);
+  transition: all 0.3s ease 0s;
+}
+.plan__print {
+  margin: 0px 14px 0px 0px;
+  cursor: pointer;
+}
+.plan__label {
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--dark-basic);
+}
+
+.new-plan {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 143%;
+}
+.new-plan__pat {
+  margin: 0px 10px 0px 0px;
+  color: var(--back-of-app);
+  padding: 6px 18px;
+  background: var(--gradient-button);
+  border-radius: 20px;
+  line-height: 100%;
+}
+.new-plan__rec {
+  color: var(--back-of-app);
+  padding: 6px 18px;
+  background: var(--gradient-button);
+  border-radius: 20px;
+  line-height: 100%;
+}/*# sourceMappingURL=plan.css.map */

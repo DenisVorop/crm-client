@@ -1,0 +1,143 @@
+.filter {
+  padding: 0px 0px 30px 0px;
+  min-height: 90.5vh;
+}
+.filter__head {
+  display: flex;
+  align-items: center;
+  padding: 22px 0;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-right: -35px;
+  gap: 10px;
+}
+.filter__head input {
+  border: 1px solid var(--secondary-basic);
+  border-radius: 8px;
+  height: 30px;
+  padding: 0px 0px 0px 30px;
+  margin: 0px 3px 0px 0px;
+}
+.filter__head input::-moz-placeholder {
+  font-family: "Nunito Sans", serif;
+  color: var(--secondary-no-contrast);
+}
+.filter__head input:-ms-input-placeholder {
+  font-family: "Nunito Sans", serif;
+  color: var(--secondary-no-contrast);
+}
+.filter__head input::placeholder {
+  font-family: "Nunito Sans", serif;
+  color: var(--secondary-no-contrast);
+}
+.filter__head > :last-child {
+  margin-right: 35px;
+}
+.date-filter {
+  display: flex;
+  align-items: center;
+}
+.date-filter__label {
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0px 16px 0px 0px;
+}
+.date-filter__date {
+  display: flex;
+  align-items: center;
+}
+.date-filter__arrow-l {
+  margin: 0px 7px 0px 0px;
+}
+.date-filter__arrow-r {
+  margin: 0px 0px 0px 7px;
+}
+.date-filter__choice {
+  margin: 0px 2px 0px 0px;
+  background-color: var(--back-of-elements);
+  height: 30px;
+}
+.date-filter__calendar {
+  padding: 4.5px;
+  border: 1px solid var(--secondary-basic);
+  border-radius: 8px;
+  background-color: var(--back-of-elements);
+}
+.date-filter__calendar img {
+  width: 21px;
+  height: 19px;
+}
+
+.patient-filter {
+  display: flex;
+  align-items: center;
+}
+.patient-filter:not(:last-child) {
+  margin: 0px 35px 0px 0px;
+}
+.patient-filter__card {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  background: var(--gradient-button);
+  color: var(--back-of-app);
+  border-radius: 8px;
+  margin: 0px 18px 0px 0px;
+}
+.patient-filter__card label {
+  font-weight: 400;
+  font-size: 16px;
+}
+.patient-filter__card input.patient-filter__checkbox {
+  height: auto;
+  margin-left: -15px;
+}
+.patient-filter__label {
+  color: var(--dark-no-contrast);
+  font-size: 18px;
+  margin: 0px 27px 0px 0px;
+  font-weight: 700;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.patient-filter__checkbox {
+  margin: 0px 0px 0px -20px;
+}
+.patient-filter__number {
+  display: flex;
+  align-items: center;
+}
+.patient-filter__number img {
+  position: relative;
+  z-index: 2;
+  margin: 0px -23px 0px 0px;
+}
+.patient-filter__search {
+  background: var(--accent-no-contrast);
+  border-radius: 20px;
+  padding: 15px 18px;
+  color: var(--back-of-app);
+  font-weight: 700;
+  font-size: 18px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.patient-filter__input {
+  border: 1px solid var(--secondary-basic);
+  border-radius: 8px;
+  width: 380px;
+  height: 30px;
+  padding: 0px 0px 0px 30px;
+  margin: 0px 3px 0px 0px;
+}
+.filter-sex {
+  display: flex;
+  align-items: center;
+}
+.filter-sex__option {
+  margin: 0px 0px 0px 8px;
+}/*# sourceMappingURL=filter.css.map */
