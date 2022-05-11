@@ -33,13 +33,13 @@ function App() {
     //   dispatch(setLoginValues(data))
     // })
 
-    // if (isAuth === false && !window.localStorage.token) {
-    //   navigate('/login')
-    // }
-    // if (window.localStorage.token) {
-    //   location.pathname === '/login' && navigate(-1)
-    //   dispatch(setLoginValues(JSON.parse(window.localStorage.user)))
-    // }
+    if (isAuth === false && !window.localStorage.token) {
+      navigate('/login')
+    }
+    if (window.localStorage.token) {
+      location.pathname === '/login' && navigate(-1)
+      dispatch(setLoginValues(JSON.parse(window.localStorage.user)))
+    }
 
     dispatch(getTodayRecords())
     dispatch(getCardsData())
