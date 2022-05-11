@@ -1,9 +1,9 @@
 import React from 'react'
 
 import OutputColumnSwitch from "../../../../hocs/OutputColumnSwitch"
+import {outputPatientLabels, outputRecordLabels} from '../../../../Arrays/labels'
 
-
-const Output = ({outputPatientLabels, outputRecordLabels, objToOutputColumnSwitch, }) => {
+const Output = ({ objToOutputColumnSwitch, }) => {
 
     return (
         <div className="output">

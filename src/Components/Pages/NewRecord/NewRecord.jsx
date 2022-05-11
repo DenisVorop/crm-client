@@ -245,7 +245,7 @@ const NewRecord = () => {
                                                                 return (
                                                                     <option
                                                                         name='time'
-                                                                        value={time.time_id}
+                                                                        value={time.time_index}
                                                                         key={`${time}_${index}`}
                                                                     >
                                                                         {time.time}

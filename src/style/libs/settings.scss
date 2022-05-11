@@ -62,9 +62,9 @@ input:focus,
 select:focus,
 textarea:focus {
     outline: 1px solid var(--accent-basic);
+    border: none;
     // outline: 1px solid var(--positive-basic);
     // outline: 1px solid #0076A3;
-    border: none;
 }
 
 

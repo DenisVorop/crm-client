@@ -38,7 +38,7 @@ const EnterField = ({ field, visible, setVisible, nextVisible, setValue, value, 
     const [vitreous, setVitreous] = React.useState({ first: '', second: '', third: '' }) // 6  vitreous
     const [dznVisible, setDznVisible] = React.useState(false) // 7
     const [dzn, setDzn] = React.useState({ first: '', second: '', third: '' }) // 7  dzn
-    const [posteriorVisible, setPosteriorVisible] = React.useState(false) // 8
+    const [posteriorVisible, setPosteriorVisible] = React.useState(true) // 8
     const [posterior, setPosterior] = React.useState({ first: '', second: '', third: '' }) // 8  posterior
     // ---
 
@@ -82,7 +82,7 @@ const EnterField = ({ field, visible, setVisible, nextVisible, setValue, value, 
         lensVisible, vitreousVisible, dznVisible, posteriorVisible, mainDiagnosisVisible,
         concomitantProfileDiagnosisVisible, associatedMedicalDiagnosisVisible,
         visometryIOPVisible, visometryInCycloplegiaVisible, pachymetricMapVisible,
-        autorefractometryVisible,
+        autorefractometryVisible, pharmacologyVisible, operationsVisible
     }
     const setVisibleObj = {
         setPharmacologyVisible, setCorneaVisible, setFrontVisible, setIrisVisible,
@@ -133,7 +133,7 @@ const EnterField = ({ field, visible, setVisible, nextVisible, setValue, value, 
                                     () => (
                                         setCount(count - 1),
                                         index === 2
-                                            ? setValue({ second: value.second, third: '' })
+                                            ? setValue({ first: value.first, second: value.second, third: '' })
                                             : index === 1 ? setValue({ first: value.first, second: '', third: '' })
                                                 : null
                                     )

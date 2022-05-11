@@ -24,7 +24,7 @@ const Login = () => {
             // data = await registrationApi(values.login, values.password)
             dispatch(setLoginValues(data));
             navigate('/receptions')
-            console.log(user)
+            console.log(data)
         } catch (e) {
             alert(e.response.data.message)
         }

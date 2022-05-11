@@ -1,71 +1,61 @@
-import React from 'react';
-import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react'
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
-import Header from './Components/Common/Header/Header';
-import Preloader from './Components/Common/Preloader/Preloader';
-import Login from "./Components/Pages/Login/Login";
-import Page from "./Components/Pages/Receptions/Page";
-import NewPatient from './Components/Pages/NewPatient/NewPatient';
-import NewRecord from './Components/Pages/NewRecord/NewRecord';
-import AllCards from './Components/Pages/Cards/AllCards';
-import Notfound from './Components/Pages/NotFound/NotFound';
-import Card from './Components/Pages/Card/Card';
-import Reception from './Components/Pages/Reception/Reception';
+import Header from './Components/Common/Header/Header'
+import Preloader from './Components/Common/Preloader/Preloader'
+import Login from "./Components/Pages/Login/Login"
+import Page from "./Components/Pages/Receptions/Page"
+import NewPatient from './Components/Pages/NewPatient/NewPatient'
+import NewRecord from './Components/Pages/NewRecord/NewRecord'
+import AllCards from './Components/Pages/Cards/AllCards'
+import Notfound from './Components/Pages/NotFound/NotFound'
+import Card from './Components/Pages/Card/Card'
+import Reception from './Components/Pages/Reception/Reception'
 
-import { getoldUsersData, getTimesData, getAllCards, getTotalCount } from './Redux/Reducers/usersReducer';
-import { setLoginValues } from './Redux/Reducers/authReducer';
+import { getTodayRecords, getTimesData, getCardsData } from './Redux/Reducers/usersReducer'
+import { setLoginValues } from './Redux/Reducers/authReducer'
 
-import { checkApi } from './API/loginApi';
-import { fetchCards } from './API/cardsApi';
+import { checkApi } from './API/loginApi'
 
 
 function App() {
 
-  const { user, isAuth } = useSelector(({ authReducer }) => authReducer);
-  const { currentPage, limit } = useSelector(({ usersReducer }) => usersReducer);
+  const { isAuth } = useSelector(({ authReducer }) => authReducer)
 
   const [loading, setLoading] = React.useState(true)
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const navigate = useNavigate()
-  const location = useLocation();
+  const location = useLocation()
 
   React.useEffect(() => {
-    checkApi().then(data => {
-      dispatch(setLoginValues(data));
-    })
-
-    fetchCards().then(data => {
-      dispatch(getAllCards(data.rows))
-      dispatch(getTotalCount(data.count))
-    }).finally(() => setLoading(false))
+    // checkApi().then(data => {
+    //   dispatch(setLoginValues(data))
+    // })
 
     if (isAuth === false && !window.localStorage.token) {
       navigate('/login')
     }
     if (window.localStorage.token) {
       location.pathname === '/login' && navigate(-1)
+      dispatch(setLoginValues(JSON.parse(window.localStorage.user)))
+      console.log(window.localStorage.user)
     }
 
-    dispatch(getoldUsersData());
-    dispatch(getTimesData());
-  }, []);
+    dispatch(getTodayRecords())
+    dispatch(getCardsData())
+    dispatch(getTimesData())
+    setLoading(false)
+  }, [])
 
-  React.useEffect(()=> {
-    fetchCards(currentPage, limit).then(data => {
-      dispatch(getAllCards(data.rows))
-      dispatch(getTotalCount(data.count))
-    }).finally(() => setLoading(false))
-  }, [currentPage, limit])
-
-  const [cardInfo, setCardInfo] = React.useState(null)
+  const [cardId, setCardId] = React.useState(null)
   const [receptionInfo, setReceptionInfo] = React.useState(null)
 
-  const getCardNum = (objPatCard) => {
-    setCardInfo(objPatCard)
+  const getPatientId = (id) => {
+    setCardId(id)
   }
 
-  const getReception = (objReception) => {
+  const startReception = (objReception) => {
     setReceptionInfo(objReception)
   }
 
@@ -81,7 +71,7 @@ function App() {
           <Route index
             element={<Navigate to='receptions' />} />
           <Route path={'receptions'}
-            element={<Page getReception={getReception} />} />
+            element={<Page startReception={startReception} />} />
           <Route path={'receptions/:reception'}
             element={<Reception receptionInfo={receptionInfo} />} />
           <Route path={'new-patient'}
@@ -89,9 +79,9 @@ function App() {
           <Route path={'new-record'}
             element={<NewRecord />} />
           <Route path={'cards'}
-            element={<AllCards getCardNum={getCardNum} />} />
+            element={<AllCards getPatientId={getPatientId} />} />
           <Route path={'card/:cardNum'}
-            element={<Card cardInfo={cardInfo} />} />
+            element={<Card cardId={cardId} />} />
           <Route path={'404'}
             element={<Notfound />} />
         </Route>
@@ -99,7 +89,7 @@ function App() {
           element={<Navigate to='404' />} />
       </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

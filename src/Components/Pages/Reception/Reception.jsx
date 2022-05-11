@@ -1,9 +1,12 @@
 import React from 'react'
-import { Navigate } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
+import { useDispatch } from 'react-redux'
 
 import Button from "../../Common/Button/Button"
 import Plan from "../../Common/Plan/Plan"
 import Output from './OutputItem/Output'
+
+import ReceptionDoc from '../../Docs/ReceptionDoc'
 
 import './reception.scss'
 
@@ -14,8 +17,14 @@ import ReceptionSwitch from '../../../hocs/ReceptionSwitch'
 import { enterFields } from '../../../Arrays/fields'
 import { receptionLabels, outputPatientLabels, outputRecordLabels } from '../../../Arrays/labels'
 
+// import { savePatientRecord } from '../../../Redux/Reducers/recordReducer'
+import { savePatientRecord } from '../../../Redux/Reducers/usersReducer'
+import OutputCommon from '../../Common/OutputCommon/OutputCommon'
+
 
 const Reception = ({ receptionInfo }) => {
+
+    const dispatch = useDispatch()
 
     const [historyData, setHistoryData] = React.useState([])
     const [statusData, setStatusData] = React.useState([])
@@ -48,7 +57,7 @@ const Reception = ({ receptionInfo }) => {
     const { last_name, first_name, patronymic, sex,
         birth, marital_status, reg_addres, fact_addres, card_num,
         phone, first_record, last_record, policy, name, card_info: { card_info },
-        last_records: { last_records } } = receptionInfo
+        last_records: { last_records }, id } = receptionInfo
 
     // TODO: переделать компонент инпут
 
@@ -74,7 +83,13 @@ const Reception = ({ receptionInfo }) => {
         patient: name,
         policy: policy,
         card_num: card_num,
-        location: 'Филиал в Новых Черемушках №2'
+        clinic: receptionInfo.doctor.clinic,
+        specialization: receptionInfo.doctor.specialization,
+        patientId: id,
+    }
+
+    const endPatientRecord = () => {
+        dispatch(savePatientRecord({ info: objToReceptionSwitch, inspection: objToOutputSwitch }))
     }
 
     return (
@@ -104,27 +119,19 @@ const Reception = ({ receptionInfo }) => {
                                 })}
                             </div>
                             <div className="reception__part">
-                                <Output
-                                    outputPatientLabels={outputPatientLabels}
-                                    outputRecordLabels={outputRecordLabels}
+                                <OutputCommon
                                     objToOutputColumnSwitch={objToOutputColumnSwitch}
+                                    objToOutputSwitch={objToOutputSwitch}
                                 />
-                                <div className="outputs">
-                                    {enterFields.map((field, index) => {
-                                        return <OutputFieldSwitch
-                                            key={`${field}_${index}`}
-                                            field={field}
-                                            index={index}
-                                            objToOutputSwitch={objToOutputSwitch}
-                                        />
-                                    })}
-                                </div>
                             </div>
                         </div>
                     </div>
-                    <div className="reception__save">
-                        <Button label='Сохранить изменения' />
+                    <div className="reception__save" onClick={endPatientRecord}>
+                        <Link to='/receptions'>
+                            <Button label='Сохранить изменения' />
+                        </Link>
                     </div>
+                    <ReceptionDoc />
                 </div>
             </div>
         </>

@@ -22,6 +22,7 @@ const Header = () => {
     const logOut = () => {
         dispatch(setLogoutValues({}));
         window.localStorage.removeItem('token')
+        window.localStorage.removeItem('user')
         navigate('/login')
     }
 

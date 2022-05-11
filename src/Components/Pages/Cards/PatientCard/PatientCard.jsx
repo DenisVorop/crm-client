@@ -2,18 +2,10 @@ import React from 'react'
 import { Link } from "react-router-dom"
 
 
-const PatientCard = ({ age, birth, card_num, card_info,
-    fact_addres, first_name, first_record,
-    last_name, last_record, marital_status, name,
-    patronymic, phone, reg_addres, sex, getCardNum, policy }) => {
+const PatientCard = ({ age, card_num, name, phone, sex, getPatientId, policy, id }) => {
 
     const onRedirectToPatientCard = () => {
-        const objPatientCard = [
-            last_name, first_name, patronymic, sex,
-            birth, marital_status, reg_addres, fact_addres,
-            phone, first_record, last_record, card_info = { card_info },
-        ]
-        getCardNum(objPatientCard)
+        getPatientId(id)
     }
 
     return (

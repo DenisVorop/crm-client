@@ -21,8 +21,8 @@
 
     &__title {
         font-weight: 700;
-        font-size: 16px;
-        line-height: 22px;
+        font-size: 12px;
+        line-height: 100%;
         margin: 0px 0px 5px 0px;
     }
 
@@ -48,16 +48,25 @@
     // .output__row
 
     &__row {
-        font-size: 16px;
-        line-height: 22px;
+        font-size: 12px;
+        line-height: 100%;
+    }
+
+    // .output__labels
+
+    &__labels {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 8px 35px;
     }
 
     // .output__row-label
 
     &__row-label {
-        color: #012B39;
+        color: #8B8B8B;
         font-size: 12px;
-        line-height: 22px;
+        line-height: 100%;
+        margin: 0px 0px 2px 0px;
     }
 }
 
@@ -76,9 +85,10 @@
     &__labels {
         display: flex;
         align-items: center;
-        font-size: 12px;
-        line-height: 16px;
-        color: #0076A3;
+        font-size: 10px;
+        line-height: 100%;
+        color: #8B8B8B;
+        margin: 0px 0px 2px 0px;
     }
 
     // .output-field__label
@@ -97,8 +107,8 @@
 
     &__item {
         display: flex;
-        font-size: 16px;
-        line-height: 22px;
+        font-size: 12px;
+        line-height: 100%;
     }
 
     // .output-field__eye
@@ -113,6 +123,7 @@
 }
 
 .outputs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    // display: grid;
+    // grid-template-columns: 1fr 1fr;
+    // gap: 30px;
 }

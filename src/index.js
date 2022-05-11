@@ -9,12 +9,12 @@ import store from './Redux/store';
 import './style/app.scss';
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Provider store={store}>
           <App />
       </Provider>
-    </BrowserRouter>
-  </React.StrictMode>,
+    </BrowserRouter>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );

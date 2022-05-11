@@ -9,27 +9,27 @@ const OutputFieldSwitch = ({ field, index, objToOutputSwitch }) => {
 
     switch (field.label) {
         case 'Жалобы пациента': {
-            firstInputText = objToOutputSwitch.complaints.first
-            secondInputText = objToOutputSwitch.complaints.second
-            thirdInputText = objToOutputSwitch.complaints.third
+            firstInputText = objToOutputSwitch?.complaints?.first
+            secondInputText = objToOutputSwitch?.complaints?.second
+            thirdInputText = objToOutputSwitch?.complaints?.third
             break
         }
         case 'Анамнез пациента': {
-            firstInputText = objToOutputSwitch.history.first
-            secondInputText = objToOutputSwitch.history.second
-            thirdInputText = objToOutputSwitch.history.third
+            firstInputText = objToOutputSwitch?.history?.first
+            secondInputText = objToOutputSwitch?.history?.second
+            thirdInputText = objToOutputSwitch?.history?.third
             break
         }
         case 'Status ophtalmicus': {
-            firstInputText = objToOutputSwitch.status.first
-            secondInputText = objToOutputSwitch.status.second
-            thirdInputText = objToOutputSwitch.status.third
+            firstInputText = objToOutputSwitch?.status?.first
+            secondInputText = objToOutputSwitch?.status?.second
+            thirdInputText = objToOutputSwitch?.status?.third
             break
         }
         case 'Диагноз': {
-            firstInputText = objToOutputSwitch.diagnosis.first
-            secondInputText = objToOutputSwitch.diagnosis.second
-            thirdInputText = objToOutputSwitch.diagnosis.third
+            firstInputText = objToOutputSwitch?.diagnosis?.first
+            secondInputText = objToOutputSwitch?.diagnosis?.second
+            thirdInputText = objToOutputSwitch?.diagnosis?.third
             break
         }
     }
@@ -40,9 +40,9 @@ const OutputFieldSwitch = ({ field, index, objToOutputSwitch }) => {
         secondInputText={secondInputText}
         thirdInputText={thirdInputText}
         index={index}
-        historyData={objToOutputSwitch.historyData}
-        statusData={objToOutputSwitch.statusData}
-        diagnosisData={objToOutputSwitch.diagnosisData}
+        historyData={objToOutputSwitch?.historyData}
+        statusData={objToOutputSwitch?.statusData}
+        diagnosisData={objToOutputSwitch?.diagnosisData}
     />
 
 }

@@ -1,22 +1,19 @@
 import React from 'react';
 
 import Popup from '../../../../../../Common/Popup/Popup';
-import Last from './Information/LastsRecords/Last';
+import LastRecord from '../../../../../../Common/LastRecords/LastRecord';
 import Information from './Information/information';
 
 import './information.scss';
+import EmptySearch from '../../../../../../Common/EmptySearch/EmptySearch';
+
 
 const Informations = ({ last_records }) => {
 
     const [popupActive, setPopupActive] = React.useState(false);
+    const [popupActiveIndex, setPopupActiveIndex] = React.useState(null);
 
     let cloneLastRecords = Array.from(last_records)
-
-    if (last_records.length === 0) {
-        cloneLastRecords = [{ position: 'Нет данных' }]
-    } else {
-        cloneLastRecords.reverse()
-    }
 
     return (
         <div className="information">
@@ -25,20 +22,27 @@ const Informations = ({ last_records }) => {
                     <div className="information__lasts lasts-information">
                         <div className="information__label bold">Последние приемы</div>
                         <div className="lasts-information__records">
-                            {cloneLastRecords.map((obj, index) => {
-                                for (; index < 3;) {
-                                    return <Information
-                                        key={`${obj}_${index}`}
-                                        setPopupActive={setPopupActive}
-                                        {...obj}
-                                    />
-                                }
-                            })}
+                            {cloneLastRecords.length !== 0
+                                ? cloneLastRecords.map((obj, index) => {
+                                    for (; index < 3;) {
+                                        return <Information
+                                            key={`${obj}_${index}`}
+                                            setPopupActive={setPopupActive}
+                                            setPopupActiveIndex={setPopupActiveIndex}
+                                            {...obj}
+                                            date_last_record={obj?.info?.date}
+                                            index={index}
+                                            {...obj?.info}
+                                            {...obj?.inspection}
+                                        />
+                                    }
+                                })
+                                : <EmptySearch />}
                         </div>
                     </div>
                     <div className="information__lasts lasts-information">
                         <div className="information__label bold">Комментарий администратора</div>
-                        <div className="lasts-information__records" style={{ paddingLeft: '20px' }}>
+                        <div className="lasts-information__records" style={{ paddingLeft: '15px' }}>
                             <p
                                 style={{
                                     fontSize: '14px',
@@ -53,8 +57,9 @@ const Informations = ({ last_records }) => {
             <Popup
                 popupActive={popupActive}
                 setPopupActive={setPopupActive}
+                setPopupActiveIndex={setPopupActiveIndex}
             >
-                <Last />
+                <LastRecord record={cloneLastRecords[popupActiveIndex]} />
             </Popup>
         </div>
     )

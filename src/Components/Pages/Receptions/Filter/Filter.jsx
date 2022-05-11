@@ -8,23 +8,28 @@ import Records from "./Records/Records";
 import './filter.scss';
 
 
-const Filter = ({ getReception }) => {
+const Filter = ({ startReception }) => {
 
     const { usersData } = useSelector(({ usersReducer }) => usersReducer);
 
-    const arrUsers = JSON.parse(JSON.stringify(usersData));
-    arrUsers.sort((a, b) => a.time_id > b.time_id ? 1 : -1);
-
-    const [activeUsers, setActiveUsers] = React.useState(arrUsers);
+    const [activeUsers, setActiveUsers] = React.useState(null)
     const [num, setNum] = React.useState(false)
-    const receptionsRef = React.useRef();
+    const [loading, setLoading] = React.useState(true)
+    const receptionsRef = React.useRef()
+
+    React.useEffect(() => {
+        if (usersData.length !== 0) {
+            setActiveUsers(usersData)
+            setTimeout(() => setLoading(false), 0)
+        }
+    }, [usersData])
 
     const onSearchClick = React.useCallback(() => {
         let filteredUsers
         if (!num) {
-            filteredUsers = arrUsers.filter(user => user.name.toLowerCase().includes(receptionsRef.current.value.toLowerCase()))
+            filteredUsers = usersData.filter(user => user.name.toLowerCase().includes(receptionsRef.current.value.toLowerCase()))
         } else {
-            filteredUsers = arrUsers.filter(user => user.card_num.toLowerCase().includes(receptionsRef.current.value.toLowerCase()))
+            filteredUsers = usersData.filter(user => user.card_num.toLowerCase().includes(receptionsRef.current.value.toLowerCase()))
         }
         setActiveUsers(filteredUsers)
     }, [usersData])
@@ -48,9 +53,8 @@ const Filter = ({ getReception }) => {
                     />
                     <Records
                         activeUsers={activeUsers}
-                        onSearchClick={onSearchClick}
-                        usersData={usersData}
-                        getReception={getReception}
+                        startReception={startReception}
+                        loading={loading}
                     />
                 </div>
             </div>

@@ -6,9 +6,6 @@ const preloaderStyle = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: '100vw',
-        height: '100vh',
-        backgroundColor: 'var(--dark-basic)'
 }
 
 const Preloader = () => {

@@ -78,8 +78,8 @@ const FieldMore = ({ label, nextVisible, title, setValue, index, value }) => {
                                     nextVisible(true),
                                     e.target.id === '0'
                                         ? setValue({ first: e.target.value })
-                                        : e.target.id === '1' ? setValue({  second: e.target.value})
-                                            : setValue({  third: e.target.value })
+                                        : e.target.id === '1' ? setValue({ second: e.target.value })
+                                            : setValue({ third: e.target.value })
                                 )
                             }
                         />
@@ -141,7 +141,11 @@ const FieldMore = ({ label, nextVisible, title, setValue, index, value }) => {
                                             className="row-reception__delete"
                                             onClick={
                                                 () => (
-                                                    setCount(count - 1)
+                                                    setCount(count - 1),
+                                                    index === 2
+                                                        ? setValue({ first: value.first, second: value.second, third: '' })
+                                                        : index === 1 ? setValue({ first: value.first, second: '', third: '' })
+                                                            : null
                                                 )
                                             }
                                         >

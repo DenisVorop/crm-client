@@ -1,33 +1,37 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import EmptySearch from '../../../../Common/EmptySearch/EmptySearch';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Record from './Record/Record';
+import EmptySearch from '../../../../Common/EmptySearch/EmptySearch';
+
+import { getTodayRecords } from '../../../../../Redux/Reducers/usersReducer'
 
 import './records.scss';
+import Preloader from '../../../../Common/Preloader/Preloader';
 
 
-const Records = ({ activeUsers, onSearchClick, usersData, getReception }) => {
+const Records = ({ activeUsers, startReception, loading }) => {
 
     const { timesData } = useSelector(({ usersReducer }) => usersReducer);
+    const dispatch = useDispatch()
 
     React.useEffect(() => {
-        (function () {
-            onSearchClick()
-        })()
-    }, [usersData]);
+        dispatch(getTodayRecords())
+    }, [])
 
     return (
         <div className="records__body">
-            {activeUsers.map((obj, index) => {
-                return <Record
-                    timeObj={timesData}
-                    key={`${obj}_${index}`}
-                    {...obj}
-                    getReception={getReception}
-                />
-            })}
-            {activeUsers.length === 0
+            {loading
+                ? <Preloader />
+                : activeUsers.map((obj, index) => {
+                    return <Record
+                        timeObj={timesData}
+                        key={`${obj}_${index}`}
+                        {...obj}
+                        startReception={startReception}
+                    />
+                })}
+            {!loading && activeUsers.length === 0
                 ? <EmptySearch />
                 : null
             }
