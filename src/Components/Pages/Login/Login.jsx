@@ -25,6 +25,7 @@ const Login = () => {
             // data = await registrationApi(values.login, values.password)
             dispatch(setLoginValues(data));
             navigate('/receptions')
+            setError('Должно быть все ОК :(')
             console.log(data)
         } catch (e) {
             alert(e.response.data.message)
