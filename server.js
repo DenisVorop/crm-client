@@ -8,8 +8,10 @@ const middlewares = jsonServer.defaults({
 
 const PORT = process.env.PORT || 4444;
 
-server.use(middlewares);
+server.db = router.db
+
 server.use(jsonServerAuth);
+server.use(middlewares);
 server.use(router);
 
 server.listen(PORT, () => {
