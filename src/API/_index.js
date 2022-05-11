@@ -4,22 +4,22 @@ import { REACT_APP_API_URL, REACT_APP_HEROKU_URL, REACT_APP_API_URL_JSON } from 
 
 const $host = axios.create({
     withCredentials: true,
-    baseURL: REACT_APP_API_URL,
+    baseURL: REACT_APP_API_URL | '',
 })
 
 const $authHost = axios.create({
     withCredentials: true,
-    baseURL: REACT_APP_API_URL,
+    baseURL: REACT_APP_API_URL | '',
 })
 
 const $heroku = axios.create({
     withCredentials: true,
-    baseURL: REACT_APP_HEROKU_URL,
+    baseURL: REACT_APP_HEROKU_URL | '',
 })
 
 const $local = axios.create({
     withCredentials: true,
-    baseURL: REACT_APP_API_URL_JSON,
+    baseURL: REACT_APP_API_URL_JSON | '',
 })
 
 const authInterceptor = config => {
