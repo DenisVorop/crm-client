@@ -1,5 +1,5 @@
 import axios from "axios"
-import { REACT_APP_API_URL, REACT_APP_HEROKU_URL, REACT_APP_API_URL_JSON } from "./_url"
+import { REACT_APP_API_URL, REACT_APP_API_URL_JSON } from "./_url"
 
 
 const $host = axios.create({
@@ -10,11 +10,6 @@ const $host = axios.create({
 const $authHost = axios.create({
     withCredentials: true,
     baseURL: REACT_APP_API_URL | '',
-})
-
-const $heroku = axios.create({
-    withCredentials: true,
-    baseURL: REACT_APP_HEROKU_URL | '',
 })
 
 const $local = axios.create({
@@ -32,6 +27,5 @@ $authHost.interceptors.request.use(authInterceptor)
 export {
     $authHost,
     $host,
-    $heroku,
     $local,
 }
