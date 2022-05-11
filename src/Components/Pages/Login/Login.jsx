@@ -24,11 +24,11 @@ const Login = () => {
             data = await loginApi(values.login, values.password)
             // data = await registrationApi(values.login, values.password)
             dispatch(setLoginValues(data));
-            navigate('/receptions')
+            // navigate('/receptions')
             setError('Должно быть все ОК :(')
             console.log(data)
         } catch (e) {
-            alert(e.response.data.message)
+            // alert(e.response.data.message)
             setError('Какая-то ошибка :(')
         }
     }
