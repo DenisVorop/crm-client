@@ -3,10 +3,11 @@ import React from 'react'
 import plus from '../../../../assets/img/plus.svg'
 import del from '../../../../assets/img/del.svg'
 
-import EyeInput from './EyeInput/EyeInput'
 import AddMoreSwitch from '../../../../hocs/AddMoreSwitch'
 
 import { eyes } from '../../../../Arrays/eyes'
+
+import EyeInput from './EyeInput/EyeInput'
 
 
 const EnterField = ({ field, visible, setVisible, nextVisible, setValue, value, getHistoryData, getStatusData, getDiagnosisData }) => {
@@ -15,7 +16,7 @@ const EnterField = ({ field, visible, setVisible, nextVisible, setValue, value, 
     React.useEffect(() => { count >= 4 && setCount(3) }, [count])
 
     // Видимость тем и полей ввода
-    const [allergyVisible, setAlergyVisible] = React.useState(true) // 1
+    const [allergyVisible] = React.useState(true) // 1
     const [allergy, setAlergy] = React.useState({ first: '', second: '', third: '' }) // 1  allergy
     const [pharmacologyVisible, setPharmacologyVisible] = React.useState(false) // 2
     const [pharmacology, setPharmacology] = React.useState({ first: '', second: '', third: '' }) // 2  pharmacology
@@ -24,7 +25,7 @@ const EnterField = ({ field, visible, setVisible, nextVisible, setValue, value, 
     // ---
 
     // Видимость полей ввода у тем
-    const [adnexaVisible, setAdnexaVisible] = React.useState(true) // 1
+    const [adnexaVisible] = React.useState(true) // 1
     const [adnexa, setAdnexa] = React.useState({ first: '', second: '', third: '' }) // 1  adnexa
     const [corneaVisible, setCorneaVisible] = React.useState(false) // 2
     const [cornea, setCornea] = React.useState({ first: '', second: '', third: '' }) // 2  cornea
@@ -82,7 +83,7 @@ const EnterField = ({ field, visible, setVisible, nextVisible, setValue, value, 
         lensVisible, vitreousVisible, dznVisible, posteriorVisible, mainDiagnosisVisible,
         concomitantProfileDiagnosisVisible, associatedMedicalDiagnosisVisible,
         visometryIOPVisible, visometryInCycloplegiaVisible, pachymetricMapVisible,
-        autorefractometryVisible, pharmacologyVisible, operationsVisible
+        autorefractometryVisible, pharmacologyVisible, operationsVisible,
     }
     const setVisibleObj = {
         setPharmacologyVisible, setCorneaVisible, setFrontVisible, setIrisVisible,
@@ -109,14 +110,14 @@ const EnterField = ({ field, visible, setVisible, nextVisible, setValue, value, 
 
     return (
         visible &&
-        <div className="reception__row row-reception">
-            <div className="row-reception__label">{field.label}</div>
-            <div className="row-reception__text">{field.text}</div>
+        <div className='reception__row row-reception'>
+            <div className='row-reception__label'>{field.label}</div>
+            <div className='row-reception__text'>{field.text}</div>
             {field.label !== 'Данные обследований'
                 ? [...Array(count)].map((input, index) => {
                     return (
                         <div
-                            className="row-reception__one-field"
+                            className='row-reception__one-field'
                             key={`${input}_${index}`}>
                             <EyeInput
                                 setCount={setCount}
@@ -128,7 +129,7 @@ const EnterField = ({ field, visible, setVisible, nextVisible, setValue, value, 
                                 value={value}
                             />
                             <div
-                                className="row-reception__delete"
+                                className='row-reception__delete'
                                 onClick={
                                     () => (
                                         setCount(count - 1),
@@ -140,7 +141,7 @@ const EnterField = ({ field, visible, setVisible, nextVisible, setValue, value, 
                                 }
                             >
                                 {[...Array(count)].length === index + 1 && count !== 1
-                                    ? <img src={del} alt="Delete" />
+                                    ? <img src={del} alt='Delete' />
                                     : null
                                 }
                             </div>
@@ -149,15 +150,15 @@ const EnterField = ({ field, visible, setVisible, nextVisible, setValue, value, 
                 })
                 : null
             }
-            <div className="row-reception__add">
+            <div className='row-reception__add'>
                 {field.label !== 'Данные обследований'
-                    ? <div className="row-reception__add-more" onClick={() => setCount(count + 1)}>
-                        <img src={plus} alt="plus" />
+                    ? <div className='row-reception__add-more' onClick={() => setCount(count + 1)}>
+                        <img src={plus} alt='plus' />
                         <p>добавить новое поле</p>
                     </div>
                     : null
                 }
-                <div className={Object.keys(field).length !== 2 ? "field-more__rows" : null} >
+                <div className={Object.keys(field).length !== 2 ? 'field-more__rows' : null} >
                     {Object.keys(field).length !== 2
                         ? <>
                             {field.addMore.map((label, index) => {

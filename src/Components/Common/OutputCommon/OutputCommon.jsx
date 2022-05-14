@@ -1,13 +1,13 @@
-import { enterFields } from "../../../Arrays/fields"
+import { enterFields } from '../../../Arrays/fields'
 
-import OutputFieldSwitch from "../../../hocs/OutputFieldSwitch"
+import OutputFieldSwitch from '../../../hocs/OutputFieldSwitch'
 
-import Output from "../../Pages/Reception/OutputItem/Output"
+import Output from '../../Pages/Reception/OutputItem/Output'
 
 
 
 const OutputCommon = ({
-    objToOutputSwitch, objToOutputColumnSwitch
+    objToOutputSwitch, objToOutputColumnSwitch,
 }) => {
 
     return (
@@ -15,7 +15,7 @@ const OutputCommon = ({
             <Output
                 objToOutputColumnSwitch={objToOutputColumnSwitch}
             />
-            <div className="outputs">
+            <div className='outputs'>
                 {enterFields.map((field, index) => {
                     return <OutputFieldSwitch
                         key={`${field}_${index}`}

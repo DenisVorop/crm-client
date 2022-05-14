@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import Header from './Components/Common/Header/Header'
 import Preloader from './Components/Common/Preloader/Preloader'
-import Login from "./Components/Pages/Login/Login"
-import Page from "./Components/Pages/Receptions/Page"
+import Login from './Components/Pages/Login/Login'
+import Page from './Components/Pages/Receptions/Page'
 import NewPatient from './Components/Pages/NewPatient/NewPatient'
 import NewRecord from './Components/Pages/NewRecord/NewRecord'
 import AllCards from './Components/Pages/Cards/AllCards'
@@ -16,7 +16,7 @@ import Reception from './Components/Pages/Reception/Reception'
 import { getTodayRecords, getTimesData, getCardsData } from './Redux/Reducers/usersReducer'
 import { setLoginValues } from './Redux/Reducers/authReducer'
 
-import { checkApi } from './API/loginApi'
+// import { checkApi } from './API/loginApi'
 
 
 function App() {
@@ -62,7 +62,7 @@ function App() {
     return <Preloader />
   }
   return (
-    <div className="wrapper">
+    <div className='wrapper'>
       <Routes>
         <Route path={'/login'}
           element={<Login />} />

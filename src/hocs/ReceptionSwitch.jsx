@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 const ReceptionSwitch = ({ label, objToReceptionSwitch }) => {
 
     let text
@@ -30,12 +29,13 @@ const ReceptionSwitch = ({ label, objToReceptionSwitch }) => {
             text = objToReceptionSwitch.location
             break
         }
+        default: {}
     }
 
     return (
-        <div className="admission-info-reception__column">
-            <div className="admission-info-reception__label">{label}</div>
-            <div className="admission-info-reception__text">{text}</div>
+        <div className='admission-info-reception__column'>
+            <div className='admission-info-reception__label'>{label}</div>
+            <div className='admission-info-reception__text'>{text}</div>
         </div>
     )
 

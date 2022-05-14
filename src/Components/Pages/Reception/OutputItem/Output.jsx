@@ -1,17 +1,17 @@
 import React from 'react'
 
-import OutputColumnSwitch from "../../../../hocs/OutputColumnSwitch"
+import OutputColumnSwitch from '../../../../hocs/OutputColumnSwitch'
 import {outputPatientLabels, outputRecordLabels} from '../../../../Arrays/labels'
 
-const Output = ({ objToOutputColumnSwitch, }) => {
+const Output = ({ objToOutputColumnSwitch }) => {
 
     return (
-        <div className="output">
-            <div className="output__body">
-                <div className="output__items">
-                    <div className="output__item">
-                        <div className="output__title">Данные пациента</div>
-                        <div className="output__columns">
+        <div className='output'>
+            <div className='output__body'>
+                <div className='output__items'>
+                    <div className='output__item'>
+                        <div className='output__title'>Данные пациента</div>
+                        <div className='output__columns'>
                             {outputPatientLabels.map((label, index) => {
                                 return <OutputColumnSwitch
                                     key={`${label}_${index}`}
@@ -21,9 +21,9 @@ const Output = ({ objToOutputColumnSwitch, }) => {
                             })}
                         </div>
                     </div>
-                    <div className="output__item">
-                        <div className="output__title">Данные приема</div>
-                        <div className="output__columns">
+                    <div className='output__item'>
+                        <div className='output__title'>Данные приема</div>
+                        <div className='output__columns'>
                             {outputRecordLabels.map((label, index) => {
                                 return <OutputColumnSwitch
                                     key={`${label}_${index}`}

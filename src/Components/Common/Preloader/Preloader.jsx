@@ -11,16 +11,16 @@ const preloaderStyle = {
 const Preloader = () => {
     return (
         <div style={preloaderStyle}>
-            <div className="spinner__box">
-                <div className="blue__orbit leo">
+            <div className='spinner__box'>
+                <div className='blue__orbit leo'>
                 </div>
-                <div className="green__orbit leo">
+                <div className='green__orbit leo'>
                 </div>
-                <div className="red__orbit leo">
+                <div className='red__orbit leo'>
                 </div>
-                <div className="white__orbit w1 leo">
-                </div><div className="white__orbit w2 leo">
-                </div><div className="white__orbit w3 leo">
+                <div className='white__orbit w1 leo'>
+                </div><div className='white__orbit w2 leo'>
+                </div><div className='white__orbit w3 leo'>
                 </div>
             </div>
         </div>

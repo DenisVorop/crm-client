@@ -26,13 +26,14 @@ const OutputColumnSwitch = ({ label, objToOutputColumnSwitch }) => {
             text = objToOutputColumnSwitch.doctor
             break
         }
+        default: {}
     }
 
     return (
-        <div className="output__column">
-            <div className="output__rows">
-                <div className="output__row-label">{label}</div>
-                <div className="output__row">{text}</div>
+        <div className='output__column'>
+            <div className='output__rows'>
+                <div className='output__row-label'>{label}</div>
+                <div className='output__row'>{text}</div>
             </div>
         </div>
     )

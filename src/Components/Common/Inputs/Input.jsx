@@ -1,11 +1,11 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'
 
 
 const Input = ({ label, inputRef, onChangeInput, placeholder, styleInput, type }) => {
 
     const [changedPath, setChangedPath] = React.useState(false)
-    const location = useLocation();
+    const location = useLocation()
 
     React.useEffect(() => {
         if (location.pathname === '/receptions') {

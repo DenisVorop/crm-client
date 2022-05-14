@@ -1,5 +1,5 @@
-const SET_LOGIN = 'GET_ADMIN';
-const SET_LOGOUT = 'SET_LOGOUT';
+const SET_LOGIN = 'GET_ADMIN'
+const SET_LOGOUT = 'SET_LOGOUT'
 
 
 
@@ -27,7 +27,7 @@ const authReducer = (state = initialState, action) => {
             }
         }
         default: {
-            return state;
+            return state
         }
     }
 }
@@ -49,4 +49,4 @@ export const setLogoutValues = (payload) => {
 
 
 
-export default authReducer;
+export default authReducer

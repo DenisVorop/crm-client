@@ -1,4 +1,4 @@
-import MoreContainer from "../Components/Pages/Reception/EnterField/MoreContainer/MoreContainer"
+import MoreContainer from '../Components/Pages/Reception/EnterField/MoreContainer/MoreContainer'
 
 const AddMoreSwitch = ({ label, title, index, visibleObj, setVisibleObj, valueObj, setValueObj, nextVisibleObj }) => {
 
@@ -152,6 +152,7 @@ const AddMoreSwitch = ({ label, title, index, visibleObj, setVisibleObj, valueOb
             value = valueObj.autorefractometry
             break
         }
+        default: {}
     }
 
     return <MoreContainer

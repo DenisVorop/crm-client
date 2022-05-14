@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './popup.scss';
+import './popup.scss'
 
 const Popup = ({ popupActive, setPopupActive, children, setPopupActiveIndex }) => {
 

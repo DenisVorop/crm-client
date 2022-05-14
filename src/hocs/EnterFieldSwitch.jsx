@@ -1,4 +1,5 @@
 import React from 'react'
+
 import EnterField from '../Components/Pages/Reception/EnterField/EnterField'
 
 const EnterFieldSwitch = ({ field, objToInputSwitch }) => {
@@ -50,6 +51,7 @@ const EnterFieldSwitch = ({ field, objToInputSwitch }) => {
             setValue = objToInputSwitch.setSurvey
             break
         }
+        default: {}
     }
 
     return <EnterField

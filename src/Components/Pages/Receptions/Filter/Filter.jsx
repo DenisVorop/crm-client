@@ -1,16 +1,19 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 
-import Head from "./Head/Head";
-import Patients from "../../../Common/Patients/Patients";
-import Records from "./Records/Records";
+import Patients from '../../../Common/Patients/Patients'
 
-import './filter.scss';
+import Head from './Head/Head'
+
+
+import Records from './Records/Records'
+
+import './filter.scss'
 
 
 const Filter = ({ startReception }) => {
 
-    const { usersData } = useSelector(({ usersReducer }) => usersReducer);
+    const { usersData } = useSelector(({ usersReducer }) => usersReducer)
 
     const [activeUsers, setActiveUsers] = React.useState(null)
     const [num, setNum] = React.useState(false)
@@ -32,15 +35,15 @@ const Filter = ({ startReception }) => {
             filteredUsers = usersData.filter(user => user.card_num.toLowerCase().includes(receptionsRef.current.value.toLowerCase()))
         }
         setActiveUsers(filteredUsers)
-    }, [usersData])
+    }, [num, usersData])
 
     const onToggleCheck = React.useCallback(() => {
         setNum(!num)
     }, [num])
 
     return (
-        <div className="filter">
-            <div className="filter__container">
+        <div className='filter'>
+            <div className='filter__container'>
                 <Head
                     onSearchClick={onSearchClick}
                     receptionsRef={receptionsRef}

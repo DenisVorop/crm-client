@@ -1,4 +1,4 @@
-import { $local } from "./_index"
+import { $local } from './_index'
 
 export const usersAPI = {
     getAllUsers() {
@@ -9,5 +9,5 @@ export const usersAPI = {
     },
     getCards(limit, currentPage) {
         return $local.get(`/cards?_limit=${limit}&_page=${currentPage}&_sort=name&_order=asc`)
-    }
+    },
 }

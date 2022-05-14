@@ -1,7 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import Filter from './Filter/Filter';
-import Plan from '../../Common/Plan/Plan';
+import Plan from '../../Common/Plan/Plan'
+
+import Filter from './Filter/Filter'
 
 const Page = ({ startReception }) => {
     return (

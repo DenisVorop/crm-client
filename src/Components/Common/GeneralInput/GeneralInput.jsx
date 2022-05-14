@@ -6,7 +6,7 @@ import loop from '../../../assets/img/loop.svg'
 const GeneralInput = ({ label, onSearchClick, children, id, onToggleCheck, inputRef }) => {
 
     const [changedPath, setChangedPath] = React.useState(false)
-    const location = useLocation();
+    const location = useLocation()
 
     React.useEffect(() => {
         if (location.pathname === '/receptions') {
@@ -15,19 +15,19 @@ const GeneralInput = ({ label, onSearchClick, children, id, onToggleCheck, input
     }, [label])
 
     return (
-        <div className="patient-filter__number">
-            <div className={changedPath ? "patient-filter__card" : ""}>
-                <label className="patient-filter__label" htmlFor={id} onChange={onToggleCheck}>{label}</label>
+        <div className='patient-filter__number'>
+            <div className={changedPath ? 'patient-filter__card' : ''}>
+                <label className='patient-filter__label' htmlFor={id} onChange={onToggleCheck}>{label}</label>
                 {changedPath
-                    ? <input type="checkbox" className="patient-filter__checkbox" id={id} onChange={onToggleCheck} ref={inputRef}/>
+                    ? <input type='checkbox' className='patient-filter__checkbox' id={id} onChange={onToggleCheck} ref={inputRef}/>
                     : null
                 }
             </div>
-            {label === 'Поиск по возрасту' || label === 'Поиск по полу' ? null : <img src={loop} alt="loop" />}
+            {label === 'Поиск по возрасту' || label === 'Поиск по полу' ? null : <img src={loop} alt='loop' />}
             {children}
             {changedPath
                 ? <>
-                    <button className="patient-filter__search" onClick={onSearchClick}>Найти</button>
+                    <button className='patient-filter__search' onClick={onSearchClick}>Найти</button>
                 </>
                 : null
             }

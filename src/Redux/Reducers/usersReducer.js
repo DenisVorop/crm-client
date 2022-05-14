@@ -1,9 +1,9 @@
-import { usersAPI } from "../../API/usersApi";
+import { usersAPI } from '../../API/usersApi'
 
-const GET_USERS = 'GET_USERS';
-const GET_TIMES = 'GET_TIMES';
-const ADD_REC = 'ADD_REC';
-const GET_CARDS = 'GET_CARDS';
+const GET_USERS = 'GET_USERS'
+const GET_TIMES = 'GET_TIMES'
+const ADD_REC = 'ADD_REC'
+const GET_CARDS = 'GET_CARDS'
 
 // const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 // const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
@@ -31,7 +31,7 @@ const usersReducer = (state = initialState, action) => {
         case GET_USERS: {
             return {
                 ...state,
-                usersData: action.payload
+                usersData: action.payload,
             }
         }
         case GET_TIMES: {
@@ -76,7 +76,7 @@ const usersReducer = (state = initialState, action) => {
                 first_record: action.payload.first_record,
                 last_record: action.payload.last_record,
                 card_info: updatedUsersData[selectedPatientIndex].card_info,
-                last_records: updatedUsersData[selectedPatientIndex].last_records
+                last_records: updatedUsersData[selectedPatientIndex].last_records,
             }
 
             addNewReceptionToPatient('', newRecord, 'patients', 'POST')
@@ -84,7 +84,7 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 // usersData: [...state.usersData, newRecord],
-            };
+            }
         }
         case GET_CARDS: {
             return {
@@ -130,15 +130,16 @@ const usersReducer = (state = initialState, action) => {
             updatedUsersData[selectedPatientIndex].last_records = updatedUsersData[selectedPatientIndex].last_records
                 .concat([action.payload])
 
-            // Меняем выбранному пациенту статус приема на "Прием завершен"
+            // Меняем выбранному пациенту статус приема на 'Прием завершен'
             updatedUsersData[selectedPatientIndex].status = 'Прием завершен'
+            updatedUsersData[selectedPatientIndex].time_index = action.payload.info.time_index
 
             // Отправляем на сервер
             addNewReceptionToPatient(patientId, updatedUsersData[selectedPatientIndex], 'patients', 'PUT')
             addNewReceptionToPatient(patientId, updatedUsersData[selectedPatientIndex], 'cards', 'PUT')
         }
         default: {
-            return state;
+            return state
         }
     }
 }
@@ -200,8 +201,7 @@ export const getTodayRecords = () => {
     return async (dispatch) => {
         const response = await usersAPI.getAllUsers()
         if (response.status === 200) {
-            dispatch(getUsers(response.data));
-            console.log(response);
+            dispatch(getUsers(response.data))
         }
     }
 }
@@ -210,8 +210,7 @@ export const getTimesData = () => {
     return async (dispatch) => {
         const response = await usersAPI.getTimes()
         if (response.status === 200) {
-            dispatch(getTimes(response.data));
-            console.log(response);
+            dispatch(getTimes(response.data))
         }
     }
 }
@@ -220,9 +219,8 @@ export const getCardsData = (limit, currentPage) => {
     return async (dispatch) => {
         const response = await usersAPI.getCards(limit, currentPage)
         if (response.status === 200) {
-            dispatch(getAllCards(response.data));
+            dispatch(getAllCards(response.data))
             dispatch(getTotalCountCards(response.headers['x-total-count']))
-            console.log(response);
         }
     }
 }
@@ -234,11 +232,11 @@ async function addNewReceptionToPatient(patientId, patient, url, method) {
             patient
         ),
         headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
         },
     })
     return await response.json()
 }
 
 
-export default usersReducer;
+export default usersReducer

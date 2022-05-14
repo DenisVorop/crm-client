@@ -1,25 +1,26 @@
 import React from 'react'
-import { Link, Navigate } from "react-router-dom"
+import { Link, Navigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
-import Button from "../../Common/Button/Button"
-import Plan from "../../Common/Plan/Plan"
-import Output from './OutputItem/Output'
+import Button from '../../Common/Button/Button'
+import Plan from '../../Common/Plan/Plan'
 
 import ReceptionDoc from '../../Docs/ReceptionDoc'
 
 import './reception.scss'
 
 import EnterFieldSwitch from '../../../hocs/EnterFieldSwitch'
-import OutputFieldSwitch from '../../../hocs/OutputFieldSwitch'
+// import OutputFieldSwitch from '../../../hocs/OutputFieldSwitch'
 import ReceptionSwitch from '../../../hocs/ReceptionSwitch'
 
 import { enterFields } from '../../../Arrays/fields'
-import { receptionLabels, outputPatientLabels, outputRecordLabels } from '../../../Arrays/labels'
+import { receptionLabels} from '../../../Arrays/labels'
 
 // import { savePatientRecord } from '../../../Redux/Reducers/recordReducer'
 import { savePatientRecord } from '../../../Redux/Reducers/usersReducer'
 import OutputCommon from '../../Common/OutputCommon/OutputCommon'
+
+// import Output from './OutputItem/Output'
 
 
 const Reception = ({ receptionInfo }) => {
@@ -31,7 +32,7 @@ const Reception = ({ receptionInfo }) => {
     const [diagnosisData, setDiagnosisData] = React.useState([])
 
     // Темы полей ввода
-    const [complaintsVisible, setComplaintsVisible] = React.useState(true) // 1 жалобы
+    const [complaintsVisible] = React.useState(true) // 1 жалобы
     const [complaints, setComplaints] = React.useState({ first: '', second: '', third: '' }) // 1 жалобы  complaints
     const [historyVisible, setHistoryVisible] = React.useState(false) // 2 анамнез
     const [history, setHistory] = React.useState({ first: '', second: '', third: '' }) // 2 анамнез  history
@@ -54,10 +55,7 @@ const Reception = ({ receptionInfo }) => {
 
     if (receptionInfo === null) { return <Navigate to='/receptions' /> }
 
-    const { last_name, first_name, patronymic, sex,
-        birth, marital_status, reg_addres, fact_addres, card_num,
-        phone, first_record, last_record, policy, name, card_info: { card_info },
-        last_records: { last_records }, id } = receptionInfo
+    const { birth, card_num, policy, name, id, time_index } = receptionInfo
 
     // TODO: переделать компонент инпут
 
@@ -86,6 +84,7 @@ const Reception = ({ receptionInfo }) => {
         clinic: receptionInfo.doctor.clinic,
         specialization: receptionInfo.doctor.specialization,
         patientId: id,
+        time_index,
     }
 
     const endPatientRecord = () => {
@@ -95,11 +94,11 @@ const Reception = ({ receptionInfo }) => {
     return (
         <>
             <Plan label='Редактирование приема' />
-            <div className="reception" style={{ minHeight: '1150px' }}>
-                <div className="reception__container">
-                    <div className="reception__body">
-                        <div className="reception__title">Данные пациента</div>
-                        <div className="reception__admission-info admission-info-reception">
+            <div className='reception' style={{ minHeight: '1150px' }}>
+                <div className='reception__container'>
+                    <div className='reception__body'>
+                        <div className='reception__title'>Данные пациента</div>
+                        <div className='reception__admission-info admission-info-reception'>
                             {receptionLabels.map((label, index) => {
                                 return <ReceptionSwitch
                                     key={`${label}_${index}`}
@@ -108,8 +107,8 @@ const Reception = ({ receptionInfo }) => {
                                 />
                             })}
                         </div>
-                        <div className="reception__rows">
-                            <div className="reception__part">
+                        <div className='reception__rows'>
+                            <div className='reception__part'>
                                 {enterFields.map((field, index) => {
                                     return <EnterFieldSwitch
                                         key={`${field}_${index}`}
@@ -118,7 +117,7 @@ const Reception = ({ receptionInfo }) => {
                                     />
                                 })}
                             </div>
-                            <div className="reception__part">
+                            <div className='reception__part'>
                                 <OutputCommon
                                     objToOutputColumnSwitch={objToOutputColumnSwitch}
                                     objToOutputSwitch={objToOutputSwitch}
@@ -126,7 +125,7 @@ const Reception = ({ receptionInfo }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="reception__save" onClick={endPatientRecord}>
+                    <div className='reception__save' onClick={endPatientRecord}>
                         <Link to='/receptions'>
                             <Button label='Сохранить изменения' />
                         </Link>

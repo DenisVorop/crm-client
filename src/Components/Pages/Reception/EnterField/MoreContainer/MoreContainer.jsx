@@ -1,7 +1,7 @@
 import React from 'react'
 
-import FieldMore from "./FieldMore/FieldMore"
-import Survey from "./Survey/Survey"
+import FieldMore from './FieldMore/FieldMore'
+import Survey from './Survey/Survey'
 
 
 const MoreContainer = ({ visible, setVisible, label, nextVisible, title, setValue, index, value }) => {

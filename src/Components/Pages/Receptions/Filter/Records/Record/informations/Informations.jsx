@@ -1,27 +1,28 @@
-import React from 'react';
+import React from 'react'
 
-import Popup from '../../../../../../Common/Popup/Popup';
-import LastRecord from '../../../../../../Common/LastRecords/LastRecord';
-import Information from './Information/information';
+import Popup from '../../../../../../Common/Popup/Popup'
+import LastRecord from '../../../../../../Common/LastRecords/LastRecord'
+import EmptySearch from '../../../../../../Common/EmptySearch/EmptySearch'
 
-import './information.scss';
-import EmptySearch from '../../../../../../Common/EmptySearch/EmptySearch';
+import Information from './Information/information'
+
+import './information.scss'
 
 
 const Informations = ({ last_records }) => {
 
-    const [popupActive, setPopupActive] = React.useState(false);
-    const [popupActiveIndex, setPopupActiveIndex] = React.useState(null);
+    const [popupActive, setPopupActive] = React.useState(false)
+    const [popupActiveIndex, setPopupActiveIndex] = React.useState(null)
 
-    let cloneLastRecords = Array.from(last_records)
+    const cloneLastRecords = Array.from(last_records)
 
     return (
-        <div className="information">
-            <div className="information__container">
+        <div className='information'>
+            <div className='information__container'>
                 <div className='information__body'>
-                    <div className="information__lasts lasts-information">
-                        <div className="information__label bold">Последние приемы</div>
-                        <div className="lasts-information__records">
+                    <div className='information__lasts lasts-information'>
+                        <div className='information__label bold'>Последние приемы</div>
+                        <div className='lasts-information__records'>
                             {cloneLastRecords.length !== 0
                                 ? cloneLastRecords.map((obj, index) => {
                                     for (; index < 3;) {
@@ -40,9 +41,9 @@ const Informations = ({ last_records }) => {
                                 : <EmptySearch />}
                         </div>
                     </div>
-                    <div className="information__lasts lasts-information">
-                        <div className="information__label bold">Комментарий администратора</div>
-                        <div className="lasts-information__records" style={{ paddingLeft: '15px' }}>
+                    <div className='information__lasts lasts-information'>
+                        <div className='information__label bold'>Комментарий администратора</div>
+                        <div className='lasts-information__records' style={{ paddingLeft: '15px' }}>
                             <p
                                 style={{
                                     fontSize: '14px',

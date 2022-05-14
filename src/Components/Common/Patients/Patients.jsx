@@ -1,7 +1,7 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'
 
-import './patients.scss';
+import './patients.scss'
 
 const Patients = ({ stylePatients }) => {
 
@@ -11,17 +11,17 @@ const Patients = ({ stylePatients }) => {
     const location = useLocation()
 
     return (
-        <div className="patients__body">
-            <div className="patients__columns" style={stylePatients}>
+        <div className='patients__body'>
+            <div className='patients__columns' style={stylePatients}>
                 {location.pathname === '/receptions'
                     ? receptionsArr.map((columnName, index) => {
                         return (
-                            <div className="patients__column" key={`${columnName}_${index}`}>{columnName}</div>
+                            <div className='patients__column' key={`${columnName}_${index}`}>{columnName}</div>
                         )
                     })
                     : cardsArr.map((columnName, index) => {
                         return (
-                            <div className="patients__column" key={`${columnName}_${index}`}>{columnName}</div>
+                            <div className='patients__column' key={`${columnName}_${index}`}>{columnName}</div>
                         )
                     })
                 }

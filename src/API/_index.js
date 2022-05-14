@@ -1,5 +1,6 @@
-import axios from "axios"
-import { REACT_APP_API_URL, REACT_APP_API_URL_JSON } from "./_url"
+import axios from 'axios'
+
+import { REACT_APP_API_URL, REACT_APP_API_URL_JSON } from './_url'
 
 
 const $host = axios.create({

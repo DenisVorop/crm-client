@@ -12,7 +12,7 @@ import { eyes } from '../../../../../../Arrays/eyes'
 
 const FieldMore = ({ label, nextVisible, title, setValue, index, value }) => {
 
-    const [deleteVisible, setDeleteVisible] = React.useState(true)
+    const [, setDeleteVisible] = React.useState(true)
     const [count, setCount] = React.useState(1)
 
     React.useEffect(() => {
@@ -58,18 +58,18 @@ const FieldMore = ({ label, nextVisible, title, setValue, index, value }) => {
 
 
     return (
-        <div className="field-more__body">
-            <div className="field-more__label">{label}</div>
-            <div className="field-more__items">
-                <div className="field-more__item">Без особенностей</div>
-                <div className="field-more__item">Не отягощен</div>
-                <div className="field-more__item">Прозрачная</div>
+        <div className='field-more__body'>
+            <div className='field-more__label'>{label}</div>
+            <div className='field-more__items'>
+                <div className='field-more__item'>Без особенностей</div>
+                <div className='field-more__item'>Не отягощен</div>
+                <div className='field-more__item'>Прозрачная</div>
             </div>
-            <div className="field-more__input">
-                <div className="field-more__column">
+            <div className='field-more__input'>
+                <div className='field-more__column'>
                     {title === 'Анамнез пациента'
                         ? <input
-                            type="text"
+                            type='text'
                             placeholder='Без особенностей'
                             style={styleInput}
                             id={index}
@@ -87,7 +87,7 @@ const FieldMore = ({ label, nextVisible, title, setValue, index, value }) => {
                             {[...Array(count)].map((input, index) => {
                                 return (
                                     <div
-                                        className="row-reception__one-field"
+                                        className='row-reception__one-field'
                                         key={`${input}_${index}`}
                                     >
                                         <EyeInput
@@ -101,19 +101,19 @@ const FieldMore = ({ label, nextVisible, title, setValue, index, value }) => {
                                             value={value}
                                         />
                                         {label === 'Основной диагноз'
-                                            ? <><div className="row-reception__mkb">
-                                                <div className="row-reception__mkb-input">
+                                            ? <><div className='row-reception__mkb'>
+                                                <div className='row-reception__mkb-input'>
                                                     <input
-                                                        type="text"
+                                                        type='text'
                                                         style={styleInput3}
                                                         placeholder='Средней степени'
                                                     />
                                                 </div>
                                             </div>
-                                                <div className="row-reception__mkb">
-                                                    <div className="row-reception__mkb-input">
+                                                <div className='row-reception__mkb'>
+                                                    <div className='row-reception__mkb-input'>
                                                         <input
-                                                            type="text"
+                                                            type='text'
                                                             style={styleInput3}
                                                             placeholder='Стационарная'
                                                         />
@@ -123,22 +123,22 @@ const FieldMore = ({ label, nextVisible, title, setValue, index, value }) => {
                                         }
                                         {title === 'Status ophtalmicus'
                                             ? null
-                                            : <div className="row-reception__mkb">
-                                                <div className="row-reception__mkb-input">
+                                            : <div className='row-reception__mkb'>
+                                                <div className='row-reception__mkb-input'>
                                                     <input
-                                                        type="text"
+                                                        type='text'
                                                         style={styleInput2}
-                                                        readOnly="readonly"
+                                                        readOnly='readonly'
                                                         placeholder='Т.85.2'
                                                     />
                                                 </div>
-                                                <div className="row-reception__mkb-label">
+                                                <div className='row-reception__mkb-label'>
                                                     МКБ-10
                                                 </div>
                                             </div>
                                         }
                                         <div
-                                            className="row-reception__delete"
+                                            className='row-reception__delete'
                                             onClick={
                                                 () => (
                                                     setCount(count - 1),
@@ -150,7 +150,7 @@ const FieldMore = ({ label, nextVisible, title, setValue, index, value }) => {
                                             }
                                         >
                                             {[...Array(count)].length === index + 1 && count !== 1
-                                                ? <img src={del} alt="Delete" />
+                                                ? <img src={del} alt='Delete' />
                                                 : null
                                             }
                                         </div>
@@ -163,8 +163,8 @@ const FieldMore = ({ label, nextVisible, title, setValue, index, value }) => {
             </div>
             {title === 'Анамнез пациента'
                 ? null
-                : <div className="row-reception__add-more" onClick={() => setCount(count + 1)}>
-                    <img src={plus} alt="plus" />
+                : <div className='row-reception__add-more' onClick={() => setCount(count + 1)}>
+                    <img src={plus} alt='plus' />
                     <p>добавить новое поле</p>
                 </div>
             }

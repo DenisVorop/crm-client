@@ -1,4 +1,5 @@
 import React from 'react'
+
 import OutputField from '../Components/Pages/Reception/OutputField/OutputField'
 
 const OutputFieldSwitch = ({ field, index, objToOutputSwitch }) => {
@@ -32,6 +33,7 @@ const OutputFieldSwitch = ({ field, index, objToOutputSwitch }) => {
             thirdInputText = objToOutputSwitch?.diagnosis?.third
             break
         }
+        default: { }
     }
 
     return <OutputField

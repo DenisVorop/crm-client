@@ -6,32 +6,32 @@ import './output.scss'
 const OutputField = ({ field, firstInputText, secondInputText,
     thirdInputText, historyData, statusData, diagnosisData, index }) => {
 
-    const [labelsData, setLabelsData] = React.useState(field.addMore)
+    const [labelsData] = React.useState(field.addMore)
 
     return (
         <>
             {field.label !== 'Данные обследований'
                 ? <div className='output'>
-                    <div className="output__item">
-                        <div className="output__title">{field.label}</div>
-                        <div className="output__output-field output-field__output">
-                            <div className="output-field__body">
-                                <div className="output-field__items">
-                                    <div className="output-field__labels">
-                                        <div className="output-field__label">Глаз</div>
-                                        <div className="output-field__label">Запись</div>
+                    <div className='output__item'>
+                        <div className='output__title'>{field.label}</div>
+                        <div className='output__output-field output-field__output'>
+                            <div className='output-field__body'>
+                                <div className='output-field__items'>
+                                    <div className='output-field__labels'>
+                                        <div className='output-field__label'>Глаз</div>
+                                        <div className='output-field__label'>Запись</div>
                                     </div>
-                                    <div className="output-field__item">
-                                        <div className="output-field__eye">OS</div>
-                                        <div className="output-field__entry">{firstInputText}</div>
+                                    <div className='output-field__item'>
+                                        <div className='output-field__eye'>OS</div>
+                                        <div className='output-field__entry'>{firstInputText}</div>
                                     </div>
-                                    {/* <div className="output-field__item">
-                                        <div className="output-field__eye">OU</div>
-                                        <div className="output-field__entry">{secondInputText}</div>
+                                    {/* <div className='output-field__item'>
+                                        <div className='output-field__eye'>OU</div>
+                                        <div className='output-field__entry'>{secondInputText}</div>
                                     </div>
-                                    <div className="output-field__item">
-                                        <div className="output-field__eye">OD</div>
-                                        <div className="output-field__entry">{thirdInputText}</div>
+                                    <div className='output-field__item'>
+                                        <div className='output-field__eye'>OD</div>
+                                        <div className='output-field__entry'>{thirdInputText}</div>
                                     </div> */}
                                 </div>
                             </div>

@@ -14,13 +14,13 @@ const EyeInput = ({ eyes, nextVisible, setValue, index, value }) => {
     }, [selectedEye])
 
     return (
-        <div className="row-reception__input">
-            <div className="row-reception__body">
-                <div className="row-reception__eye" onClick={() => setVisible(true)} style={{ cursor: 'pointer' }}>
+        <div className='row-reception__input'>
+            <div className='row-reception__body'>
+                <div className='row-reception__eye' onClick={() => setVisible(true)} style={{ cursor: 'pointer' }}>
                     {selectedEye}
                     {visible
                         ? <div className={visible ? 'find active' : 'find'} >
-                            <div className="find__field" onClick={(e) => (e.stopPropagation())} style={{ textAlign: 'center', margin: '10px 0px 0px -10px' }}>
+                            <div className='find__field' onClick={(e) => (e.stopPropagation())} style={{ textAlign: 'center', margin: '10px 0px 0px -10px' }}>
                                 {eyes.map((eye, index) => {
                                     return <SelectEye
                                         key={`${eye}_${index}`}
@@ -35,7 +35,7 @@ const EyeInput = ({ eyes, nextVisible, setValue, index, value }) => {
                     }
                 </div>
                 <input
-                    type="text"
+                    type='text'
                     placeholder='Без особенностей'
                     id={index}
                     onChange={

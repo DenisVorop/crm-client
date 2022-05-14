@@ -1,22 +1,22 @@
-const jsonServer = require('json-server');
-const jsonServerAuth = require('json-server-auth');
-const server = jsonServer.create();
-const router = jsonServer.router('./public/db.json');
+const jsonServer = require('json-server')
+const jsonServerAuth = require('json-server-auth')
+const server = jsonServer.create()
+const router = jsonServer.router('./public/db.json')
 const middlewares = jsonServer.defaults({
     static: './build',
-});
+})
 
-const PORT = process.env.PORT || 4444;
+const PORT = process.env.PORT || 4444
 
 server.db = router.db
 
-server.use(jsonServerAuth);
-server.use(middlewares);
-server.use(router);
+server.use(jsonServerAuth)
+server.use(middlewares)
+server.use(router)
 
 server.listen(PORT, () => {
-    console.log('Server is running');
-});
+    console.log('Server is running')
+})
 
 // const jsonServer = require('json-server')
 // const auth = require('json-server-auth')

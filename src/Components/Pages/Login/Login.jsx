@@ -1,32 +1,30 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { Form, Formik } from 'formik';
-import * as yup from 'yup';
+import React from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { Form, Formik } from 'formik'
+import * as yup from 'yup'
 
-import { setLoginValues } from '../../../Redux/Reducers/authReducer';
+import { setLoginValues } from '../../../Redux/Reducers/authReducer'
 
 import './login.scss'
 
-import { registrationApi, loginApi } from '../../../API/loginApi';
+import { loginApi } from '../../../API/loginApi'
 
 
 const Login = () => {
 
-    const { user } = useSelector(({ authReducer }) => authReducer);
-    const dispatch = useDispatch();
+    // const { user } = useSelector(({ authReducer }) => authReducer)
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const [error, setError] = React.useState('Ошибок нет')
 
     const signIn = async (values) => {
         try {
-            let data
-            data = await loginApi(values.login, values.password)
+            const data = await loginApi(values.login, values.password)
             // data = await registrationApi(values.login, values.password)
-            dispatch(setLoginValues(data));
+            dispatch(setLoginValues(data))
             navigate('/receptions')
             setError('Должно быть все ОК :(')
-            console.log(data)
         } catch (e) {
             setError(String(e))
         }
@@ -34,7 +32,7 @@ const Login = () => {
 
     const validationLogin = yup.object().shape({
         login: yup.string().typeError('string expected!').required('Введите корректные данные!'),
-        password: yup.string().typeError('string expected!').required('Введите корректные данные!')
+        password: yup.string().typeError('string expected!').required('Введите корректные данные!'),
     })
 
     return (
@@ -53,28 +51,28 @@ const Login = () => {
         >
             {({ errors, touched, values, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
                 <Form>
-                    <div className="login">
-                        <div className="login__container">
-                            <div className="login__body">
-                                <div className="login__title">Введите данные для входа</div>
-                                <div className="login__login login-login">
-                                    <div className="login-login__label login-label">Имя пользователя</div>
+                    <div className='login'>
+                        <div className='login__container'>
+                            <div className='login__body'>
+                                <div className='login__title'>Введите данные для входа</div>
+                                <div className='login__login login-login'>
+                                    <div className='login-login__label login-label'>Имя пользователя</div>
                                     <input
-                                        className={touched.login && errors.login ? "login-login__input login-input valid-input-error " : "login-login__input login-input"}
+                                        className={touched.login && errors.login ? 'login-login__input login-input valid-input-error ' : 'login-login__input login-input'}
                                         placeholder='Введите имя пользователя'
-                                        type="login"
+                                        type='login'
                                         name='login'
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                     />
                                     {touched.login && errors.login && <p className='valid-text-error'>{errors.login}</p>}
                                 </div>
-                                <div className="login__password login-password">
-                                    <div className="login-password__label login-label">Пароль</div>
+                                <div className='login__password login-password'>
+                                    <div className='login-password__label login-label'>Пароль</div>
                                     <input
-                                        className={touched.password && errors.password ? "login-password__input login-input valid-input-error " : "login-password__input login-input"}
+                                        className={touched.password && errors.password ? 'login-password__input login-input valid-input-error ' : 'login-password__input login-input'}
                                         placeholder='Введите пароль'
-                                        type="login"
+                                        type='login'
                                         name='password'
                                         onChange={handleChange}
                                         onBlur={handleBlur}
@@ -82,7 +80,7 @@ const Login = () => {
                                     {touched.password && errors.password && <p className='valid-text-error'>{errors.password}</p>}
                                 </div>
                                 <button
-                                    className="login__button button"
+                                    className='login__button button'
                                     disabled={!isValid && !dirty}
                                     onClick={handleSubmit}
                                     type='submit'

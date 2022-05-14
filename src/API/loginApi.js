@@ -1,5 +1,6 @@
-import jwt_decode from "jwt-decode"
-import { $authHost, $host, $local } from "./_index";
+import jwt_decode from 'jwt-decode'
+
+import { $local } from './_index'
 
 
 export const registrationApi = async (email, password, login, role, name, clinic, specialization) => {

@@ -40,11 +40,11 @@ const LastRecord = ({ record }) => {
                 height: '891px',
                 transform: 'scale(.9)',
                 backgroundColor: 'var(--back-of-app)',
-                overflow: 'scroll'
+                overflow: 'scroll',
             }}
         >
-            <div className="last-record">
-                <div className="last-record__title">Выписка амбулаторного пациента</div>
+            <div className='last-record'>
+                <div className='last-record__title'>Выписка амбулаторного пациента</div>
                 <OutputCommon
                     objToOutputColumnSwitch={objToOutputColumnSwitch}
                     objToOutputSwitch={objToOutputSwitch}

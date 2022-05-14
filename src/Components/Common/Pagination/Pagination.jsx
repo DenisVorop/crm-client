@@ -1,14 +1,14 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { getPage } from '../../../Redux/Reducers/usersReducer';
+import { getPage } from '../../../Redux/Reducers/usersReducer'
 
 import './pagination.scss'
 
 const Pagination = () => {
     const dispatch = useDispatch()
 
-    const { totalCount, limit, currentPage } = useSelector(({ usersReducer }) => usersReducer);
+    const { totalCount, limit, currentPage } = useSelector(({ usersReducer }) => usersReducer)
     const pageCount = Math.ceil(totalCount / limit)
     const pages = []
 
@@ -17,10 +17,10 @@ const Pagination = () => {
     }
 
     return (
-        <div className="pagination">
-            <div className="pagination__container">
-                <div className="pagination__body">
-                    <div className="pagination__items">
+        <div className='pagination'>
+            <div className='pagination__container'>
+                <div className='pagination__body'>
+                    <div className='pagination__items'>
                         {pages.map((page, index) => {
                             return (
                                 <div
